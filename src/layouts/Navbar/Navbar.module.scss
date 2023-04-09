@@ -3,10 +3,16 @@ nav{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .controls img{
+        .controls {
+        img{
             width: 2rem;
             margin-left: 6px;
+            &:nth-child(2){
+                width: 30px;
+            }
         }
+    }
+
     } 
     .links{
         padding: 2rem;
