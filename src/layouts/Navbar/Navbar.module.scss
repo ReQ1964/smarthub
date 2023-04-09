@@ -3,6 +3,7 @@ nav{
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 1.5rem;
         .controls {
         img{
             width: 2rem;
@@ -15,7 +16,7 @@ nav{
 
     } 
     .links{
-        padding: 2rem;
+        padding: 3rem 2rem;
         ul{
             display: flex;
             flex-direction: column;
