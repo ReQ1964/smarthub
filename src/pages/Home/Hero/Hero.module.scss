@@ -9,10 +9,10 @@ section{
       rgba(0, 0, 0, 0.3), 
       rgba(0, 0, 0, 0.5)
     ),
-    url('../../../assets/img/hero-girl.jpg');
+    url('../../../assets/img/home-hero/hero-girl.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 100%;
+    background-size: cover;
     padding: 4rem;
     div{
         display: flex;
