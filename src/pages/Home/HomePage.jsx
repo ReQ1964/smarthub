@@ -2,6 +2,7 @@ import Categories from "./Category/Categories"
 import Hero from "./Hero/Hero"
 import Bestseller from "./Bestseller/Bestseller"
 import Review from "./Review/Review"
+import Features from "./Features/Features"
 
 const HomePage = () => {
     return <main>
@@ -9,6 +10,7 @@ const HomePage = () => {
         <Categories/>
         <Bestseller/>
         <Review/>
+        <Features/>
     </main>
 }
 
