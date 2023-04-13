@@ -1,13 +1,11 @@
 .categories{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 2rem;
     padding: 4rem 2rem;
     background-color: var(--bg-secondary);
     .category{
         position: relative;
-        display: flex;
-        flex-direction: column;
+        display: grid;
         gap: 1.5rem;
         padding: 2rem;
         min-height: 250px;

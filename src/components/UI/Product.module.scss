@@ -2,8 +2,7 @@ li{
     flex-direction: column;
     list-style: none;
     .description{
-        display: flex;
-        flex-direction: column;
+        display: grid;
         gap: 0.7rem;
     }
     .price{

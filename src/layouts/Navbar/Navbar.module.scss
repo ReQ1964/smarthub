@@ -18,8 +18,7 @@ nav{
     .links{
         padding: 3rem 2rem;
         ul{
-            display: flex;
-            flex-direction: column;
+            display: grid;
             gap: 2rem;
         }
         li{
