@@ -1,4 +1,4 @@
-import Categories from "./Category/Categories"
+import Categories from "./Categories/Categories"
 import Hero from "./Hero/Hero"
 import Bestseller from "./Bestseller/Bestseller"
 import Review from "./Review/Review"
