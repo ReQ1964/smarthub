@@ -1,0 +1,40 @@
+.categories{
+    display: grid;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background-color: var(--bg-secondary);
+    .category{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        padding: 2rem;
+        min-height: 280px;
+        color: var(--text-secondary);
+        p{
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+    }
+    .category:nth-of-type(1){
+        background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.25), 
+            rgba(0, 0, 0, 0.25)
+        ), url(../../../assets/img/shop-categories/smartphone.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .category:nth-of-type(2){
+        background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.3), 
+            rgba(0, 0, 0, 0.3)
+        ), url(../../../assets/img/shop-categories/smartwatch.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+}
