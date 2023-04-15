@@ -4,6 +4,12 @@ nav{
         align-items: center;
         justify-content: space-between;
         padding: 1.5rem;
+        h1{
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
         .controls {
         img{
             width: 2rem;
@@ -12,20 +18,28 @@ nav{
                 width: 30px;
             }
         }
+
     }
 
     } 
     .links{
         padding: 3rem 2rem;
+
         ul{
             display: grid;
             gap: 2rem;
         }
         li{
             text-align: center;
-            list-style: none;
-            color: var(--text-tertiary);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            a{
+                text-decoration: none;
+                color: var(--text-tertiary);
+                &.active{
+                    color: black;
+                    font-weight: bold;
+                }
+            }
         }
     }
 }
