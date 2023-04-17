@@ -1,7 +1,7 @@
 import classes from './Product.module.scss'
 
 const Product = (props) => {
-return <li key={props.id}>
+    return <li className={classes.product}>
                 <img src={props.img} alt="" />
                 <div className={classes.description}>
                     <h4>{props.name}</h4>

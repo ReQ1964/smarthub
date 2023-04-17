@@ -15,9 +15,13 @@ footer{
         ul{
             display: grid;
             gap: 1rem;
-            a{
-                text-decoration: none;
-                color: var(--text-tertiary);
+            li{
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: var(--text-tertiary);
+                    
+                }
             }
         }
     }

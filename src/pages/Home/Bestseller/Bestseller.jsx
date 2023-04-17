@@ -43,9 +43,7 @@ const Bestseller = () => {
         <h3>Featured Products</h3>
         <h1>Bestseller products</h1>
         <ul className={classes.products}>
-        {DUMMY_PRODUCTS.map(product => {
-            return <Product id={product.id} img={product.img} name={product.name} price={product.price} company={product.company} colors={product.colors}/>
-        })}
+        {DUMMY_PRODUCTS.map(product => <Product key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} company={product.company} colors={product.colors}/>)}
         </ul>
         <Button className={classes.btn}>BROWSE MORE</Button>
 

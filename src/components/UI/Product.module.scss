@@ -1,6 +1,7 @@
-li{
+.product{
     flex-direction: column;
     list-style: none;
+    text-align: center;
     .description{
         display: grid;
         gap: 0.7rem;
