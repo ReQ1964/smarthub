@@ -1,0 +1,25 @@
+.pagination{
+    ul{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 60%;
+        li{
+            list-style: none;
+        }
+        .button{
+            width: auto;
+            padding: 1.2rem 1rem;
+            background-color: white;
+            color: var(--btn-bg);
+            border: 1px solid hsla(0, 0%, 45%, 0.521);
+            border-radius: 0;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            font-size: 0.9rem;
+            &.active{
+                background-color: var(--btn-bg);
+                color: var(--text-secondary);
+            }
+        }
+    }
+}

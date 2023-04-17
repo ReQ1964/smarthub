@@ -1,6 +1,9 @@
+import { useState } from "react"
+
 import Categories from "./Categories/Categories"
 import Filter from "./Filter/Filter"
 import Products from "./Products/Products"
+import Pagination from "./Pagination/Pagination"
 import phone from '../../assets/img/example-phone.png'
 
 const DUMMY_PRODUCTS = [
@@ -39,10 +42,21 @@ const DUMMY_PRODUCTS = [
 ]
 
 const ShopPage = () => {
+    const [currentPage, setCurrentPage] = useState(1)
+    const [productsPerPage, setProductsPerPage] = useState(2)
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+    const currentProducts = DUMMY_PRODUCTS.slice(indexOfFirstProduct, indexOfLastProduct)
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+
     return <main>
         <Categories/>
         <Filter/>
-        <Products products={DUMMY_PRODUCTS}/>
+        <Products products={currentProducts}/>
+        <Pagination productsPerPage={productsPerPage} totalProducts={DUMMY_PRODUCTS.length} paginate={paginate} currentPage={currentPage}/>
     </main>
 }
 
