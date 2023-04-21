@@ -1,7 +1,7 @@
 import classes from './Product.module.scss'
 
 const Product = (props) => {
-    return <li className={classes.product}>
+    return <li onClick={props.onClick} className={classes.product}>
                 <img src={props.img} alt="" />
                 <div className={classes.description}>
                     <h4>{props.name}</h4>

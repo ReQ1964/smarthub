@@ -6,7 +6,7 @@ import Products from "./Products/Products"
 import Pagination from "./Pagination/Pagination"
 import phone from '../../assets/img/example-phone.png'
 
-const DUMMY_PRODUCTS = [
+export const DUMMY_PRODUCTS = [
     {
         id: 'p1',
         name: 'Phone',

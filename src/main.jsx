@@ -5,9 +5,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App'
-import HomePage from './pages/Home/HomePage';
 import './index.scss'
+import HomePage from './pages/Home/HomePage';
 import ShopPage from './pages/Shop/ShopPage';
+import SingleProductPage from './pages/SingleProduct/SingleProductPage';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/shop',
         element: <ShopPage/>
+      },
+      {
+        path:'/shop/:productId',
+        element: <SingleProductPage/>
       }
     ]
   },

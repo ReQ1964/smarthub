@@ -1,0 +1,74 @@
+.item{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    img{
+        width: 100%;
+    }
+    .images{
+        margin-top: 2rem;
+        img{
+            width: 40%;
+        }
+    }
+    .description{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0.5rem;
+        
+        .info{
+            h3{
+                margin-bottom: 0.5rem;
+            }
+            .rating{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: -0.5rem;
+            .stars{
+                display: flex;
+                margin-bottom: 5px;
+                img{
+                    height: 2rem;
+                    filter: brightness(0) saturate(100%) invert(85%) sepia(56%) saturate(3663%) hue-rotate(350deg) brightness(97%) contrast(99%);
+                }
+            }
+            p{
+                font-weight: bold;
+                color: var(--text-tertiary);
+            }
+        }
+        }
+        .price{
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .availability{
+            font-weight: bold;
+            color: var(--text-quaternary);
+            span{
+            color: var(--text-tertiary);
+            }
+        }
+        .text{
+            color: var(--text-tertiary);
+            border-bottom: 1px solid var(--text-tertiary);
+            padding-bottom: 1rem;
+            
+        }
+        .colors{
+            display: flex;
+            gap: 0.7rem;
+        }
+        .color{
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+}
