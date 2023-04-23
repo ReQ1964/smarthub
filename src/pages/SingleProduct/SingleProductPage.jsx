@@ -1,23 +1,19 @@
-import { DUMMY_PRODUCTS } from '../Shop/ShopPage'
-import { useEffect } from 'react'
+import { DUMMY_PRODUCTS } from '../Shop/ShopPage';
 
-import { useParams } from 'react-router-dom'
-import Item from './Item/Item'
+import { useParams } from 'react-router-dom';
+import Item from './Item/Item';
+import Description from './Description/Description';
 
 export const SingleProductPage = () => {
-  const {productId} = useParams()
-  const product = DUMMY_PRODUCTS.find(product => product.id === productId)
+	const { productId } = useParams();
+	const product = DUMMY_PRODUCTS.find((product) => product.id === productId);
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [productId])
+	return (
+		<main>
+			<Item product={product} />
+			<Description />
+		</main>
+	);
+};
 
-  return <main>
-    <Item product={product}/>
-
-  </main>
-    
-  
-}
-
-export default SingleProductPage
+export default SingleProductPage;
