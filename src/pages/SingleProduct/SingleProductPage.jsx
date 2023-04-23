@@ -3,6 +3,7 @@ import { DUMMY_PRODUCTS } from '../Shop/ShopPage';
 import { useParams } from 'react-router-dom';
 import Item from './Item/Item';
 import Description from './Description/Description';
+import SimilarProducts from './SimilarProducts/SimilarProducts';
 
 export const SingleProductPage = () => {
 	const { productId } = useParams();
@@ -12,6 +13,7 @@ export const SingleProductPage = () => {
 		<main>
 			<Item product={product} />
 			<Description />
+			<SimilarProducts/>
 		</main>
 	);
 };
