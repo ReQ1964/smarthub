@@ -1,0 +1,20 @@
+.partnership{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    background-color: var(--bg-tertiary);
+    color: white;
+    h1{
+        font-size: var(--h1-size);
+    }
+    p{
+        opacity: 0.9;
+        line-height: 1.5;
+    }
+    button.btn{
+        background-color: transparent;
+        border: 1px solid var(--text-secondary)
+    }
+}
