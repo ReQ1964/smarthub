@@ -23,7 +23,7 @@
         color: var(--text-secondary);
         h1{
             text-transform: uppercase;
-            font-size: 2rem;
+            font-size: var(--h1-size)
         }
         p{
             line-height: 1.8rem;

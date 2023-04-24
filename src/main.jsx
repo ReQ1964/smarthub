@@ -9,6 +9,7 @@ import './index.scss'
 import HomePage from './pages/Home/HomePage';
 import ShopPage from './pages/Shop/ShopPage';
 import SingleProductPage from './pages/SingleProduct/SingleProductPage';
+import AboutPage from './pages/About/AboutPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path:'/shop/:productId',
         element: <SingleProductPage/>
+      },
+      {
+        path:'/about',
+        element: <AboutPage/>
       }
     ]
   },

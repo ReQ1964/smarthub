@@ -1,6 +1,6 @@
 import classes from './Item.module.scss'
-import filledStar from '../../../assets/icon/star-filled.svg'
-import star from '../../../assets/icon/star.svg'
+import filledStar from '../../../assets/icon/rating//star-filled.svg'
+import star from '../../../assets/icon/rating/star.svg'
 import Button from '../../../components/UI/Button'
 
 export const Item = ({product}) => {

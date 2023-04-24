@@ -1,20 +1,15 @@
 import classes from './Footer.module.scss'
-import facebook from '../../assets/icon/facebook.svg'
-import instagram from '../../assets/icon/instagram.svg'
-import twitter from '../../assets/icon/twitter.svg'
+import SocialIcons from '../../components/UI/SocialIcons'
 
 const Footer = () => {
     return <footer>
         <div className={classes.socials}>
-            <h3>get in touch</h3>
-            <div className={classes.icons}>
-                <a href="#"><img src={facebook} alt="facebook icon" /></a>
-                <a href="#"><img src={instagram} alt="instagram icon" id={classes.instagram} /></a>
-                <a href="#"><img src={twitter} alt="twitter icon" /></a>
-            </div>
+            <h2>get in touch</h2>
+            <SocialIcons/>
+
         </div>
         <div className={classes.info}>
-            <h3>company info</h3>
+            <h2>company info</h2>
             <ul>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Carrier</a></li>
@@ -23,7 +18,7 @@ const Footer = () => {
             </ul>
         </div>
         <div className={classes.features}>
-            <h3>features</h3>
+            <h2>features</h2>
             <ul>
                 <li><a href="#">Business Marketing</a></li>
                 <li><a href="#">User Analytic</a></li>

@@ -1,12 +1,12 @@
-import { NavLink, Link } from 'react-router-dom'
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
+import AccountIcon from '../../assets/icon/navbar/account.svg'
+import CartIcon from '../../assets/icon/navbar/cart.svg'
+import HamburgerIcon from '../../assets/icon/navbar/hamburger.svg'
+import SearchIcon from '../../assets/icon/navbar/search.svg'
+import CloseIcon from '../../assets/icon/navbar/x.svg'
 import classes from './Navbar.module.scss'
-import SearchIcon from '../../assets/icon/search.svg'
-import AccountIcon from '../../assets/icon/account.svg'
-import HamburgerIcon from '../../assets/icon/hamburger.svg'
-import CartIcon from '../../assets/icon/cart.svg'
-import CloseIcon from '../../assets/icon/x.svg'
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false)

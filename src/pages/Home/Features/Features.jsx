@@ -6,7 +6,7 @@ import newspaper from '../../../assets/img/home-features/feature-newspaper.png'
 const Features = () => {
     return <section className={classes.features}>
         <div className={classes.title}>
-            <h1>the best services</h1>
+            <h2>the best services</h2>
             <p>No problems stand any chance!</p>
         </div>
         <div className={classes.feature}>

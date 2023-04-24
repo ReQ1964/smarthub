@@ -44,7 +44,7 @@ const Bestseller = () => {
 
     return <section className={classes.bestseller}>
         <h3>Featured Products</h3>
-        <h1>Bestseller products</h1>
+        <h2>Bestseller products</h2>
         <ul className={classes.products}>
         {DUMMY_PRODUCTS.map(product => <Product onClick={() => navigate(`/shop/${product.id}`)} key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} company={product.company} colors={product.colors}/>)}
         </ul>

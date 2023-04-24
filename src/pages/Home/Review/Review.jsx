@@ -1,7 +1,7 @@
 import classes from './Review.module.scss'
 import user from '../../../assets/img/home-review/review-user.png'
-import star from '../../../assets/icon/star.svg'
-import filledStar from '../../../assets/icon/star-filled.svg'
+import star from '../../../assets/icon/rating/star.svg'
+import filledStar from '../../../assets/icon/rating/star-filled.svg'
 
 
 const Review = () => {
@@ -18,7 +18,6 @@ const Review = () => {
         <p>SmartHub helps you with picking out the best devices around!</p>
         <div className={classes.info}>
             <p>Emma Stanford</p>
-            <p>Designer</p>
         </div>
     </section>
 }

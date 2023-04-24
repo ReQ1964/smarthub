@@ -2,12 +2,8 @@ footer{
     display: grid;
     gap: 2rem;
     padding: 4rem;
-    h3{
+    h2{
         text-transform: capitalize;
-    }
-    img{
-        height: 30px;
-        margin-right: 10px;
     }
     .socials, .info, .features{
         display: grid;
