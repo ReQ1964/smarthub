@@ -1,0 +1,17 @@
+.methods{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem;
+    text-align: center;
+    h1{
+        font-size: var(--h1-size);
+    }
+    p{
+        opacity: 0.9;
+        line-height: 1.5;
+    }
+    h4{
+        font-weight: bold;
+    }
+}
