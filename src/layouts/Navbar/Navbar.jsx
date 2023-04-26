@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import AccountIcon from '../../assets/icon/navbar/account.svg'
 import CartIcon from '../../assets/icon/navbar/cart.svg'
@@ -11,6 +11,8 @@ import classes from './Navbar.module.scss'
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false)
 
+    const navigate = useNavigate()
+
     const hamburgerHandler = () => {
         setIsActive((prevState) => !prevState)
     }
@@ -21,7 +23,7 @@ const Navbar = () => {
             <div className={classes.controls}>
                 <img src={SearchIcon} alt="" />
                 <img src={CartIcon} alt="" />
-                <img src={AccountIcon} alt="" />
+                <img src={AccountIcon} onClick={() => navigate('/account')} alt="" />
                 {isActive ? <img src={CloseIcon} onClick={hamburgerHandler} alt="" /> : <img src={HamburgerIcon} onClick={hamburgerHandler} alt="" />}
             </div>
         </div>

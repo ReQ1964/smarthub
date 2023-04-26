@@ -7,7 +7,7 @@ const Methods = () => {
     <h1>Get in touch today!</h1>
     <p>Need some support or want to ask some questions?</p>
     <h4>Phone: +451 251 322</h4>
-    <SocialIcons/>
+    <SocialIcons className={classes.socialIcons}/>
   </section>
 }
 
