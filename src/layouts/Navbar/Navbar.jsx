@@ -21,8 +21,7 @@ const Navbar = () => {
         <div className={classes.heading}>
             <h1><Link to={'/'}>SmartHub</Link></h1>
             <div className={classes.controls}>
-                <img src={SearchIcon} alt="" />
-                <img src={CartIcon} alt="" />
+                <img src={CartIcon} onClick={() => navigate('/cart')}alt="" />
                 <img src={AccountIcon} onClick={() => navigate('/account')} alt="" />
                 {isActive ? <img src={CloseIcon} onClick={hamburgerHandler} alt="" /> : <img src={HamburgerIcon} onClick={hamburgerHandler} alt="" />}
             </div>

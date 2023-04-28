@@ -9,6 +9,7 @@ import SingleProductPage from './pages/SingleProduct/SingleProductPage';
 import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import AccountPage from './pages/Account/AccountPage';
+import CartPage from './pages/Cart/CartPage';
 
 const router = createBrowserRouter([
 	{
@@ -47,10 +48,14 @@ const router = createBrowserRouter([
 					return null;
 				},
 			},
-			{ 
-        path: '/account',
-        element: <AccountPage/>
-       },
+			{
+				path: '/account',
+				element: <AccountPage />,
+			},
+			{
+				path: '/cart',
+				element: <CartPage/>
+			}
 		],
 	},
 ]);
