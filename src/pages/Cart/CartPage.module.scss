@@ -1,0 +1,19 @@
+.cart{
+    display: grid;
+    gap: 2rem;
+    padding: 2rem;
+    h1, h3{
+        text-align: center;
+    }
+    h1{
+        font-size: var(--h1-size);
+    }
+    .checkout{
+        width: 80%;
+    }
+    .info{
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+    }
+}

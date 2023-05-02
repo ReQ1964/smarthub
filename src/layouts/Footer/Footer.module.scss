@@ -1,0 +1,24 @@
+footer{
+    display: grid;
+    gap: 2rem;
+    padding: 4rem;
+    h2{
+        text-transform: capitalize;
+    }
+    .socials, .info, .features{
+        display: grid;
+        gap: 1.5rem;
+        ul{
+            display: grid;
+            gap: 1rem;
+            li{
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: var(--text-tertiary);
+                    
+                }
+            }
+        }
+    }
+}

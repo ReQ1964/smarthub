@@ -1,0 +1,29 @@
+.filter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 2rem 0;
+    h4{
+        color: var(--text-tertiary);
+    }
+    .controls{
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        select{
+            opacity: 0.8;
+            padding: 1rem;
+            background-color: var(--select);
+            border-radius: 0.23rem;
+            width: 75%;
+            appearance: none;
+            background-image: url(../../../assets/icon/arrow_down.svg);
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 2em;
+        }
+
+    }
+
+}

@@ -1,0 +1,17 @@
+.features{
+    display: grid;
+    gap: 4rem;
+    padding: 4rem;
+    text-align: center;
+    h2{
+       text-transform: uppercase;
+       margin-bottom: 1rem
+    }
+    p{
+        color: var(--text-tertiary);
+    }
+    .feature{
+        display: grid;
+        gap: 1.5rem;
+    }
+}
