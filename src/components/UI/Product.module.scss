@@ -4,7 +4,7 @@
     text-align: center;
     .description{
         display: grid;
-        gap: 0.7rem;
+        gap: 1rem;
     }
     .price{
         color: green;
@@ -12,6 +12,7 @@
     }
     img{
         max-width: 100%;
+        margin-bottom: 0.5rem;
     }
     .company{
         color: var(--text-tertiary);
@@ -23,7 +24,8 @@
     }
     .color{
         border-radius: 50%;
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
+        border: 0.1px solid rgba(0, 0, 0, 0.3);
     }
 }
