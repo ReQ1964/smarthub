@@ -3,14 +3,14 @@ import Product from '../../../components/UI/Product'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const Products = (props) => {
+const Products = () => {
     const navigate = useNavigate()
-    const data = useSelector((state) => state.products.products);
-    const products = Object.values(data)
+	const filteredProducts = useSelector((state) => state.products.filteredProducts)
+
 
     return <section className={classes.products}>
         <ul className={classes.items}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
 					<Product
 						onClick={() => navigate(`/shop/${product.id}`)}
 						key={product.id}

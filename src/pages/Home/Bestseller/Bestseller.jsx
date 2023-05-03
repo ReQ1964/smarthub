@@ -26,7 +26,7 @@ const Bestseller = () => {
 					/>
 				))}
 			</ul>
-			<Button className={classes.btn}>BROWSE MORE</Button>
+			<Button className={classes.btn} onClick={() => navigate('/shop')}>BROWSE MORE</Button>
 		</section>
 	);
 };
