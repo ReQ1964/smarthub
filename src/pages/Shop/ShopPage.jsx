@@ -8,8 +8,7 @@ import { useSelector } from "react-redux"
 
 
 const ShopPage = () => {
-	const data = useSelector((state) => state.products.products);
-    const products = Object.values(data)
+	const products = useSelector((state) => state.products.filteredProducts);
 
     const [currentPage, setCurrentPage] = useState(1)
     const [productsPerPage, setProductsPerPage] = useState(2)

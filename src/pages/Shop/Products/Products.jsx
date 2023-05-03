@@ -1,16 +1,14 @@
 import classes from './Products.module.scss'
 import Product from '../../../components/UI/Product'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
-const Products = () => {
+const Products = (props) => {
     const navigate = useNavigate()
-	const filteredProducts = useSelector((state) => state.products.filteredProducts)
 
 
     return <section className={classes.products}>
         <ul className={classes.items}>
-        {filteredProducts.map((product) => (
+        {props.products.map((product) => (
 					<Product
 						onClick={() => navigate(`/shop/${product.id}`)}
 						key={product.id}

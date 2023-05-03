@@ -8,7 +8,6 @@ const useResetCategory = () => {
     const {pathname} = useLocation()
 
     useEffect(() => {
-        console.log(pathname)
         if(pathname != '/shop'){
             dispatch(setFilteredProducts('all'))
         }
