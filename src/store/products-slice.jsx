@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     products: [],
-    isLoading: false,
+    filteredProducts: [],
+    currentProductType: '',
 }
 
 export const productsSlice = createSlice({
@@ -12,12 +13,16 @@ export const productsSlice = createSlice({
         setProducts(state, action){
             state.products = action.payload
         },
-        setIsLoading(state, action){
-            state.isLoading = action.payload
+        setFilteredProducts(state, action){
+            state.filteredProducts = state.products.filter(product => product.type === action.payload)
+            if(action.payload === 'all'){
+                state.filteredProducts = state.products
+            }
+            state.currentProductType = action.payload
         }
     }
 })
 
-export const {setProducts, setIsLoading} = productsSlice.actions
+export const {setProducts, setFilteredProducts} = productsSlice.actions
 
 export default productsSlice.reducer
