@@ -1,45 +1,63 @@
-.hero{
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3), 
-      rgba(0, 0, 0, 0.5)
-    ),
-    url('../../../assets/img/home-hero/hero-girl.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding: 4rem;
-    margin-bottom: 4rem;
-    div{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-        color: var(--text-secondary);
-        h1{
-            text-transform: uppercase;
-            font-size: var(--h1-size)
-        }
-        p{
-            line-height: 1.8rem;
-        }
-    }
-    img{
-        position: absolute;
-        filter: invert(1);
-        &:nth-of-type(1){
-            transform: scaleX(-1);
-            top: 53%;
-            left: 0.5rem;
-        }
-        &:nth-of-type(2){
-            top: 53%;
-            right: 0.5rem;
+.hero {
+	position: relative;
+	height: 100vh;
+	display: flex;
+    flex-direction: column;
+    gap: 2rem;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+		url('../../../assets/img/home-hero/hero-girl.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding: 4rem;
+	margin-bottom: 4rem;
+    .carousel{
+        min-height: 150px;
+        max-width: 80%;
+        overflow-wrap: break-word;
+        .slide {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition-duration: 0.2s ease;
+            &.active {
+                opacity: 1;
+                transition-duration: 0.2s;
+                transform: scale(1.08);
+            }
+            h1 {
+                text-transform: uppercase;
+                font-size: var(--h1-size);
+            }
+            p {
+                line-height: 1.8rem;
+            }
         }
     }
+	
+	img {
+		position: absolute;
+		filter: invert(1);
+        transform: 0.15s;
+		&:nth-of-type(1) {
+			transform: scaleX(-1);
+			top: 53%;
+			left: 0.5rem;
+            &:active{
+                transform: scale(-1, 1.06);
+            }
+		}
+		&:nth-of-type(2) {
+			top: 53%;
+			right: 0.5rem;
+            &:active{
+                transform: scale(1.06);
+            }
+		}
+	}
 }
