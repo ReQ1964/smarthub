@@ -4,25 +4,26 @@ import star from '../../../assets/icon/rating/star.svg'
 import Button from '../../../components/UI/Button'
 
 export const Item = ({product}) => {
+  const createStars = (number) => {
+    let elements = []
+    for(let i=0; i < number; i++) elements.push(<img src={filledStar} alt="" />)
+    if(number < 5){
+      for(let i=0; i < 5 - number; i++) elements.push(<img src={star} alt="" />)
+    }
+    return elements
+  }
+// WSZYSTKO ZROBIC NA PRODUCT ZAMIAST SIMILAR PRODUCT, DODAC TAM ISLOADING, ZROBIC REVIEW COMPONENT I MODYFIKOWAC REVIEW
 
   return <section className={classes.item}>
 
-    <img src={product.img} alt="" />
-    <div className={classes.images}>
-      <img src={product.img} alt="" />
-      <img src={product.img} alt="" />
-    </div>
+    <img src={Object.values(product.img)[0]} alt="" />
 
     <div className={classes.description}>
       <div className={classes.info}>
         <h3>{product.name}</h3>
         <div className={classes.rating}>
               <div className={classes.stars}>
-                <img src={filledStar} alt="" />
-                <img src={filledStar} alt="" />
-                <img src={filledStar} alt="" />
-                <img src={filledStar} alt="" />
-                <img src={star} alt="" />
+                {createStars(product.rating)}
               </div>
               <p>10 reviews</p>
           </div>
