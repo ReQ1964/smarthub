@@ -6,12 +6,13 @@ import Button from '../../../components/UI/Button'
 export const Item = ({product}) => {
   const createStars = (number) => {
     let elements = []
-    for(let i=0; i < number; i++) elements.push(<img src={filledStar} alt="" />)
+    for(let i=0; i < number; i++) elements.push(<img key={`filledStar-${i}`} src={filledStar} alt="" />)
     if(number < 5){
-      for(let i=0; i < 5 - number; i++) elements.push(<img src={star} alt="" />)
+      for(let i=0; i < 5 - number; i++) elements.push(<img key={`star-${i}`} src={star} alt="" />)
     }
     return elements
   }
+  
 // WSZYSTKO ZROBIC NA PRODUCT ZAMIAST SIMILAR PRODUCT, DODAC TAM ISLOADING, ZROBIC REVIEW COMPONENT I MODYFIKOWAC REVIEW
 
   return <section className={classes.item}>
@@ -41,7 +42,7 @@ export const Item = ({product}) => {
       </p>
 
       <div className={classes.colors}>{product.colors.map(color => {
-          return <div className={classes.color} style={{
+          return <div className={classes.color} key={color} style={{
               backgroundColor: color
           }}></div>
       })}
