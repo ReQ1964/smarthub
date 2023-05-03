@@ -4,7 +4,6 @@ import Button from '../../../components/UI/Button';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-
 const Bestseller = () => {
 	const navigate = useNavigate();
 	const products = useSelector((state) => state.products.products);
@@ -26,7 +25,14 @@ const Bestseller = () => {
 					/>
 				))}
 			</ul>
-			<Button className={classes.btn} onClick={() => navigate('/shop')}>BROWSE MORE</Button>
+			<Button
+				className={classes.btn}
+				onClick={() => {
+					navigate('/shop');
+				}}
+			>
+				BROWSE MORE
+			</Button>
 		</section>
 	);
 };

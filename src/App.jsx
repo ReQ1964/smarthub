@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 import Navbar from './layouts/Navbar/Navbar';
 import Footer from './layouts/Footer/Footer';
 import useScrollToTop from './hooks/useScrollToTop';
+import useResetCategory from './hooks/useResetCategory';
 import { setFilteredProducts, setProducts} from './store/products-slice';
 import { useDispatch } from 'react-redux';
 import './App.scss';
@@ -10,6 +11,7 @@ import { useEffect } from 'react';
 function App() {
 	const dispatch = useDispatch();
 	useScrollToTop()
+	useResetCategory()
 
 	const fetchProducts = async (url) => {
 		try {
