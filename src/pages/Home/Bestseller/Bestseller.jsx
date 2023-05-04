@@ -13,7 +13,7 @@ const Bestseller = () => {
 			<h3>Featured Products</h3>
 			<h2>Bestseller products</h2>
 			<ul className={classes.products}>
-				{products.map((product) => (
+				{products.slice(0, 4).map((product) => (
 					<Product
 						onClick={() => navigate(`/shop/${product.id}`)}
 						key={product.id}

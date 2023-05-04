@@ -18,7 +18,7 @@ const Categories = () => {
 				<a
 					onClick={() => {
 						navigate('/shop');
-						dispatch(setFilteredProducts('watch'));
+						dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'watch' }));
 					}}
 				>
 					Explore Items
@@ -32,7 +32,7 @@ const Categories = () => {
 				<a
 					onClick={() => {
 						navigate('/shop');
-						dispatch(setFilteredProducts('phone'));
+						dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'phone' }));
 					}}
 				>
 					Explore Items

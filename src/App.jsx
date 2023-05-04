@@ -18,7 +18,7 @@ function App() {
 		  const response = await fetch(url);
 		  const data = await response.json();
 		  dispatch(setProducts(Object.values(data)));
-		  dispatch(setFilteredProducts('all'))
+		  dispatch(setFilteredProducts({sortType: 'a-z', productType: 'all'}))
 		} catch (error) {
 		  console.log(`Something went wrong: ${error}`);
 		}

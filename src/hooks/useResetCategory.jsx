@@ -9,7 +9,7 @@ const useResetCategory = () => {
 
     useEffect(() => {
         if(pathname != '/shop'){
-            dispatch(setFilteredProducts('all'))
+            dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }))
         }
       }, [pathname])
 }
