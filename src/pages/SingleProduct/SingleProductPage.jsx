@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Item from './Item/Item';
@@ -10,12 +9,11 @@ export const SingleProductPage = () => {
 	const products = useSelector((state) => state.products.products);
 	const product = products.find((product) => product.id === productId);
 
-
 	return (
 		<main>
 			<Item product={product} />
 			<Description />
-			<SimilarProducts/>
+			<SimilarProducts />
 		</main>
 	);
 };
