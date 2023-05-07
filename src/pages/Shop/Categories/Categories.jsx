@@ -1,3 +1,4 @@
+import { Link } from 'react-scroll';
 import classes from './Categories.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilteredProducts } from '../../../store/products-slice';
@@ -5,11 +6,15 @@ import { setFilteredProducts } from '../../../store/products-slice';
 const Categories = () => {
 	const dispatch = useDispatch();
 	const productType = useSelector((state) => state.products.currentProductType);
-    const sortType = useSelector((state) => state.products.sortType)
+	const sortType = useSelector((state) => state.products.sortType);
 
 	return (
 		<section className={classes.categories}>
-			<div
+			<Link
+				to="filter"
+				spy={true}
+				smooth={true}
+				duration={250}
 				className={
 					productType === 'all'
 						? `${classes.category} ${classes.active}`
@@ -22,8 +27,12 @@ const Categories = () => {
 				}
 			>
 				<h2>All Devices</h2>
-			</div>
-			<div
+			</Link>
+			<Link
+				to="filter"
+				spy={true}
+				smooth={true}
+				duration={250}
 				className={
 					productType === 'phone'
 						? `${classes.category} ${classes.active}`
@@ -36,10 +45,14 @@ const Categories = () => {
 				}
 			>
 				<h2>Phones</h2>
-			</div>
-			<div
+			</Link>
+			<Link
+				to="filter"
+				spy={true}
+				smooth={true}
+				duration={250}
 				className={
-					productType === 'watch' 
+					productType === 'watch'
 						? `${classes.category} ${classes.active}`
 						: classes.category
 				}
@@ -50,7 +63,7 @@ const Categories = () => {
 				}
 			>
 				<h2>Watches</h2>
-			</div>
+			</Link>
 		</section>
 	);
 };

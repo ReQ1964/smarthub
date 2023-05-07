@@ -4,7 +4,7 @@ import Products from '../../../components/UI/Products/Products';
 
 const ShopProducts = (props) => {
 	return (
-		<section className={classes.shop_products}>
+		<section className={classes.shop_products} id="shop_products">
 			<Products products={props.products} />
 		</section>
 	);
