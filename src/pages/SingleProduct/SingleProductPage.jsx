@@ -8,12 +8,12 @@ export const SingleProductPage = () => {
 	const { productId } = useParams();
 	const products = useSelector((state) => state.products.products);
 	const product = products.find((product) => product.id === productId);
-
+	console.log(product);
 	return (
 		<main>
 			<Item product={product} />
 			<Description />
-			<SimilarProducts />
+			<SimilarProducts productType={product.type} productId={product.id} />
 		</main>
 	);
 };
