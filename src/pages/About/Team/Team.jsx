@@ -12,19 +12,19 @@ const Team = () => {
 				<img src={member1} alt="" />
 				<h3>Anna Winston</h3>
 				<p>Marketing</p>
-				<SocialIcons />
+				<SocialIcons className={classes.icons}/>
 			</div>
 			<div className={classes.member}>
 				<img src={member2} alt="" />
 				<h3>Juliet Wolfer</h3>
 				<p>Back-end dev</p>
-				<SocialIcons />
+				<SocialIcons className={classes.icons}/>
 			</div>
 			<div className={classes.member}>
 				<img src={member3} alt="" />
 				<h3>Mark Gutenberg</h3>
 				<p>Front-end dev</p>
-				<SocialIcons />
+				<SocialIcons className={classes.icons}/>
 			</div>
 		</section>
 	);

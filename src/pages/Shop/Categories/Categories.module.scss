@@ -1,7 +1,7 @@
 .categories{
     display: grid;
     gap: 2rem;
-    padding: 3rem 2rem;
+    padding: 3rem 2.5rem;
     background-color: var(--bg-secondary);
     .category{
         display: flex;
@@ -9,12 +9,14 @@
         justify-content: center;
         align-items: center;
         gap: 3rem;
-        padding: 2rem;
         min-height: 280px;
         color: var(--text-secondary);
-        p{
-            font-weight: bold;
-            font-size: 0.9rem;
+        opacity: 0.7;
+        &.active{
+            opacity: 1
+        }
+        h2{
+            font-size: 1.8rem;
         }
 
     }
@@ -23,7 +25,7 @@
         linear-gradient(
             rgba(0, 0, 0, 0.25), 
             rgba(0, 0, 0, 0.25)
-        ), url(../../../assets/img/shop-categories/smartphone.jpg);
+        ), url(../../../assets/img/shop-categories/all.jpg);
         background-position: center;
         background-size: cover;
     }
@@ -33,6 +35,15 @@
             rgba(0, 0, 0, 0.3), 
             rgba(0, 0, 0, 0.3)
         ), url(../../../assets/img/shop-categories/smartwatch.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .category:nth-of-type(3){
+        background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.3), 
+            rgba(0, 0, 0, 0.3)
+        ), url(../../../assets/img/shop-categories/smartphone.jpg);
         background-position: center;
         background-size: cover;
     }

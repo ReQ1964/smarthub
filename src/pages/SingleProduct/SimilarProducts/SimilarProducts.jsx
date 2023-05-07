@@ -1,15 +1,22 @@
-import classes from './SimilarProducts.module.scss'
-import { DUMMY_PRODUCTS } from '../../Shop/ShopPage'
-import SimilarProduct from '../../../components/UI/SimilarProduct'
-import { useNavigate } from 'react-router-dom'
+import classes from './SimilarProducts.module.scss';
+import { useSelector } from 'react-redux';
+import Products from '../../../components/UI/Products/Products';
 
-const SimilarProducts = () => {
-    const navigate = useNavigate()
+const SimilarProducts = ({ productType, productId }) => {
+	const products = useSelector((state) =>
+		state.products.products
+			.filter(
+				(product) => product.type === productType && product.id != productId
+			)
+			.slice(0, 2)
+	);
 
-  return <section className={classes.similar}>
-    <h1>SIMILAR PRODUCTS</h1>
-    {DUMMY_PRODUCTS.map(product => <SimilarProduct onClick={() => navigate(`/shop/${product.id}`)} key={product.id} img={product.img} name={product.name} price={product.price} company={product.company}/>)}
-  </section>
-}
+	return (
+		<section className={classes.similar}>
+			<h1>SIMILAR PRODUCTS</h1>
+			<Products products={products} />
+		</section>
+	);
+};
 
-export default SimilarProducts
+export default SimilarProducts;
