@@ -1,5 +1,6 @@
 .item {
 	display: flex;
+	min-height: 130px;
 	.prodImg {
 		width: 45%;
 	}
@@ -7,7 +8,8 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		width: 30%;
+		align-items: center;
+		width: 25%;
 		img {
 			filter: invert(25%) sepia(86%) saturate(7435%) hue-rotate(356deg)
 				brightness(98%) contrast(116%);
@@ -20,7 +22,7 @@
 		justify-content: space-between;
 		align-items: flex-end;
 		text-align: right;
-		width: 30%;
+		width: 40%;
 		.price {
 			font-weight: bold;
 			font-size: 1.2rem;

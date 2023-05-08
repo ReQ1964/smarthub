@@ -42,6 +42,7 @@ export const cartSlice = createSlice({
 			const existingProduct = state.products.find(
 				(product) => product.id === id
 			);
+
 			if (type === 'increase') existingProduct.quantity++;
 			else if (type === 'decrease' && existingProduct.quantity != 1)
 				existingProduct.quantity--;

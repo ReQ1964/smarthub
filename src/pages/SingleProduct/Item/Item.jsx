@@ -4,9 +4,18 @@ import star from '../../../assets/icon/rating/star.svg';
 import Button from '../../../components/UI/Button';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/cart-slice';
+import { useState } from 'react';
 
 export const Item = ({ product }) => {
 	const dispatch = useDispatch();
+	const [pickedColor, setPickedColor] = useState({
+		color: product.colors[0],
+		index: 0,
+	});
+
+	const capitalize = (s) => {
+		return s[0].toUpperCase() + s.slice(1);
+	};
 
 	const createStars = (number) => {
 		let elements = [];
@@ -22,11 +31,12 @@ export const Item = ({ product }) => {
 	const addToCartHandler = () => {
 		dispatch(
 			addToCart({
-				id: product.id,
-				img: Object.values(product.img)[0],
-				name: product.name,
+				id: `${product.id}_${pickedColor.color}`,
+				img: Object.values(product.img)[pickedColor.index],
+				name: `${product.name} ${capitalize(pickedColor.color)}`,
 				price: product.price,
 				company: product.company,
+				color: pickedColor,
 				quantity: 1,
 			})
 		);
@@ -36,7 +46,7 @@ export const Item = ({ product }) => {
 
 	return (
 		<section className={classes.item}>
-			<img src={Object.values(product.img)[0]} alt="" />
+			<img src={Object.values(product.img)[pickedColor.index]} alt="" />
 
 			<div className={classes.description}>
 				<div className={classes.info}>
@@ -62,14 +72,19 @@ export const Item = ({ product }) => {
 				</p>
 
 				<div className={classes.colors}>
-					{product.colors.map((color) => {
+					{product.colors.map((color, index) => {
 						return (
 							<div
-								className={classes.color}
+								className={
+									pickedColor.color == color
+										? `${classes.color} ${classes.active}`
+										: classes.color
+								}
 								key={color}
 								style={{
 									backgroundColor: color,
 								}}
+								onClick={() => setPickedColor({ color: color, index: index })}
 							></div>
 						);
 					})}
