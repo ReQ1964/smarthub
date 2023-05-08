@@ -15,7 +15,6 @@ export const productsSlice = createSlice({
 			state.products = action.payload;
 		},
 		setFilteredProducts(state, action) {
-            console.log(action.payload)
 			state.currentProductType = action.payload.productType;
 
 			state.filteredProducts = state.products.filter(
@@ -26,14 +25,13 @@ export const productsSlice = createSlice({
 				state.filteredProducts = state.products;
 			}
 
-
-            switch (action.payload.sortType) {
+			switch (action.payload.sortType) {
 				case 'a-z':
-                    state.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-                    break;
+					state.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+					break;
 				case 'z-a':
-                    state.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-                    break;
+					state.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+					break;
 				case 'high-price':
 					state.filteredProducts.sort((a, b) => b.price - a.price);
 					break;
@@ -42,12 +40,13 @@ export const productsSlice = createSlice({
 					break;
 			}
 		},
-        setSortType(state, action){
-            state.sortType = action.payload
-        }
+		setSortType(state, action) {
+			state.sortType = action.payload;
+		},
 	},
 });
 
-export const { setProducts, setFilteredProducts, setSortType } = productsSlice.actions;
+export const { setProducts, setFilteredProducts, setSortType } =
+	productsSlice.actions;
 
 export default productsSlice.reducer;

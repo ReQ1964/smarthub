@@ -10,7 +10,12 @@ import classes from './Navbar.module.scss';
 
 const Navbar = () => {
 	const [isActive, setIsActive] = useState(false);
-	const cartAmount = useSelector((state) => state.cart.totalAmount);
+	const products = useSelector((state) => state.cart.products);
+
+	const cartQuantity = products.reduce(
+		(total, product) => total + product.quantity,
+		0
+	);
 
 	const navigate = useNavigate();
 
@@ -32,7 +37,7 @@ const Navbar = () => {
 							onClick={() => navigate('/cart')}
 							alt=""
 						/>
-						{cartAmount != 0 ? <p>{cartAmount}</p> : ''}
+						{cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
 					</div>
 					<img src={AccountIcon} onClick={() => navigate('/account')} alt="" />
 					{isActive ? (
