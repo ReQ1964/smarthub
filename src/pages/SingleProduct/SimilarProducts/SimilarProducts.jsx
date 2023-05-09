@@ -1,6 +1,6 @@
 import classes from './SimilarProducts.module.scss';
 import { useSelector } from 'react-redux';
-import Products from '../../../components/UI/Products/Products';
+import Products from '../../../components/Products/Products';
 
 const SimilarProducts = ({ productType, productId }) => {
 	const products = useSelector((state) =>
