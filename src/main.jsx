@@ -12,6 +12,8 @@ import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import AccountPage from './pages/Account/AccountPage';
 import CartPage from './pages/Cart/CartPage';
+import Details from './pages/Details/Details';
+import Order from './layouts/Order/Order';
 
 const router = createBrowserRouter([
 	{
@@ -56,9 +58,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/cart',
-				element: <CartPage/>
-			}
+				element: <CartPage />,
+			},
 		],
+	},
+	{
+		path: '/order',
+		element: <Order />,
+		children: [],
 	},
 ]);
 
