@@ -8,10 +8,7 @@ import { useState } from 'react';
 
 export const Item = ({ product }) => {
 	const dispatch = useDispatch();
-	const [pickedColor, setPickedColor] = useState({
-		color: product.colors[0],
-		index: 0,
-	});
+	const [pickedColor, setPickedColor] = useState(product.colors[0]);
 
 	const capitalize = (s) => {
 		return s[0].toUpperCase() + s.slice(1);
@@ -31,9 +28,9 @@ export const Item = ({ product }) => {
 	const addToCartHandler = () => {
 		dispatch(
 			addToCart({
-				id: `${product.id}_${pickedColor.color}`,
-				img: Object.values(product.img)[pickedColor.index],
-				name: `${product.name} ${capitalize(pickedColor.color)}`,
+				id: `${product.id}_${pickedColor}`,
+				img: product.img[pickedColor],
+				name: `${product.name} ${capitalize(pickedColor)}`,
 				price: product.price,
 				company: product.company,
 				color: pickedColor,
@@ -42,11 +39,9 @@ export const Item = ({ product }) => {
 		);
 	};
 
-	// WSZYSTKO ZROBIC NA PRODUCT ZAMIAST SIMILAR PRODUCT, DODAC TAM ISLOADING, ZROBIC REVIEW COMPONENT I MODYFIKOWAC REVIEW
-
 	return (
 		<section className={classes.item}>
-			<img src={Object.values(product.img)[pickedColor.index]} alt="" />
+			<img src={product.img[pickedColor]} alt="" />
 
 			<div className={classes.description}>
 				<div className={classes.info}>
@@ -84,7 +79,7 @@ export const Item = ({ product }) => {
 								style={{
 									backgroundColor: color,
 								}}
-								onClick={() => setPickedColor({ color: color, index: index })}
+								onClick={() => setPickedColor(color)}
 							></div>
 						);
 					})}
@@ -93,8 +88,6 @@ export const Item = ({ product }) => {
 				<div className={classes.controls}>
 					<Button onClick={addToCartHandler}>Add to cart</Button>
 				</div>
-
-				{/* Make a form with picking colors, make one instantly picked */}
 			</div>
 		</section>
 	);
