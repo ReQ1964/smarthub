@@ -1,0 +1,10 @@
+.item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+	border-bottom: 0.5px solid var(--text-tertiary);
+	img {
+		width: 25%;
+	}
+}
