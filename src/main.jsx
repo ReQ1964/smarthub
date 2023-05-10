@@ -15,6 +15,7 @@ import CartPage from './pages/Cart/CartPage';
 import Order from './layouts/Order/Order';
 import DetailsPage from './pages/Details/DetailsPage';
 import ShippingPage from './pages/Shipping/ShippingPage';
+import PaymentPage from './pages/Payment/PaymentPage';
 
 const router = createBrowserRouter([
 	{
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
 				element: <DetailsPage />,
 			},
 			{ path: '/order/shipping', element: <ShippingPage /> },
+			{
+				path: '/order/payment',
+				element: <PaymentPage />,
+			},
 		],
 	},
 ]);
