@@ -1,16 +1,22 @@
 import classes from './Summary.module.scss';
 
-const Summary = () => {
+const Summary = ({ contact, address, ship }) => {
 	return (
 		<div className={classes.summary}>
 			<div>
 				<h4>Contact</h4>
-				<p>Info</p>
+				<p>{contact}</p>
 			</div>
 			<div>
 				<h4>Ship to</h4>
-				<p>Info</p>
+				<p>{address}</p>
 			</div>
+			{ship && (
+				<div>
+					<h4>Method</h4>
+					<p>{ship}</p>
+				</div>
+			)}
 		</div>
 	);
 };
