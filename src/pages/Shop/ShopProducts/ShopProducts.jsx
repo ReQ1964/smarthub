@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './ShopProducts.module.scss';
-import Products from '../../../components/UI/Products/Products';
+import Products from '../../../components/Products/Products';
 
 const ShopProducts = (props) => {
 	return (

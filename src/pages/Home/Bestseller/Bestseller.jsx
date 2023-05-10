@@ -1,6 +1,6 @@
 import classes from './Bestseller.module.scss';
 import Button from '../../../components/UI/Button';
-import Products from '../../../components/UI/Products/Products';
+import Products from '../../../components/Products/Products';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
