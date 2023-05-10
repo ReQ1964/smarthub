@@ -41,6 +41,7 @@ const Details = () => {
 		register,
 		control,
 		handleSubmit,
+		watch,
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
@@ -82,13 +83,12 @@ const Details = () => {
 
 			<Controller
 				name="country"
-				render={({ field: { name, onChange, value } }) => (
+				render={({ field: { name, value, onChange } }) => (
 					<CountryDropdown
-						defaultOptionLabel="Select Country"
 						name={name}
 						value={value}
-						className={classes.dropdown}
 						onChange={onChange}
+						classes={classes.dropdown}
 					/>
 				)}
 				control={control}
@@ -96,13 +96,13 @@ const Details = () => {
 			<p className={classes.error}>{errors.country?.message}</p>
 			<Controller
 				name="region"
-				render={({ field: { name, onChange, value } }) => (
-					<CountryDropdown
-						defaultOptionLabel="Select Region"
+				render={({ field: { name, value, onChange } }) => (
+					<RegionDropdown
+						country={watch('country')}
 						name={name}
 						value={value}
-						className={classes.dropdown}
 						onChange={onChange}
+						classes={classes.dropdown}
 					/>
 				)}
 				control={control}
