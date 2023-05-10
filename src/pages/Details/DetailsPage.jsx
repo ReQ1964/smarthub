@@ -3,10 +3,10 @@ import DetailsForm from './DetailsForm/DetailsForm';
 
 const DetailsPage = () => {
 	return (
-		<>
+		<main>
 			<OrderItems />
 			<DetailsForm />
-		</>
+		</main>
 	);
 };
 

@@ -12,8 +12,9 @@ import AboutPage from './pages/About/AboutPage';
 import ContactPage from './pages/Contact/ContactPage';
 import AccountPage from './pages/Account/AccountPage';
 import CartPage from './pages/Cart/CartPage';
-import DetailsPage from './pages/Details/DetailsPage';
 import Order from './layouts/Order/Order';
+import DetailsPage from './pages/Details/DetailsPage';
+import ShippingPage from './pages/Shipping/ShippingPage';
 
 const router = createBrowserRouter([
 	{
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
 				path: '/order/details',
 				element: <DetailsPage />,
 			},
+			{ path: '/order/shipping', element: <ShippingPage /> },
 		],
 	},
 ]);
