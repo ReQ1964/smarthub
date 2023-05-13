@@ -11,9 +11,15 @@ export const orderSlice = createSlice({
 		addOrderDetails(state, action) {
 			state.details = action.payload;
 		},
+		addOrderShippingMethod(state, action) {
+			state.details = {
+				...state.details,
+				shippingMethod: action.payload,
+			};
+		},
 	},
 });
 
-export const { addOrderDetails } = orderSlice.actions;
+export const { addOrderDetails, addOrderShippingMethod } = orderSlice.actions;
 
 export default orderSlice.reducer;

@@ -2,14 +2,33 @@ import classes from './Method.module.scss';
 import Button from '../../../components/UI/Button';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { addOrderShippingMethod } from '../../../store/order-slice';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Add submitting after moving through breadcrumbs | add details from payment | do a modal for processing payment
 
 const Method = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { shippingMethod } = useSelector((state) => state.order.details);
 
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit } = useForm({
+		defaultValues: {
+			shipping: !shippingMethod
+				? 'standard'
+				: shippingMethod.name.split(' ')[0].toLowerCase(),
+		},
+	});
 
 	const onSubmit = (data) => {
 		console.log(data);
+		let shippingData;
+		if (data.shipping === 'standard') {
+			shippingData = { name: 'Standard shipping', price: 0 };
+		} else {
+			shippingData = { name: 'Priority shipping', price: 10 };
+		}
+		dispatch(addOrderShippingMethod(shippingData));
 		navigate('/order/payment');
 	};
 
@@ -20,10 +39,9 @@ const Method = () => {
 				<div>
 					<input
 						type="radio"
-						{...register('radio')}
+						{...register('shipping')}
 						id="standard"
 						value="standard"
-						defaultChecked
 					/>
 					<label htmlFor="standard">Standard shipping</label>
 					<p>Free</p>
@@ -31,7 +49,7 @@ const Method = () => {
 				<div>
 					<input
 						type="radio"
-						{...register('radio')}
+						{...register('shipping')}
 						id="priority"
 						value="priority"
 					/>
