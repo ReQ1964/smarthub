@@ -9,17 +9,18 @@ export const orderSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		addOrderDetails(state, action) {
+			if (action.payload) {
+				state.details = {
+					...state.details,
+					...action.payload,
+				};
+				return;
+			}
 			state.details = action.payload;
-		},
-		addOrderShippingMethod(state, action) {
-			state.details = {
-				...state.details,
-				shippingMethod: action.payload,
-			};
 		},
 	},
 });
 
-export const { addOrderDetails, addOrderShippingMethod } = orderSlice.actions;
+export const { addOrderDetails } = orderSlice.actions;
 
 export default orderSlice.reducer;

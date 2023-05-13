@@ -3,8 +3,11 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
+import { useDispatch } from 'react-redux';
+import { addOrderDetails } from '../../../store/order-slice';
 
 const PaymentForm = () => {
+	const dispatch = useDispatch();
 	const expirationRegExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
 	const ccvRegExp = /^[0-9]+$/;
 
@@ -37,7 +40,7 @@ const PaymentForm = () => {
 	});
 
 	const onSubmit = (data) => {
-		console.log(data);
+		dispatch(addOrderDetails(data));
 	};
 
 	return (
