@@ -12,7 +12,7 @@ const Summary = ({ contact, address, ship }) => {
 				<p>{address}</p>
 			</div>
 			{ship && (
-				<div>
+				<div className={classes.third}>
 					<h4>Method</h4>
 					<p>{ship}</p>
 				</div>

@@ -43,7 +43,7 @@ const PaymentForm = () => {
 	return (
 		<>
 			<h2 className={classes.heading}>Payment method</h2>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)} className={classes.paymentForm}>
 				<input {...register('cardNumber')} placeholder="Card Number*" />
 				<p className={classes.error}>{errors.cardNumber?.message}</p>
 
