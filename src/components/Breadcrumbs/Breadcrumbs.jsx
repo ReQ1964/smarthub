@@ -2,10 +2,33 @@ import React from 'react';
 import classes from './Breadcrumbs.module.scss';
 import { NavLink, Link } from 'react-router-dom';
 import arrow from '../../assets/icon/carousel.svg';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
 
 const Breadcrumbs = () => {
+	const orderDetails = useSelector((state) => state.order.details);
+	const [isOpen, setIsOpen] = useState(false);
+	const [modalMessage, setModalMessage] = useState('');
+
+	const isOrderEmptyHandler = (e) => {
+		const isOrderEmpty = orderDetails?.length === 0;
+		const isShippingMethodEmpty = !orderDetails?.shippingMethod;
+
+		if (isOrderEmpty || isShippingMethodEmpty) {
+			e.preventDefault();
+			setModalMessage(
+				'Please, fill out everything and click the button at the bottom to proceed.'
+			);
+			setIsOpen(true);
+		}
+	};
+
 	return (
 		<nav className={classes.breadcrumbs}>
+			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				{modalMessage}
+			</Modal>
 			<div className={classes.links}>
 				<ul>
 					<li>
@@ -27,6 +50,7 @@ const Breadcrumbs = () => {
 						<NavLink
 							to={'/order/shipping'}
 							className={({ isActive }) => (isActive ? classes.active : '')}
+							onClick={isOrderEmptyHandler}
 						>
 							Shipping
 						</NavLink>
@@ -36,6 +60,7 @@ const Breadcrumbs = () => {
 						<NavLink
 							to={'/order/payment'}
 							className={({ isActive }) => (isActive ? classes.active : '')}
+							onClick={isOrderEmptyHandler}
 						>
 							Payment
 						</NavLink>
