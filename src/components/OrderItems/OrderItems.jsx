@@ -7,6 +7,7 @@ import arrowDown from '../../assets/icon/arrow_down.svg';
 const OrderItems = () => {
 	const products = useSelector((state) => state.cart.products);
 	const totalPrice = useSelector((state) => state.cart.totalPrice);
+	const { shippingMethod } = useSelector((state) => state.order.details);
 	const [isActive, setIsActive] = useState(false);
 
 	return (
@@ -20,7 +21,12 @@ const OrderItems = () => {
 						className={isActive ? classes.active : ''}
 					/>
 				</h2>
-				<p>Total: ${totalPrice}</p>
+				<div className={classes.total}>
+					<p>Total: ${totalPrice}</p>
+					<p>
+						{shippingMethod ? `+ Shipping $${shippingMethod.price} ` : null}
+					</p>
+				</div>
 			</div>
 			<ul className={classes.orderItems}>
 				{isActive &&
