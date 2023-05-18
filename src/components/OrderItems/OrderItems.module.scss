@@ -5,6 +5,9 @@
 	align-items: center;
 	padding: 2rem;
 	background-color: var(--bg-secondary);
+	.total {
+		text-align: center;
+	}
 	img {
 		position: absolute;
 		width: 30px;

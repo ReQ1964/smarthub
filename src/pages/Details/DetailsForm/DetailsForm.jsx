@@ -4,10 +4,15 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { addOrderDetails } from '../../../store/order-slice';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../../components/UI/Button';
 
 const DetailsForm = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const orderDetails = useSelector((state) => state.order.details);
 
 	const phoneRegExp =
 		/^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
@@ -45,16 +50,27 @@ const DetailsForm = () => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
+		defaultValues: {
+			email: orderDetails.email,
+			number: orderDetails.number,
+			name: orderDetails.name,
+			surname: orderDetails.surname,
+			address: orderDetails.address,
+			postal: orderDetails.postal,
+			city: orderDetails.city,
+			note: orderDetails.note,
+			country: orderDetails.country,
+			region: orderDetails.region,
+		},
 	});
 
+	const onSubmit = (data) => {
+		dispatch(addOrderDetails(data));
+		navigate('/order/shipping');
+	};
+
 	return (
-		<form
-			className={classes.detailsForm}
-			onSubmit={handleSubmit((data) => {
-				console.log(data);
-				navigate('/order/shipping');
-			})}
-		>
+		<form className={classes.detailsForm} onSubmit={handleSubmit(onSubmit)}>
 			<h2>Contact</h2>
 			<input {...register('email')} placeholder="Email*" />
 			<p className={classes.error}>{errors.email?.message}</p>
