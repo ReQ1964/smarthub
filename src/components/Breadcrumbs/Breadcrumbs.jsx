@@ -15,13 +15,13 @@ const Breadcrumbs = () => {
 		const isOrderEmpty = orderDetails?.length === 0;
 		const isShippingMethodEmpty = !orderDetails?.shippingMethod;
 
-		// if (isOrderEmpty || isShippingMethodEmpty) {
-		// 	e.preventDefault();
-		// 	setModalMessage(
-		// 		'Please, fill out everything and click the button at the bottom to proceed.'
-		// 	);
-		// 	setIsOpen(true);
-		// }
+		if (isOrderEmpty || isShippingMethodEmpty) {
+			e.preventDefault();
+			setModalMessage(
+				'Please, fill out everything and click the button at the bottom to proceed.'
+			);
+			setIsOpen(true);
+		}
 	};
 
 	return (

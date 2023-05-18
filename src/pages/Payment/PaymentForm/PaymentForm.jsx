@@ -5,9 +5,15 @@ import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
 import { useDispatch } from 'react-redux';
 import { addOrderDetails } from '../../../store/order-slice';
+import { useSelector } from 'react-redux';
 
-const PaymentForm = () => {
+const PaymentForm = ({ isLoading, isConfirmed }) => {
 	const dispatch = useDispatch();
+	const orderDetails = useSelector((state) => state.order.details);
+	const { totalPrice, products: cartProducts } = useSelector(
+		(state) => state.cart
+	);
+
 	const expirationRegExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
 	const ccvRegExp = /^[0-9]+$/;
 
@@ -37,10 +43,37 @@ const PaymentForm = () => {
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
+		defaultValues: {
+			cardNumber: orderDetails.cardNumber,
+			holderName: orderDetails.holderName,
+			expiration: orderDetails.expiration,
+			ccv: orderDetails.ccv,
+		},
 	});
 
-	const onSubmit = (data) => {
-		dispatch(addOrderDetails(data));
+	const onSubmit = async (data) => {
+		isLoading(true);
+		dispatch(addOrderDetails({ cardInfo: data }));
+		const priceWithShipping = totalPrice + orderDetails.shippingMethod.price;
+		await fetch(
+			'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					details: {
+						...orderDetails,
+						priceWithShipping,
+					},
+					cartProducts,
+					id: (Math.random() * 100).toFixed(),
+				}),
+			}
+		);
+		isConfirmed(true);
+		isLoading(false);
 	};
 
 	return (
