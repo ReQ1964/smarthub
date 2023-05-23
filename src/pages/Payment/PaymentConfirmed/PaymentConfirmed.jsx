@@ -1,7 +1,11 @@
 import classes from './PaymentConfirmed.module.scss';
 import done from '../../../assets/icon/done.svg';
+import Button from '../../../components/UI/Button';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentConfirmed = () => {
+	const navigate = useNavigate();
+
 	return (
 		<section className={classes.accepted}>
 			<img src={done} alt="" />
@@ -12,6 +16,9 @@ const PaymentConfirmed = () => {
 				ready to ship in 2-3 days. Please check your inbox or account tab for
 				order status updates.
 			</p>
+			<Button className={classes.btn} onClick={() => navigate('/shop')}>
+				Back to shopping
+			</Button>
 		</section>
 	);
 };

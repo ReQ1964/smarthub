@@ -4,7 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
 import { useDispatch } from 'react-redux';
-import { addOrderDetails } from '../../../store/order-slice';
+import { addOrderDetails, clearDetails } from '../../../store/order-slice';
+import { clearCart } from '../../../store/cart-slice';
 import { useSelector } from 'react-redux';
 
 const PaymentForm = ({ isLoading, isConfirmed }) => {
@@ -72,6 +73,8 @@ const PaymentForm = ({ isLoading, isConfirmed }) => {
 				}),
 			}
 		);
+		dispatch(clearCart());
+		dispatch(clearDetails());
 		isConfirmed(true);
 		isLoading(false);
 	};

@@ -19,7 +19,7 @@ const PaymentPage = () => {
 		address,
 		postal,
 		city,
-		ship: shippingMethod.name,
+		ship: shippingMethod ? shippingMethod.name : '',
 	};
 
 	return (
