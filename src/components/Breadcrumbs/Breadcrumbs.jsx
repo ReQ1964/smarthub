@@ -5,6 +5,7 @@ import arrow from '../../assets/icon/carousel.svg';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
+import Button from '../UI/Button';
 
 const Breadcrumbs = () => {
 	const orderDetails = useSelector((state) => state.order.details);
@@ -26,8 +27,12 @@ const Breadcrumbs = () => {
 
 	return (
 		<nav className={classes.breadcrumbs}>
-			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-				{modalMessage}
+			<Modal
+				isOpen={isOpen}
+				onClose={() => setIsOpen(false)}
+				defaultButton={true}
+			>
+				<h3>{modalMessage}</h3>
 			</Modal>
 			<div className={classes.links}>
 				<ul>

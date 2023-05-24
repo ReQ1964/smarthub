@@ -24,8 +24,12 @@ const CartPage = () => {
 
 	return (
 		<main className={classes.cart}>
-			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-				{modalMessage}
+			<Modal
+				isOpen={isOpen}
+				onClose={() => setIsOpen(false)}
+				defaultButton={true}
+			>
+				<h3>{modalMessage}</h3>
 			</Modal>
 			<h1>Your Cart Items</h1>
 			<div className={classes.info}>
