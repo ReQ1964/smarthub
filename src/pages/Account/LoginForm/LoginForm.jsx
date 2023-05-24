@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
 import visibleIcon from '../../../assets/icon/navbar/visible.svg';
 import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase';
 
 const LoginForm = ({ setMethod }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
@@ -18,7 +20,10 @@ const LoginForm = ({ setMethod }) => {
 				/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 				{ message: 'Please enter a valid email address.' }
 			),
-		password: yup.string().required('Please enter your password.').min(6),
+		password: yup
+			.string()
+			.required('Please enter your password.')
+			.min(6, 'Password has to be at least 6 characters long.'),
 	});
 
 	const {
@@ -29,7 +34,15 @@ const LoginForm = ({ setMethod }) => {
 		resolver: yupResolver(schema),
 	});
 
-	const onLogin = async ({ email, password }) => {};
+	const onLogin = async ({ email, password }) => {
+		signInWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				const user = userCredential.user;
+			})
+			.catch((error) => {
+				console.log(error.code, error.message);
+			});
+	};
 
 	return (
 		<section className={classes.loggingForm}>
