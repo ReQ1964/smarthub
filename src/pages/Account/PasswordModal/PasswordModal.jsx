@@ -3,6 +3,7 @@ import Modal from '../../../components/Modal/Modal';
 import Button from '../../../components/UI/Button';
 import cross from '../../../assets/icon/navbar/x.svg';
 import classes from './PasswordModal.module.scss';
+import done from './../../../assets/icon/done.svg';
 import Spinner from '../../../components/UI/Spinner';
 import { useState } from 'react';
 import * as yup from 'yup';
@@ -51,22 +52,43 @@ const PasswordModal = ({ modalIsOpen, modalCloseHandler }) => {
 		<>
 			<Modal isOpen={modalIsOpen} onClose={modalCloseHandler}>
 				<div className={classes.forgotPasswordModal}>
-					<img src={cross} alt="" onClick={modalCloseHandler} />
+					<img
+						src={cross}
+						alt=""
+						onClick={modalCloseHandler}
+						className={classes.cross}
+					/>
 					<h3>I forgot my password</h3>
 
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<div className={classes.email}>
-							<label htmlFor="email">Email</label>
-							<input
-								{...register('email')}
-								placeholder="Enter your email address"
-							/>
-							<p className={classes.error}>{errors.email?.message}</p>
+					{!resetSent && (
+						<form onSubmit={handleSubmit(onSubmit)}>
+							<div className={classes.email}>
+								<label htmlFor="email">Email</label>
+								<input
+									{...register('email')}
+									placeholder="Enter your email address"
+								/>
+								<p className={classes.error}>{errors.email?.message}</p>
+							</div>
+							<Button type="submit" disabled={isLoading}>
+								{isLoading ? (
+									<Spinner className={classes.btnSpinner} />
+								) : (
+									'Submit'
+								)}
+							</Button>
+						</form>
+					)}
+
+					{resetSent && (
+						<div className={classes.resetSent}>
+							<img src={done} alt="" className={classes.done} />
+							<p>
+								If there is an account associated, you will receive an email
+								with a link to reset your password.
+							</p>
 						</div>
-						<Button type="submit" disabled>
-							Submit
-						</Button>
-					</form>
+					)}
 				</div>
 			</Modal>
 		</>
