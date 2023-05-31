@@ -12,11 +12,9 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { useForm } from 'react-hook-form';
 
-const PasswordModal = ({ modalIsOpen, modalCloseHandler }) => {
+const PasswordModal = ({ modalIsOpen, modalCloseHandler, emailRegExp }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [resetSent, setResetSent] = useState(false);
-	const emailRegExp =
-		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 	const schema = yup.object().shape({
 		email: yup

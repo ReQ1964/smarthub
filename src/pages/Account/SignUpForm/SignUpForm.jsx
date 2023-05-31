@@ -9,17 +9,14 @@ import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
-const SignUpForm = ({ setMethod }) => {
+const SignUpForm = ({ setMethod, emailRegExp }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
 
 	const schema = yup.object().shape({
 		email: yup
 			.string()
 			.required('Please enter your email address.')
-			.matches(
-				/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-				'Please enter a valid email address.'
-			),
+			.matches(emailRegExp, 'Please enter a valid email address.'),
 		password: yup
 			.string()
 			.required('Please enter your password.')
@@ -38,11 +35,12 @@ const SignUpForm = ({ setMethod }) => {
 		resolver: yupResolver(schema),
 	});
 
-	const onRegister = async ({ email, password, confirmPassword }) => {
+	const onRegister = ({ email, password, confirmPassword }) => {
 		if (password === confirmPassword) {
-			await createUserWithEmailAndPassword(auth, email, password)
+			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					const user = userCredential.user;
+					console.log(user);
 				})
 				.catch((error) => {
 					console.log(error.code, error.message);
@@ -62,7 +60,6 @@ const SignUpForm = ({ setMethod }) => {
 						<label htmlFor="email">Email</label>
 						<input
 							{...register('email')}
-							type="email"
 							placeholder="Enter your email address"
 						/>
 						<p className={classes.error}>{errors.email?.message}</p>
@@ -92,7 +89,7 @@ const SignUpForm = ({ setMethod }) => {
 					</div>
 					<Button type="submit">Create account</Button>
 				</form>
-				<p>
+				<p className={classes.helper}>
 					Already Have An Account?{' '}
 					<span
 						onClick={() => {

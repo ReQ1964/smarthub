@@ -14,6 +14,9 @@ const AccountPage = () => {
 	const [method, setMethod] = useState('login');
 	const [user, setUser] = useState();
 
+	const emailRegExp =
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 	const { reset } = useForm();
 
 	const methodHandler = (type) => {
@@ -45,14 +48,15 @@ const AccountPage = () => {
 				<PasswordModal
 					modalIsOpen={modalIsOpen}
 					modalCloseHandler={modalCloseHandler}
+					emailRegExp={emailRegExp}
 				/>
 			)}
 			{!user ? (
 				<>
 					{method === 'login' ? (
-						<LoginForm setMethod={methodHandler} />
+						<LoginForm setMethod={methodHandler} emailRegExp={emailRegExp} />
 					) : (
-						<SignUpForm setMethod={methodHandler} />
+						<SignUpForm setMethod={methodHandler} emailRegExp={emailRegExp} />
 					)}
 					<p
 						className={classes.forgotPassword}

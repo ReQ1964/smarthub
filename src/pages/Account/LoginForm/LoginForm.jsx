@@ -1,5 +1,5 @@
 import classes from '../AccountPage.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -9,17 +9,14 @@ import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
-const LoginForm = ({ setMethod }) => {
+const LoginForm = ({ setMethod, emailRegExp }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
 
 	const schema = yup.object().shape({
 		email: yup
 			.string()
 			.required('Please enter your email address.')
-			.matches(
-				/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-				{ message: 'Please enter a valid email address.' }
-			),
+			.matches(emailRegExp, { message: 'Please enter a valid email address.' }),
 		password: yup
 			.string()
 			.required('Please enter your password.')
@@ -34,10 +31,11 @@ const LoginForm = ({ setMethod }) => {
 		resolver: yupResolver(schema),
 	});
 
-	const onLogin = async ({ email, password }) => {
+	const onLogin = ({ email, password }) => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				const user = userCredential.user;
+				console.log(user);
 			})
 			.catch((error) => {
 				console.log(error.code, error.message);
@@ -53,7 +51,6 @@ const LoginForm = ({ setMethod }) => {
 						<label htmlFor="email">Email</label>
 						<input
 							{...register('email')}
-							type="email"
 							placeholder="Enter your email address"
 						/>
 						<p className={classes.error}>{errors.email?.message}</p>
@@ -74,7 +71,7 @@ const LoginForm = ({ setMethod }) => {
 					</div>
 					<Button type="submit">Login now</Button>
 				</form>
-				<p>
+				<p className={classes.helper}>
 					Don't Have An Account?{' '}
 					<span
 						onClick={() => {
