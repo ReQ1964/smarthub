@@ -6,10 +6,12 @@ import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
 import visibleIcon from '../../../assets/icon/navbar/visible.svg';
 import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
+import Spinner from '../../../components/UI/Spinner';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
 const SignUpForm = ({ setMethod, emailRegExp }) => {
+	const [isLoading, setIsLoading] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
 
 	const schema = yup.object().shape({
@@ -24,7 +26,7 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 		confirmPassword: yup
 			.string()
 			.oneOf([yup.ref('password'), null], "Passwords don't match")
-			.required(),
+			.required('Please confirm your password.'),
 	});
 
 	const {
@@ -37,6 +39,7 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 
 	const onRegister = ({ email, password, confirmPassword }) => {
 		if (password === confirmPassword) {
+			setIsLoading(true);
 			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					const user = userCredential.user;
@@ -44,6 +47,9 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 				})
 				.catch((error) => {
 					console.log(error.code, error.message);
+				})
+				.finally(() => {
+					setIsLoading(false);
 				});
 		}
 	};
@@ -87,7 +93,13 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 						/>
 						<p className={classes.error}>{errors.confirmPassword?.message}</p>
 					</div>
-					<Button type="submit">Create account</Button>
+					<Button type="submit" disabled={isLoading}>
+						{isLoading ? (
+							<Spinner className={classes.btnSpinner} />
+						) : (
+							'Create Account'
+						)}
+					</Button>
 				</form>
 				<p className={classes.helper}>
 					Already Have An Account?{' '}

@@ -18,6 +18,11 @@
 				cursor: pointer;
 			}
 		}
+		> .error {
+			text-align: center;
+			font-size: 1rem;
+			margin-top: 0;
+		}
 	}
 	.loginForm,
 	.registerForm {
@@ -26,7 +31,18 @@
 		gap: 1rem;
 		align-items: center;
 		button {
+			position: relative;
 			width: 80%;
+			height: 51px;
+			.btnSpinner {
+				height: 40px;
+				width: 40px;
+				top: 6px;
+				left: 43.5%;
+			}
+			&:disabled {
+				background-color: rgba(36, 165, 240, 0.2);
+			}
 		}
 	}
 }
@@ -58,10 +74,10 @@
 		padding: 0.5rem;
 		width: 100%;
 	}
-	.error {
-		text-align: left;
-		color: rgb(204, 13, 13);
-		font-size: 0.8rem;
-		margin-top: 1rem;
-	}
+}
+.error {
+	text-align: left;
+	color: rgb(204, 13, 13);
+	font-size: 0.8rem;
+	margin-top: 1rem;
 }

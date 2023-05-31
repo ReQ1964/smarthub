@@ -1,5 +1,5 @@
 import classes from '../AccountPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -8,19 +8,20 @@ import visibleIcon from '../../../assets/icon/navbar/visible.svg';
 import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
+import Spinner from '../../../components/UI/Spinner';
 
 const LoginForm = ({ setMethod, emailRegExp }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isError, setIsError] = useState(false);
 
 	const schema = yup.object().shape({
 		email: yup
 			.string()
 			.required('Please enter your email address.')
 			.matches(emailRegExp, { message: 'Please enter a valid email address.' }),
-		password: yup
-			.string()
-			.required('Please enter your password.')
-			.min(6, 'Password has to be at least 6 characters long.'),
+		password: yup.string().required('Please enter your password.'),
 	});
 
 	const {
@@ -32,6 +33,8 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 	});
 
 	const onLogin = ({ email, password }) => {
+		setIsError(false);
+		setIsLoading(true);
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				const user = userCredential.user;
@@ -39,6 +42,10 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 			})
 			.catch((error) => {
 				console.log(error.code, error.message);
+				setIsError(true);
+			})
+			.finally(() => {
+				setIsLoading(false);
 			});
 	};
 
@@ -46,6 +53,9 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 		<section className={classes.loggingForm}>
 			<div className={classes.login}>
 				<h1>Login to your account</h1>
+				{isError && (
+					<p className={classes.error}>Invalid email and/or password!</p>
+				)}
 				<form onSubmit={handleSubmit(onLogin)} className={classes.loginForm}>
 					<div className={classes.email}>
 						<label htmlFor="email">Email</label>
@@ -69,7 +79,13 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 						/>
 						<p className={classes.error}>{errors.password?.message}</p>
 					</div>
-					<Button type="submit">Login now</Button>
+					<Button type="submit" disabled={isLoading}>
+						{isLoading ? (
+							<Spinner className={classes.btnSpinner} />
+						) : (
+							'Login Now'
+						)}
+					</Button>
 				</form>
 				<p className={classes.helper}>
 					Don't Have An Account?{' '}
