@@ -1,9 +1,9 @@
 import classes from './Spinner.module.scss';
 
-const Spinner = () => {
+const Spinner = ({ className }) => {
 	return (
-		<div className={classes.spinner}>
-			<span className={classes.loader}></span>
+		<div className={`${classes.spinner} ${className}`}>
+			<span className={`${classes.loader} ${className}`}></span>
 		</div>
 	);
 };
