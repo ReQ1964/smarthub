@@ -1,5 +1,5 @@
 .loggingForm {
-	padding: 4rem 0;
+	padding: 2rem 0;
 	.login,
 	.register {
 		display: flex;
@@ -9,19 +9,14 @@
 			text-align: center;
 			font-size: var(--h1-size);
 		}
-		p {
+		.helper {
 			text-align: center;
 			color: var(--text-tertiary);
 			span {
 				color: var(--text-quaternary);
 				font-weight: bold;
+				cursor: pointer;
 			}
-		}
-		.error {
-			text-align: left;
-			color: rgb(204, 13, 13);
-			font-size: 0.8rem;
-			margin-top: 1rem;
 		}
 	}
 	.loginForm,
@@ -33,25 +28,40 @@
 		button {
 			width: 80%;
 		}
-		.email,
-		.password {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			width: 80%;
-			img {
-				position: absolute;
-				top: 34px;
-				right: 5px;
-				width: 25px;
-			}
-			label {
-				margin-bottom: 0.5rem;
-			}
-			input {
-				padding: 0.5rem;
-				width: 100%;
-			}
-		}
+	}
+}
+
+.forgotPassword {
+	text-align: center;
+	color: var(--text-tertiary);
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	cursor: pointer;
+}
+
+.email,
+.password {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	img {
+		position: absolute;
+		top: 34px;
+		right: 5px;
+		width: 25px;
+	}
+	label {
+		margin-bottom: 0.5rem;
+	}
+	input {
+		padding: 0.5rem;
+		width: 100%;
+	}
+	.error {
+		text-align: left;
+		color: rgb(204, 13, 13);
+		font-size: 0.8rem;
+		margin-top: 1rem;
 	}
 }
