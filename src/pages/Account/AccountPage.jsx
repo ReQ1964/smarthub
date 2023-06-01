@@ -51,6 +51,10 @@ const AccountPage = () => {
 		reset();
 	};
 
+	const openModalHandler = () => {
+		setModalIsOpen(true);
+	};
+
 	return (
 		<main>
 			{modalIsOpen && (
@@ -62,24 +66,26 @@ const AccountPage = () => {
 			)}
 			{!user ? (
 				<>
+					{method === 'login' ? (
+						<LoginForm
+							setMethod={methodHandler}
+							emailRegExp={emailRegExp}
+							openModal={openModalHandler}
+						/>
+					) : (
+						<SignUpForm
+							setMethod={methodHandler}
+							emailRegExp={emailRegExp}
+							openModal={openModalHandler}
+						/>
+					)}
 					<div className={classes.googleContainer}>
+						<p>or</p>
 						<button className={classes.btnGoogle} onClick={googleSignInHandler}>
 							<img src={googleIcon} alt="" />
 							Continue with Google
 						</button>
-						<h4>or</h4>
 					</div>
-					{method === 'login' ? (
-						<LoginForm setMethod={methodHandler} emailRegExp={emailRegExp} />
-					) : (
-						<SignUpForm setMethod={methodHandler} emailRegExp={emailRegExp} />
-					)}
-					<p
-						className={classes.forgotPassword}
-						onClick={() => setModalIsOpen(true)}
-					>
-						I forgot my password
-					</p>
 				</>
 			) : (
 				<AccountDetails />

@@ -13,7 +13,7 @@ import {
 import { auth } from '../../../firebase';
 import Spinner from '../../../components/UI/Spinner';
 
-const LoginForm = ({ setMethod, emailRegExp }) => {
+const LoginForm = ({ setMethod, emailRegExp, openModal }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(false);
@@ -85,6 +85,9 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 						/>
 						<p className={classes.error}>{errors.password?.message}</p>
 					</div>
+					<p className={classes.forgotPassword} onClick={openModal}>
+						Forgot password?
+					</p>
 					<Button type="submit" disabled={isLoading}>
 						{isLoading ? (
 							<Spinner className={classes.btnSpinner} />

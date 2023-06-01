@@ -34,9 +34,6 @@ const PasswordModal = ({ modalIsOpen, modalCloseHandler, emailRegExp }) => {
 	const onSubmit = (data) => {
 		setIsLoading(true);
 		sendPasswordResetEmail(auth, data.email)
-			.then(() => {
-				console.log(data.email);
-			})
 			.catch((error) => {
 				console.log(error.code, error.message);
 			})

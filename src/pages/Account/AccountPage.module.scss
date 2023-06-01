@@ -44,15 +44,14 @@
 				background-color: rgba(36, 165, 240, 0.2);
 			}
 		}
+		.forgotPassword {
+			margin: -1.5rem 0 0.5rem 0;
+			width: 80%;
+			text-align: right;
+			color: var(--text-tertiary);
+			cursor: pointer;
+		}
 	}
-}
-
-.forgotPassword {
-	margin-bottom: 2rem;
-	text-align: center;
-	text-decoration: underline;
-	text-underline-offset: 5px;
-	cursor: pointer;
 }
 
 .email,
