@@ -38,7 +38,7 @@
 				height: 40px;
 				width: 40px;
 				top: 6px;
-				left: 43.5%;
+				left: calc(50% - 20px);
 			}
 			&:disabled {
 				background-color: rgba(36, 165, 240, 0.2);

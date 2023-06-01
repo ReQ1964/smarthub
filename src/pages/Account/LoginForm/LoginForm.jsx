@@ -6,15 +6,17 @@ import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
 import visibleIcon from '../../../assets/icon/navbar/visible.svg';
 import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+	signInWithEmailAndPassword,
+	fetchSignInMethodsForEmail,
+} from 'firebase/auth';
 import { auth } from '../../../firebase';
 import Spinner from '../../../components/UI/Spinner';
 
 const LoginForm = ({ setMethod, emailRegExp }) => {
 	const [passwordShown, setPasswordShown] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [isError, setIsError] = useState(false);
+	const [error, setError] = useState(false);
 
 	const schema = yup.object().shape({
 		email: yup
@@ -33,16 +35,22 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 	});
 
 	const onLogin = ({ email, password }) => {
-		setIsError(false);
+		setError(false);
 		setIsLoading(true);
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				const user = userCredential.user;
-				console.log(user);
-			})
-			.catch((error) => {
-				console.log(error.code, error.message);
-				setIsError(true);
+		fetchSignInMethodsForEmail(auth, email)
+			.then((result) => {
+				if (result.filter((item) => item != 'password').length >= 1) {
+					setError("You're already using a different login method!");
+					return;
+				}
+				signInWithEmailAndPassword(auth, email, password).catch((error) => {
+					console.log(error.code, error.message);
+					if (error.message === 'auth/user-not-found') {
+						setError('Invalid email and/or password!');
+					} else {
+						setError(error.message);
+					}
+				});
 			})
 			.finally(() => {
 				setIsLoading(false);
@@ -53,9 +61,7 @@ const LoginForm = ({ setMethod, emailRegExp }) => {
 		<section className={classes.loggingForm}>
 			<div className={classes.login}>
 				<h1>Login to your account</h1>
-				{isError && (
-					<p className={classes.error}>Invalid email and/or password!</p>
-				)}
+				{error && <p className={classes.error}>{error}</p>}
 				<form onSubmit={handleSubmit(onLogin)} className={classes.loginForm}>
 					<div className={classes.email}>
 						<label htmlFor="email">Email</label>
