@@ -10,7 +10,7 @@ import Spinner from '../../../components/UI/Spinner';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
-const SignUpForm = ({ setMethod, emailRegExp }) => {
+const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
@@ -40,7 +40,7 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 
 	const onRegister = ({ email, password, confirmPassword }) => {
 		if (password === confirmPassword) {
-			setIsError(false);
+			setError(false);
 			setIsLoading(true);
 			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
