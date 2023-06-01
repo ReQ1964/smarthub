@@ -12,6 +12,7 @@ import { auth } from '../../../firebase';
 
 const SignUpForm = ({ setMethod, emailRegExp }) => {
 	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
 
 	const schema = yup.object().shape({
@@ -39,6 +40,7 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 
 	const onRegister = ({ email, password, confirmPassword }) => {
 		if (password === confirmPassword) {
+			setIsError(false);
 			setIsLoading(true);
 			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
@@ -46,7 +48,11 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 					console.log(user);
 				})
 				.catch((error) => {
-					console.log(error.code, error.message);
+					if (error.code === 'auth/email-already-in-use') {
+						setError('Email already in use!');
+					} else {
+						setError(error.message);
+					}
 				})
 				.finally(() => {
 					setIsLoading(false);
@@ -58,6 +64,7 @@ const SignUpForm = ({ setMethod, emailRegExp }) => {
 		<section className={classes.loggingForm}>
 			<div className={classes.register}>
 				<h1>Create an account</h1>
+				{error && <p className={classes.error}>{error}</p>}
 				<form
 					onSubmit={handleSubmit(onRegister)}
 					className={classes.registerForm}
