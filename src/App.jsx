@@ -5,7 +5,6 @@ import useScrollToTop from './hooks/useScrollToTop';
 import useResetCategory from './hooks/useResetCategory';
 import { setFilteredProducts, setProducts } from './store/products-slice';
 import { useDispatch } from 'react-redux';
-import './App.scss';
 import { useEffect } from 'react';
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
+		<div className='App'>
 			<Navbar />
 			<Outlet />
 			<Footer />
