@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classes from './Button.module.scss';
 
-const Button = ({ className, type, onClick, disabled, children }) => {
+interface ButtonProps {
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: () => void;
+  disabled?: boolean;
+  children: ReactNode | string;
+}
+const Button = ({
+  className,
+  type,
+  onClick,
+  disabled,
+  children,
+}: ButtonProps) => {
   return (
     <button
       className={`${classes.button} ${className}`}

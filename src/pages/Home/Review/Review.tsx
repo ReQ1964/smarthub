@@ -1,7 +1,8 @@
+import React from 'react';
 import classes from './Review.module.scss';
-import user from '../../../assets/img/home-review/review-user.png';
-import star from '../../../assets/icon/rating/star.svg';
-import filledStar from '../../../assets/icon/rating/star-filled.svg';
+import user from '@/assets/img/home-review/review-user.png';
+import star from '@/assets/icon/rating/star.svg';
+import filledStar from '@/assets/icon/rating/star-filled.svg';
 
 const Review = () => {
   return (
@@ -11,16 +12,14 @@ const Review = () => {
         <div>
           <img src={user} alt="reviewer's profile picture" />
         </div>
-        <img src={filledStar} alt="" />
-        <img src={filledStar} alt="" />
-        <img src={filledStar} alt="" />
-        <img src={filledStar} alt="" />
-        <img src={star} alt="" />
+        <img src={filledStar} alt="A picture of a review star" />
+        <img src={filledStar} alt="A picture of a review star" />
+        <img src={filledStar} alt="A picture of a review star" />
+        <img src={filledStar} alt="A picture of a review star" />
+        <img src={star} alt="A picture of an empty review star" />
       </div>
       <p>SmartHub helps you with picking out the best devices around!</p>
-      <div className={classes.info}>
-        <p>Emma Stanford</p>
-      </div>
+      <p className={classes.name}>Will Smith</p>
     </section>
   );
 };

@@ -1,12 +1,13 @@
+import React from 'react';
 import classes from './Categories.module.scss';
-import smartwatch from '../../../assets/img/home-categories/smartwatch.png';
-import phone from '../../../assets/img/home-categories/phone.png';
+import smartwatch from '@/assets/img/home-categories/smartwatch.webp';
+import phone from '@/assets/img/home-categories/phone.webp';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setFilteredProducts } from '../../../store/products-slice';
+import { useAppDispatch } from '@/store/hooks';
+import { setFilteredProducts } from '@/store/products-slice';
 
 const Categories = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (
@@ -25,7 +26,7 @@ const Categories = () => {
         >
           Explore Items
         </a>
-        <img src={smartwatch} alt="" />
+        <img src={smartwatch} alt="An image of a smartwatch" />
       </div>
       <div className={`${classes.category}`}>
         <p>Your Space</p>
@@ -41,7 +42,7 @@ const Categories = () => {
         >
           Explore Items
         </a>
-        <img src={[phone]} alt="" />
+        <img src={phone} alt="An image of a phone" />
       </div>
     </section>
   );

@@ -1,12 +1,13 @@
+import React from 'react';
 import classes from './Bestseller.module.scss';
 import Button from '../../../components/UI/Button';
 import Products from '../../../components/Products/Products';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 
 const Bestseller = () => {
   const navigate = useNavigate();
-  const products = useSelector((state) => state.products.products);
+  const products = useAppSelector((state) => state.products.products);
 
   return (
     <section className={classes.bestseller}>
