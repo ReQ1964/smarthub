@@ -1,15 +1,16 @@
+import React from 'react';
 import { useState } from 'react';
 import Categories from './Categories/Categories';
 import Filter from './Filter/Filter';
 import ShopProducts from './ShopProducts/ShopProducts';
 import Pagination from './Pagination/Pagination';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 
 const ShopPage = () => {
-  const products = useSelector((state) => state.products.filteredProducts);
+  const products = useAppSelector((state) => state.products.filteredProducts);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [productsPerPage] = useState<number>(2);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -18,7 +19,7 @@ const ShopPage = () => {
     indexOfLastProduct,
   );
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <main>

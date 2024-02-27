@@ -1,12 +1,15 @@
+import React from 'react';
 import { Link } from 'react-scroll';
 import classes from './Categories.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { setFilteredProducts } from '../../../store/products-slice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setFilteredProducts } from '@/store/products-slice';
 
 const Categories = () => {
-  const dispatch = useDispatch();
-  const productType = useSelector((state) => state.products.currentProductType);
-  const sortType = useSelector((state) => state.products.sortType);
+  const dispatch = useAppDispatch();
+  const productType = useAppSelector(
+    (state) => state.products.currentProductType,
+  );
+  const sortType = useAppSelector((state) => state.products.sortType);
 
   return (
     <section className={classes.categories}>

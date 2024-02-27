@@ -1,16 +1,23 @@
 import React from 'react';
 import Product from './Product';
-import classes from './Products.module.scss';
+import classes from './ProductsList.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { IShowcaseProduct } from '@/interfaces';
 
-const Products = (props) => {
+interface ProductListProps {
+  products: IShowcaseProduct[];
+}
+
+const ProductsList = ({ products }: ProductListProps) => {
   const navigate = useNavigate();
+
   return (
     <ul className={classes.products}>
-      {props.products.map((product) => (
+      {products.map((product) => (
         <Product
           onClick={() => navigate(`/shop/${product.id}`)}
           key={product.id}
+          id={product.id}
           img={product.img}
           name={product.name}
           price={product.price}
@@ -22,4 +29,4 @@ const Products = (props) => {
   );
 };
 
-export default Products;
+export default ProductsList;

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IProduct } from '@/interfaces';
+import { IDetailedProduct } from '@/interfaces';
 
 interface CartState {
   products: IProductWithQuantity[];
   totalPrice: number;
 }
 
-interface IProductWithQuantity extends IProduct {
+interface IProductWithQuantity extends IDetailedProduct {
   quantity: number;
 }
 
@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<IProduct>) {
+    addToCart(state, action: PayloadAction<IDetailedProduct>) {
       const newProduct = action.payload;
       const existingProduct = state.products.find(
         (product) => product.id === newProduct.id,

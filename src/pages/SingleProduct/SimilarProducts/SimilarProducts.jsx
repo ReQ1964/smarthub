@@ -1,6 +1,6 @@
 import classes from './SimilarProducts.module.scss';
 import { useSelector } from 'react-redux';
-import Products from '../../../components/Products/Products';
+import ProductsList from '../../../components/Products/ProductsList';
 
 const SimilarProducts = ({ productType, productId }) => {
   const products = useSelector((state) =>
@@ -14,7 +14,7 @@ const SimilarProducts = ({ productType, productId }) => {
   return (
     <section className={classes.similar}>
       <h1>SIMILAR PRODUCTS</h1>
-      <Products products={products} />
+      <ProductsList products={products} />
     </section>
   );
 };

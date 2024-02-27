@@ -1,18 +1,26 @@
+import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-scroll';
 import classes from './Pagination.module.scss';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useAppSelector } from '@/store/hooks';
+
+interface PaginationProps {
+  productsPerPage: number;
+  totalProducts: number;
+  paginate: (arg0: number) => void;
+  currentPage: number;
+}
 
 const Pagination = ({
   productsPerPage,
   totalProducts,
   paginate,
   currentPage,
-}) => {
-  const currentProductType = useSelector(
+}: PaginationProps) => {
+  const currentProductType = useAppSelector(
     (state) => state.products.currentProductType,
   );
-  const pageNumbers = [];
+  const pageNumbers = [] as number[];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
@@ -27,7 +35,7 @@ const Pagination = ({
       <ul>
         {pageNumbers.map((number) => {
           return (
-            <li key={number} id={number}>
+            <li key={number} id={number.toString()}>
               <Link
                 to="shop_products"
                 spy={true}
