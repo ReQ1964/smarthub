@@ -1,34 +1,32 @@
-.review{
-    display: grid;
-    gap: 1.5rem;
-    background:
-    linear-gradient(
-        rgba(0, 0, 0, 0.4), 
-        rgba(0, 0, 0, 0.4)
-      ), url(../../../assets/img/home-review/review-bg.png);
-    background-position: center;
-    padding: 6rem 2rem;
-    color: var(--text-secondary);
-    text-align: center;
-    h1{
-        font-size: var(--h1-size);
-        text-transform: uppercase;
-        margin-bottom: 2rem;
+.review {
+  display: grid;
+  gap: 1.5rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../../assets/img/home-review/review-bg.png);
+  background-position: center;
+  padding: 6rem 2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  h1 {
+    font-size: var(--h1-size);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .rating {
+    > img {
+      height: 2rem;
+      filter: brightness(0) saturate(100%) invert(85%) sepia(56%)
+        saturate(3663%) hue-rotate(350deg) brightness(97%) contrast(99%);
     }
-    .rating{
-        >img{
-            height: 2rem;
-            filter: brightness(0) saturate(100%) invert(85%) sepia(56%) saturate(3663%) hue-rotate(350deg) brightness(97%) contrast(99%);
-        }
+  }
+  p {
+    margin: 0 auto;
+    width: 70%;
+    line-height: 1.8rem;
+  }
+  .info {
+    :nth-child(1) {
+      margin-bottom: 0.5rem;
     }
-    p{
-        margin: 0 auto;
-        width: 70%;
-        line-height: 1.8rem;
-    }
-    .info{
-        :nth-child(1){
-            margin-bottom: 0.5rem;
-        }
-    }
+  }
 }

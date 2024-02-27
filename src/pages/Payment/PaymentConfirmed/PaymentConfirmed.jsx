@@ -4,23 +4,23 @@ import Button from '../../../components/UI/Button';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentConfirmed = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	return (
-		<section className={classes.accepted}>
-			<img src={done} alt="" />
-			<h1>Payment confirmed!</h1>
-			<h4>Order #10</h4>
-			<p>
-				Thank you for trusting us, and buying our products! Your order will be
-				ready to ship in 2-3 days. Please check your inbox or account tab for
-				order status updates.
-			</p>
-			<Button className={classes.btn} onClick={() => navigate('/shop')}>
-				Back to shopping
-			</Button>
-		</section>
-	);
+  return (
+    <section className={classes.accepted}>
+      <img src={done} alt="" />
+      <h1>Payment confirmed!</h1>
+      <h4>Order #10</h4>
+      <p>
+        Thank you for trusting us, and buying our products! Your order will be
+        ready to ship in 2-3 days. Please check your inbox or account tab for
+        order status updates.
+      </p>
+      <Button className={classes.btn} onClick={() => navigate('/shop')}>
+        Back to shopping
+      </Button>
+    </section>
+  );
 };
 
 export default PaymentConfirmed;

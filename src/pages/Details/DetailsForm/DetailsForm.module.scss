@@ -1,17 +1,17 @@
 .detailsForm {
-	display: flex;
-	flex-direction: column;
-	padding: 2rem;
-	gap: 1rem;
-	.error {
-		color: rgb(204, 13, 13);
-		font-size: 0.8rem;
-	}
-	input,
-	.dropdown {
-		padding: 0.5rem;
-	}
-	.btn {
-		width: 100%;
-	}
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  .error {
+    color: rgb(204, 13, 13);
+    font-size: 0.8rem;
+  }
+  input,
+  .dropdown {
+    padding: 0.5rem;
+  }
+  .btn {
+    width: 100%;
+  }
 }

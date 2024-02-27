@@ -1,17 +1,17 @@
-import { useEffect } from "react"
-import { useLocation } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { setFilteredProducts } from "../store/products-slice"
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setFilteredProducts } from '../store/products-slice';
 
 const useResetCategory = () => {
-    const dispatch = useDispatch()
-    const {pathname} = useLocation()
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
-    useEffect(() => {
-        if(pathname != '/shop'){
-            dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }))
-        }
-      }, [pathname])
-}
+  useEffect(() => {
+    if (pathname != '/shop') {
+      dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }));
+    }
+  }, [pathname]);
+};
 
-export default useResetCategory
+export default useResetCategory;

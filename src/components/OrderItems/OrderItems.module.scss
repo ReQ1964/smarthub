@@ -1,22 +1,22 @@
 .info {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 2rem;
-	background-color: var(--bg-secondary);
-	.total {
-		text-align: center;
-	}
-	img {
-		position: absolute;
-		width: 30px;
-		&.active {
-			transform: rotate(180deg);
-		}
-	}
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  .total {
+    text-align: center;
+  }
+  img {
+    position: absolute;
+    width: 30px;
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
 }
 .orderItems {
-	position: absolute;
-	background-color: white;
+  position: absolute;
+  background-color: white;
 }

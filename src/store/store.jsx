@@ -4,9 +4,9 @@ import cartReducer from './cart-slice';
 import orderReducer from './order-slice';
 
 export default configureStore({
-	reducer: {
-		products: productsReducer,
-		cart: cartReducer,
-		order: orderReducer,
-	},
+  reducer: {
+    products: productsReducer,
+    cart: cartReducer,
+    order: orderReducer,
+  },
 });

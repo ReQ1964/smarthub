@@ -13,67 +13,67 @@ import ShippingPage from '../pages/Shipping/ShippingPage';
 import PaymentPage from '../pages/Payment/PaymentPage';
 
 const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <App />,
-		children: [
-			{
-				index: true,
-				element: <HomePage />,
-			},
-			{
-				path: '/shop',
-				element: <ShopPage />,
-			},
-			{
-				path: '/shop/:productId',
-				element: <SingleProductPage />,
-			},
-			{
-				path: '/about',
-				element: <AboutPage />,
-			},
-			{
-				path: '/contact',
-				element: <ContactPage />,
-				action: async ({ request, params }) => {
-					const data = await request.formData();
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: '/shop',
+        element: <ShopPage />,
+      },
+      {
+        path: '/shop/:productId',
+        element: <SingleProductPage />,
+      },
+      {
+        path: '/about',
+        element: <AboutPage />,
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />,
+        action: async ({ request, params }) => {
+          const data = await request.formData();
 
-					const eventData = {
-						name: data.get('name'),
-						email: data.get('email'),
-						topic: data.get('topic'),
-						message: data.get('message'),
-					};
+          const eventData = {
+            name: data.get('name'),
+            email: data.get('email'),
+            topic: data.get('topic'),
+            message: data.get('message'),
+          };
 
-					return null;
-				},
-			},
-			{
-				path: '/account',
-				element: <AccountPage />,
-			},
-			{
-				path: '/cart',
-				element: <CartPage />,
-			},
-		],
-	},
-	{
-		path: '/order',
-		element: <Order />,
-		children: [
-			{
-				path: '/order/details',
-				element: <DetailsPage />,
-			},
-			{ path: '/order/shipping', element: <ShippingPage /> },
-			{
-				path: '/order/payment',
-				element: <PaymentPage />,
-			},
-		],
-	},
+          return null;
+        },
+      },
+      {
+        path: '/account',
+        element: <AccountPage />,
+      },
+      {
+        path: '/cart',
+        element: <CartPage />,
+      },
+    ],
+  },
+  {
+    path: '/order',
+    element: <Order />,
+    children: [
+      {
+        path: '/order/details',
+        element: <DetailsPage />,
+      },
+      { path: '/order/shipping', element: <ShippingPage /> },
+      {
+        path: '/order/payment',
+        element: <PaymentPage />,
+      },
+    ],
+  },
 ]);
 
 export default router;

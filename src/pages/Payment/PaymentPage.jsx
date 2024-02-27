@@ -6,36 +6,36 @@ import PaymentConfirmed from './PaymentConfirmed/PaymentConfirmed';
 import Spinner from '../../components/UI/Spinner';
 
 const PaymentPage = () => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
-	const { email, number, address, postal, city, shippingMethod } = useSelector(
-		(state) => state.order.details
-	);
+  const { email, number, address, postal, city, shippingMethod } = useSelector(
+    (state) => state.order.details,
+  );
 
-	const data = {
-		email,
-		number,
-		address,
-		postal,
-		city,
-		ship: shippingMethod ? shippingMethod.name : '',
-	};
+  const data = {
+    email,
+    number,
+    address,
+    postal,
+    city,
+    ship: shippingMethod ? shippingMethod.name : '',
+  };
 
-	return (
-		<main>
-			{!paymentConfirmed && (
-				<>
-					<Summary data={data} />
-					<PaymentForm
-						isConfirmed={setPaymentConfirmed}
-						isLoading={setIsLoading}
-					/>
-				</>
-			)}
-			{isLoading ? <Spinner /> : paymentConfirmed ? <PaymentConfirmed /> : ''}
-		</main>
-	);
+  return (
+    <main>
+      {!paymentConfirmed && (
+        <>
+          <Summary data={data} />
+          <PaymentForm
+            isConfirmed={setPaymentConfirmed}
+            isLoading={setIsLoading}
+          />
+        </>
+      )}
+      {isLoading ? <Spinner /> : paymentConfirmed ? <PaymentConfirmed /> : ''}
+    </main>
+  );
 };
 
 export default PaymentPage;

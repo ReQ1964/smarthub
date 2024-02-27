@@ -6,17 +6,17 @@ import { Link } from 'react-router-dom';
 import useScrollToTop from '../../hooks/useScrollToTop';
 
 const Order = () => {
-	useScrollToTop();
-	return (
-		<>
-			<h1 className={classes.heading}>
-				<Link to={'/'}>SmartHub</Link>
-			</h1>
-			<OrderItems />
-			<Breadcrumbs />
-			<Outlet />
-		</>
-	);
+  useScrollToTop();
+  return (
+    <>
+      <h1 className={classes.heading}>
+        <Link to={'/'}>SmartHub</Link>
+      </h1>
+      <OrderItems />
+      <Breadcrumbs />
+      <Outlet />
+    </>
+  );
 };
 
 export default Order;
