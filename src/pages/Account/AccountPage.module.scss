@@ -1,0 +1,127 @@
+.loggingForm {
+	padding: 2rem 0 1.5rem 0;
+	.login,
+	.register {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		h1 {
+			text-align: center;
+			font-size: var(--h1-size);
+		}
+		.helper {
+			text-align: center;
+			color: var(--text-tertiary);
+			span {
+				color: var(--text-quaternary);
+				font-weight: bold;
+				cursor: pointer;
+			}
+		}
+		> .error {
+			text-align: center;
+			font-size: 1rem;
+			margin-top: 0;
+		}
+	}
+	.loginForm,
+	.registerForm {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		button {
+			position: relative;
+			width: 80%;
+			height: 51px;
+			.btnSpinner {
+				height: 40px;
+				width: 40px;
+				top: 6px;
+				left: calc(50% - 20px);
+			}
+			&:disabled {
+				background-color: rgba(36, 165, 240, 0.2);
+			}
+		}
+		.forgotPassword {
+			margin: -1.5rem 0 0.5rem 0;
+			width: 80%;
+			text-align: right;
+			color: var(--text-tertiary);
+			cursor: pointer;
+		}
+	}
+}
+
+.email,
+.password {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	img {
+		position: absolute;
+		top: 34px;
+		right: 5px;
+		width: 25px;
+	}
+	label {
+		margin-bottom: 0.5rem;
+	}
+	input {
+		padding: 0.5rem;
+		width: 100%;
+	}
+}
+.error {
+	text-align: left;
+	color: rgb(204, 13, 13);
+	font-size: 0.8rem;
+	margin-top: 1rem;
+}
+.googleContainer {
+	.btnGoogle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 1.5rem auto;
+		background-color: white;
+		color: black;
+		width: 80%;
+		border: 2px solid var(--text-tertiary);
+		border-radius: 0.5rem;
+		font-size: 1rem;
+		padding: 0.4rem;
+		cursor: pointer;
+		img {
+			width: 40px;
+		}
+	}
+	p {
+		position: relative;
+		color: var(--text-tertiary);
+		text-align: center;
+		margin-bottom: 1.5rem;
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			width: 120px;
+			height: 1px;
+			background: var(--text-tertiary);
+			position: absolute;
+			top: 50%;
+		}
+
+		&::before {
+			left: 10%;
+		}
+
+		&::after {
+			right: 10%;
+		}
+	}
+}
