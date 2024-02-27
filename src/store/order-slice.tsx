@@ -6,7 +6,7 @@ const initialState = {
 
 export const orderSlice = createSlice({
   name: 'order',
-  initialState: initialState,
+  initialState,
   reducers: {
     addOrderDetails(state, action) {
       if (action.payload) {

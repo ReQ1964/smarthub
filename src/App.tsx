@@ -1,18 +1,19 @@
+import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from './layouts/Navbar/Navbar';
 import Footer from './layouts/Footer/Footer';
 import useScrollToTop from './hooks/useScrollToTop';
 import useResetCategory from './hooks/useResetCategory';
 import { setFilteredProducts, setProducts } from './store/products-slice';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useAppDispatch } from './store/hooks';
 
-function App() {
-  const dispatch = useDispatch();
+const App = () => {
+  const dispatch = useAppDispatch();
   useScrollToTop();
   useResetCategory();
 
-  const fetchProducts = async (url) => {
+  const fetchProducts = async (url: string) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -36,6 +37,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

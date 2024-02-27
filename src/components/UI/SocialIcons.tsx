@@ -1,7 +1,8 @@
+import React from 'react';
 import classes from './SocialIcons.module.scss';
-import facebook from '../../assets/icon/socials/facebook.svg';
-import instagram from '../../assets/icon/socials/instagram.svg';
-import twitter from '../../assets/icon/socials/twitter.svg';
+import facebook from '@/assets/icon/socials/facebook.svg';
+import instagram from '@/assets/icon/socials/instagram.svg';
+import twitter from '@/assets/icon/socials/twitter.svg';
 
 const SocialIcons = (props) => {
   return (

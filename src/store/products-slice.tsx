@@ -1,6 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProduct } from '@/interfaces';
 
-const initialState = {
+interface ProductsState {
+  products: IProduct[];
+  filteredProducts: IProduct[];
+  sortType: 'default' | 'a-z' | 'z-a' | 'high-price' | 'low-price';
+  currentProductType: string;
+}
+
+const initialState: ProductsState = {
   products: [],
   filteredProducts: [],
   sortType: 'default',
@@ -9,12 +17,18 @@ const initialState = {
 
 export const productsSlice = createSlice({
   name: 'products',
-  initialState: initialState,
+  initialState,
   reducers: {
-    setProducts(state, action) {
+    setProducts(state, action: PayloadAction<IProduct[]>) {
       state.products = action.payload;
     },
-    setFilteredProducts(state, action) {
+    setFilteredProducts(
+      state,
+      action: PayloadAction<{
+        productType: 'watch' | 'phone' | 'all';
+        sortType: ProductsState['sortType'];
+      }>,
+    ) {
       state.currentProductType = action.payload.productType;
 
       state.filteredProducts = state.products.filter(
@@ -40,7 +54,7 @@ export const productsSlice = createSlice({
           break;
       }
     },
-    setSortType(state, action) {
+    setSortType(state, action: PayloadAction<ProductsState['sortType']>) {
       state.sortType = action.payload;
     },
   },

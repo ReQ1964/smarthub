@@ -1,22 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProduct } from '@/interfaces';
 
-const initialState = {
+interface CartState {
+  products: IProductWithQuantity[];
+  totalPrice: number;
+}
+
+interface IProductWithQuantity extends IProduct {
+  quantity: number;
+}
+
+const initialState: CartState = {
   products: [],
   totalPrice: 0,
 };
 
-function calculateTotalPrice(products) {
+const calculateTotalPrice = (products: IProductWithQuantity[]) => {
   return products.reduce(
     (total, product) => total + product.price * product.quantity,
     0,
   );
-}
+};
 
 export const cartSlice = createSlice({
   name: 'cart',
-  initialState: initialState,
+  initialState,
   reducers: {
-    addToCart(state, action) {
+    addToCart(state, action: PayloadAction<IProduct>) {
       const newProduct = action.payload;
       const existingProduct = state.products.find(
         (product) => product.id === newProduct.id,
@@ -38,13 +48,18 @@ export const cartSlice = createSlice({
     },
     changeQuantity(state, action) {
       const { id, type } = action.payload;
+
       const existingProduct = state.products.find(
         (product) => product.id === id,
       );
 
-      if (type === 'increase') existingProduct.quantity++;
-      else if (type === 'decrease' && existingProduct.quantity != 1)
-        existingProduct.quantity--;
+      if (existingProduct) {
+        if (type === 'increase') existingProduct.quantity++;
+        else if (type === 'decrease' && existingProduct.quantity != 1)
+          existingProduct.quantity--;
+      } else {
+        return;
+      }
 
       state.totalPrice = calculateTotalPrice(state.products);
     },
