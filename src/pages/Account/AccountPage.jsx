@@ -82,7 +82,7 @@ const AccountPage = () => {
 					<div className={classes.googleContainer}>
 						<p>or</p>
 						<button className={classes.btnGoogle} onClick={googleSignInHandler}>
-							<img src={googleIcon} alt="" />
+							<img src={googleIcon} alt='' />
 							Continue with Google
 						</button>
 					</div>
