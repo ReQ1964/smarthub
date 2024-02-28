@@ -12,11 +12,10 @@ import Order from '@/layouts/Order/Order';
 import DetailsPage from '@/pages/Details/DetailsPage';
 import ShippingPage from '@/pages/Shipping/ShippingPage';
 import PaymentPage from '@/pages/Payment/PaymentPage';
-
-const SingleProductLoader = async () => {
-  console.log('a');
-  return null;
-};
+import {
+  AllProductsLoader,
+  SingleProductLoader,
+} from '@/loaders/productsLoaders';
 
 const router = createBrowserRouter([
   {
@@ -26,10 +25,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        loader: AllProductsLoader,
       },
       {
         path: '/shop',
         element: <ShopPage />,
+        loader: AllProductsLoader,
       },
       {
         path: '/shop/:productId',

@@ -3,11 +3,8 @@ import classes from './Categories.module.scss';
 import smartwatch from '@/assets/img/home-categories/smartwatch.webp';
 import phone from '@/assets/img/home-categories/phone.webp';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/store/hooks';
-import { setFilteredProducts } from '@/store/products-slice';
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (
@@ -19,9 +16,6 @@ const Categories = () => {
         <a
           onClick={() => {
             navigate('/shop');
-            dispatch(
-              setFilteredProducts({ sortType: 'a-z', productType: 'watch' }),
-            );
           }}
         >
           Explore Items
@@ -35,9 +29,6 @@ const Categories = () => {
         <a
           onClick={() => {
             navigate('/shop');
-            dispatch(
-              setFilteredProducts({ sortType: 'a-z', productType: 'phone' }),
-            );
           }}
         >
           Explore Items

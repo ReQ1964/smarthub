@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import classes from './Categories.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setFilteredProducts } from '@/store/products-slice';
+import { setFilteredProducts } from '@/store/shop-products-slice';
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ const Categories = () => {
   return (
     <section className={classes.categories}>
       <Link
-        to="filter"
+        to="sorting"
         spy={true}
         smooth={true}
         duration={250}
@@ -32,7 +32,7 @@ const Categories = () => {
         <h2>All Devices</h2>
       </Link>
       <Link
-        to="filter"
+        to="sorting"
         spy={true}
         smooth={true}
         duration={250}
@@ -50,7 +50,7 @@ const Categories = () => {
         <h2>Phones</h2>
       </Link>
       <Link
-        to="filter"
+        to="sorting"
         spy={true}
         smooth={true}
         duration={250}

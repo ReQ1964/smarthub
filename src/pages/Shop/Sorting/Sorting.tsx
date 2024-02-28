@@ -1,30 +1,27 @@
 import React from 'react';
-import classes from './Filter.module.scss';
+import classes from './Sorting.module.scss';
 import Button from '@/components/UI/Button';
+import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setFilteredProducts } from '@/store/products-slice';
-import { useRef } from 'react';
+import { setFilteredProducts } from '@/store/shop-products-slice';
 
 type ISortType = 'a-z' | 'z-a' | 'high-price' | 'low-price';
 type IProductType = 'watch' | 'phone' | 'all';
 
-const Filter = () => {
+const Sorting = () => {
   const dispatch = useAppDispatch();
-
-  const filterRef = useRef<ISortType>('a-z');
-
+  const [selectedSort, setSelectedSort] = useState('a-z');
   const currentProductType = useAppSelector(
     (state) => state.products.currentProductType,
   );
-  const filteredProductsLength: number = useAppSelector(
+  const filteredProductsLength = useAppSelector(
     (state) => state.products.filteredProducts.length,
   );
 
   const submitSortingHandler = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    filterRef.current = event.target.value as ISortType;
-    console.log(filterRef.current);
+    setSelectedSort(event.target.value as ISortType);
     dispatch(
       setFilteredProducts({
         sortType: event.target.value as ISortType,
@@ -34,23 +31,23 @@ const Filter = () => {
   };
 
   const resetSortingHandler = (): void => {
-    filterRef.current = 'a-z';
+    setSelectedSort('a-z');
     dispatch(
       setFilteredProducts({
-        sortType: 'a-z',
-        productType: 'all',
+        sortType: 'a-z' as ISortType,
+        productType: 'all' as IProductType,
       }),
     );
   };
 
   return (
-    <section className={classes.filter} id="filter">
+    <section className={classes.sorting} id="sorting">
       <h4>Showing {filteredProductsLength} results</h4>
       <div className={classes.controls}>
         <select
-          name="filters"
-          id="filters"
-          value={filterRef.current}
+          name="sortingMethods"
+          id="sortingMethods"
+          value={selectedSort}
           onChange={submitSortingHandler}
         >
           <option value="a-z">A-Z</option>
@@ -64,4 +61,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default Sorting;

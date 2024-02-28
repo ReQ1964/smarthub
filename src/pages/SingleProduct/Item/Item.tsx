@@ -12,7 +12,6 @@ export const Item = ({ product }: { product: IDetailedProduct }) => {
   const { id, name, colors, company, price, img, type, rating } = product;
   const dispatch = useAppDispatch();
   const [pickedColor, setPickedColor] = useState<string>(colors[0]);
-
   const capitalize = (s: string) => {
     return s[0].toUpperCase() + s.slice(1);
   };
@@ -57,7 +56,7 @@ export const Item = ({ product }: { product: IDetailedProduct }) => {
 
   return (
     <section className={classes.item}>
-      <img src={img.pickedColor} alt="" />
+      <img src={img[pickedColor]} alt="" />
       <div className={classes.description}>
         <div className={classes.info}>
           <h3>{name}</h3>

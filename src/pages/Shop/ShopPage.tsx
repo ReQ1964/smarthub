@@ -1,13 +1,29 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Categories from './Categories/Categories';
-import Filter from './Filter/Filter';
+import Sorting from './Sorting/Sorting';
 import ShopProducts from './ShopProducts/ShopProducts';
 import Pagination from './Pagination/Pagination';
-import { useAppSelector } from '@/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { setProducts } from '@/store/shop-products-slice';
+import { useLoaderData } from 'react-router';
+import { IDetailedProduct } from '@/interfaces';
+import { setFilteredProducts } from '@/store/shop-products-slice';
+import { clearProducts } from '@/store/shop-products-slice';
 
 const ShopPage = () => {
+  const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.filteredProducts);
+  const starterProducts = useLoaderData() as IDetailedProduct[];
+
+  useEffect(() => {
+    dispatch(setProducts(starterProducts));
+    dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }));
+
+    return () => {
+      dispatch(clearProducts());
+    };
+  }, []);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage] = useState<number>(2);
@@ -24,7 +40,7 @@ const ShopPage = () => {
   return (
     <main>
       <Categories />
-      <Filter />
+      <Sorting />
       <ShopProducts products={currentProducts} />
       <Pagination
         productsPerPage={productsPerPage}
