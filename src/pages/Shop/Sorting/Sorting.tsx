@@ -3,7 +3,10 @@ import classes from './Sorting.module.scss';
 import Button from '@/components/UI/Button';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { clearFilters, setSortedProducts } from '@/store/shop-products-slice';
+import {
+  setFilteredProducts,
+  setSortedProducts,
+} from '@/store/shop-products-slice';
 
 type ISortType = 'a-z' | 'z-a' | 'high-price' | 'low-price';
 
@@ -24,8 +27,8 @@ const Sorting = () => {
 
   const resetSortingHandler = (): void => {
     setSelectedSort('a-z');
-    dispatch(setSortedProducts('a-z' as ISortType));
-    dispatch(clearFilters());
+    dispatch(setSortedProducts('a-z'));
+    dispatch(setFilteredProducts('all'));
   };
 
   return (

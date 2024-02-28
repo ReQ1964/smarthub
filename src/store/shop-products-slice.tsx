@@ -70,10 +70,6 @@ export const shopProductsSlice = createSlice({
       state.products = [];
       state.processedProducts = [];
     },
-    clearFilters() {
-      setFilteredProducts('all');
-      setSortedProducts('a-z');
-    },
   },
 });
 
@@ -82,7 +78,6 @@ export const {
   setFilteredProducts,
   setSortedProducts,
   clearProducts,
-  clearFilters,
 } = shopProductsSlice.actions;
 
 export default shopProductsSlice.reducer;
