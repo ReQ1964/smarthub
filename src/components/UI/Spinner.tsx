@@ -1,6 +1,7 @@
+import React from 'react';
 import classes from './Spinner.module.scss';
 
-const Spinner = ({ className }) => {
+const Spinner = ({ className }: { className?: string }) => {
   return (
     <div className={`${classes.spinner} ${className}`}>
       <span className={`${classes.loader} ${className}`}></span>

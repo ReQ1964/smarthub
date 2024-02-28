@@ -1,17 +1,32 @@
+import React from 'react';
 import classes from './PaymentForm.module.scss';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Button from '../../../components/UI/Button';
-import { useDispatch } from 'react-redux';
-import { addOrderDetails, clearDetails } from '../../../store/order-slice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addOrderPaymentInfo, clearDetails } from '../../../store/order-slice';
 import { clearCart } from '../../../store/cart-slice';
-import { useSelector } from 'react-redux';
 
-const PaymentForm = ({ isLoading, isConfirmed }) => {
-  const dispatch = useDispatch();
-  const orderDetails = useSelector((state) => state.order.details);
-  const { totalPrice, products: cartProducts } = useSelector(
+interface IPaymentProps {
+  setIsPaymentConfirmed: (arg0: boolean) => void;
+  setIsLoading: (arg0: boolean) => void;
+}
+
+export interface IPaymentPayload {
+  cardNumber: number;
+  holderName: string;
+  expiration: string;
+  ccv: string;
+}
+
+const PaymentForm = ({
+  setIsPaymentConfirmed,
+  setIsLoading,
+}: IPaymentProps) => {
+  const dispatch = useAppDispatch();
+  const orderInfo = useAppSelector((state) => state.order);
+  const { totalPrice, products: cartProducts } = useAppSelector(
     (state) => state.cart,
   );
 
@@ -45,17 +60,17 @@ const PaymentForm = ({ isLoading, isConfirmed }) => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      cardNumber: orderDetails.cardNumber,
-      holderName: orderDetails.holderName,
-      expiration: orderDetails.expiration,
-      ccv: orderDetails.ccv,
+      cardNumber: orderInfo.cardInfo.cardNumber,
+      holderName: orderInfo.cardInfo.holderName,
+      expiration: orderInfo.cardInfo.expiration,
+      ccv: orderInfo.cardInfo.ccv,
     },
   });
 
-  const onSubmit = async (data) => {
-    isLoading(true);
-    dispatch(addOrderDetails({ cardInfo: data }));
-    const priceWithShipping = totalPrice + orderDetails.shippingMethod.price;
+  const onSubmit = async (data: IPaymentPayload) => {
+    setIsLoading(true);
+    dispatch(addOrderPaymentInfo(data));
+    const priceWithShipping = totalPrice + orderInfo.shippingMethod.price;
     await fetch(
       'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
       {
@@ -65,7 +80,7 @@ const PaymentForm = ({ isLoading, isConfirmed }) => {
         },
         body: JSON.stringify({
           details: {
-            ...orderDetails,
+            ...orderInfo,
             priceWithShipping,
           },
           cartProducts,
@@ -75,8 +90,8 @@ const PaymentForm = ({ isLoading, isConfirmed }) => {
     );
     dispatch(clearCart());
     dispatch(clearDetails());
-    isConfirmed(true);
-    isLoading(false);
+    setIsPaymentConfirmed(true);
+    setIsLoading(false);
   };
 
   return (

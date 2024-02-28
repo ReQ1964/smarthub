@@ -1,6 +1,7 @@
+import React from 'react';
 import classes from './PaymentConfirmed.module.scss';
-import done from '../../../assets/icon/done.svg';
-import Button from '../../../components/UI/Button';
+import done from '@/assets/icon/done.svg';
+import Button from '@/components/UI/Button';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentConfirmed = () => {
@@ -8,7 +9,7 @@ const PaymentConfirmed = () => {
 
   return (
     <section className={classes.accepted}>
-      <img src={done} alt="" />
+      <img src={done} alt="An icon signalising a confirmed order" />
       <h1>Payment confirmed!</h1>
       <h4>Order #10</h4>
       <p>

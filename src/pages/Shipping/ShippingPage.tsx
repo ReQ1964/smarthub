@@ -1,10 +1,10 @@
 import React from 'react';
-import Summary from '../../components/Summary/Summary';
-import Method from './Method/Method';
-import { useSelector } from 'react-redux';
+import Summary from '../Payment/Summary/Summary';
+import Method from './ShippingForm/ShippingForm';
+import { useAppSelector } from '@/store/hooks';
 
 const ShippingPage = () => {
-  const { email, number, address, postal, city } = useSelector(
+  const { email, number, address, postal, city } = useAppSelector(
     (state) => state.order.details,
   );
 

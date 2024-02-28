@@ -1,19 +1,32 @@
 import React from 'react';
 import classes from './DetailsForm.module.scss';
 import { useNavigate } from 'react-router-dom';
-import yup from 'yup';
+import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import { addOrderDetails } from '../../../store/order-slice';
-import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../../components/UI/Button';
+import { addOrderDetails } from '@/store/order-slice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import Button from '@/components/UI/Button';
+
+export interface IDetailsPayload {
+  email: string;
+  number: string;
+  name: string;
+  surname: string;
+  address: string;
+  postal: string;
+  city: string;
+  note?: string;
+  country: string;
+  region: string;
+}
 
 const DetailsForm = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const orderDetails = useSelector((state) => state.order.details);
+  const orderDetails = useAppSelector((state) => state.order.details);
 
   const phoneRegExp =
     /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
@@ -65,7 +78,7 @@ const DetailsForm = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IDetailsPayload) => {
     dispatch(addOrderDetails(data));
     navigate('/order/shipping');
   };

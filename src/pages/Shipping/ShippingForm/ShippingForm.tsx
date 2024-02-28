@@ -1,14 +1,20 @@
+import React from 'react';
 import classes from './Method.module.scss';
-import Button from '../../../components/UI/Button';
+import Button from '@/components/UI/Button';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { addOrderDetails } from '../../../store/order-slice';
-import { useDispatch, useSelector } from 'react-redux';
+import { addOrderShippingMethod } from '@/store/order-slice';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+
+export interface IShippingPayload {
+  name: string;
+  price: number;
+}
 
 const Method = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { shippingMethod } = useSelector((state) => state.order.details);
+  const dispatch = useAppDispatch();
+  const { shippingMethod } = useAppSelector((state) => state.order);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -18,14 +24,14 @@ const Method = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    let shippingData;
+  const onSubmit = (data: { shipping: string }) => {
+    let shippingData: IShippingPayload;
     if (data.shipping === 'standard') {
       shippingData = { name: 'Standard shipping', price: 0 };
     } else {
       shippingData = { name: 'Priority shipping', price: 10 };
     }
-    dispatch(addOrderDetails({ shippingMethod: shippingData }));
+    dispatch(addOrderShippingMethod(shippingData));
     navigate('/order/payment');
   };
 

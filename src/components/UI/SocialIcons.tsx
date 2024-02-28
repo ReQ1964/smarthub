@@ -4,9 +4,9 @@ import facebook from '@/assets/icon/socials/facebook.svg';
 import instagram from '@/assets/icon/socials/instagram.svg';
 import twitter from '@/assets/icon/socials/twitter.svg';
 
-const SocialIcons = (props) => {
+const SocialIcons = (className: { className: string }) => {
   return (
-    <div className={`${classes.icons} ${props.className}`}>
+    <div className={`${classes.icons} ${className}`}>
       <a href="#">
         <img src={facebook} alt="facebook icon" />
       </a>

@@ -1,8 +1,17 @@
+import React from 'react';
 import classes from './Summary.module.scss';
 
-const Summary = ({ data }) => {
-  const { email, number, address, postal, city, ship } = data;
+interface ISummaryProps {
+  email: string;
+  number: string;
+  address: string;
+  postal: string;
+  city: string;
+  ship?: string;
+}
 
+const Summary = ({ data }: { data: ISummaryProps }) => {
+  const { email, number, address, postal, city, ship } = data;
   return (
     <div className={classes.summary}>
       <div>

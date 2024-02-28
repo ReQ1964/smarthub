@@ -1,17 +1,19 @@
+import React from 'react';
 import { useState } from 'react';
-import Summary from '../../components/Summary/Summary';
+import Summary from './Summary/Summary';
 import PaymentForm from './PaymentForm/PaymentForm';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 import PaymentConfirmed from './PaymentConfirmed/PaymentConfirmed';
-import Spinner from '../../components/UI/Spinner';
+import Spinner from '@/components/UI/Spinner';
 
 const PaymentPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [paymentConfirmed, setPaymentConfirmed] = useState<boolean>(false);
 
-  const { email, number, address, postal, city, shippingMethod } = useSelector(
+  const { email, number, address, postal, city } = useAppSelector(
     (state) => state.order.details,
   );
+  const { shippingMethod } = useAppSelector((state) => state.order);
 
   const data = {
     email,
@@ -28,8 +30,8 @@ const PaymentPage = () => {
         <>
           <Summary data={data} />
           <PaymentForm
-            isConfirmed={setPaymentConfirmed}
-            isLoading={setIsLoading}
+            setIsPaymentConfirmed={setPaymentConfirmed}
+            setIsLoading={setIsLoading}
           />
         </>
       )}
