@@ -1,11 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import Navbar from './layouts/Navbar/Navbar';
 import Footer from './layouts/Footer/Footer';
 import useScrollToTop from './hooks/useScrollToTop';
 import useResetCategory from './hooks/useResetCategory';
-import { setFilteredProducts, setProducts } from './store/products-slice';
-import { useEffect } from 'react';
+import { setProducts } from './store/products-slice';
 import { useAppDispatch } from './store/hooks';
 
 const App = () => {
@@ -13,21 +15,21 @@ const App = () => {
   useScrollToTop();
   useResetCategory();
 
-  const fetchProducts = async (url: string) => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      dispatch(setProducts(Object.values(data)));
-      dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }));
-    } catch (error) {
-      console.log(`Something went wrong: ${error}`);
-    }
+  const fetchProducts = async () => {
+    const res = await axios.get(
+      'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/producats.json',
+    );
+    dispatch(setProducts(Object.values(res.data)));
+    return res.data;
   };
 
+  const { refetch } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+  });
+
   useEffect(() => {
-    fetchProducts(
-      'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-    );
+    refetch();
   }, []);
 
   return (

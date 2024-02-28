@@ -13,6 +13,11 @@ import DetailsPage from '@/pages/Details/DetailsPage';
 import ShippingPage from '@/pages/Shipping/ShippingPage';
 import PaymentPage from '@/pages/Payment/PaymentPage';
 
+const SingleProductLoader = async () => {
+  console.log('a');
+  return null;
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: '/shop/:productId',
         element: <SingleProductPage />,
+        loader: SingleProductLoader,
       },
       {
         path: '/about',

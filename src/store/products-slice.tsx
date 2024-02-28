@@ -54,13 +54,9 @@ export const productsSlice = createSlice({
           break;
       }
     },
-    setSortType(state, action: PayloadAction<ProductsState['sortType']>) {
-      state.sortType = action.payload;
-    },
   },
 });
 
-export const { setProducts, setFilteredProducts, setSortType } =
-  productsSlice.actions;
+export const { setProducts, setFilteredProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;
