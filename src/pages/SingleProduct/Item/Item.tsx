@@ -4,39 +4,21 @@ import { useAppDispatch } from '@/store/hooks';
 import { addToCart } from '@/store/cart-slice';
 import { IDetailedProduct } from '@/interfaces';
 import classes from './Item.module.scss';
-import filledStar from '@/assets/icon/rating//star-filled.svg';
-import star from '@/assets/icon/rating/star.svg';
+import StarsRating from '@/components/UI/StarsRating';
 import Button from '@/components/UI/Button';
 
-export const Item = ({ product }: { product: IDetailedProduct }) => {
+export const Item = ({
+  product,
+  reviewsNumber,
+}: {
+  product: IDetailedProduct;
+  reviewsNumber: number;
+}) => {
   const { id, name, colors, company, price, img, type, rating } = product;
   const dispatch = useAppDispatch();
   const [pickedColor, setPickedColor] = useState<string>(colors[0]);
   const capitalize = (s: string) => {
     return s[0].toUpperCase() + s.slice(1);
-  };
-
-  const createStars = (number: number) => {
-    const elements = [] as JSX.Element[];
-    for (let i = 0; i < number; i++)
-      elements.push(
-        <img
-          key={`filledStar-${i}`}
-          src={filledStar}
-          alt="An icon of a filled review star"
-        />,
-      );
-    if (number < 5) {
-      for (let i = 0; i < 5 - number; i++)
-        elements.push(
-          <img
-            key={`star-${i}`}
-            src={star}
-            alt="An icon of an empty review star"
-          />,
-        );
-    }
-    return elements;
   };
 
   const addToCartHandler = () => {
@@ -61,8 +43,8 @@ export const Item = ({ product }: { product: IDetailedProduct }) => {
         <div className={classes.info}>
           <h3>{name}</h3>
           <div className={classes.rating}>
-            <div className={classes.stars}>{createStars(rating)}</div>
-            <p>10 reviews</p>
+            <div className={classes.stars}>{StarsRating(rating)}</div>
+            <p>{reviewsNumber} reviews</p>
           </div>
         </div>
 

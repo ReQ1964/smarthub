@@ -7,39 +7,45 @@ import memory from '@/assets/icon/specifications/memory.png';
 import camera from '@/assets/icon/specifications/camera.png';
 import storage from '@/assets/icon/specifications/storage.png';
 import os from '@/assets/icon/specifications/operating-system.png';
+import { useLoaderData } from 'react-router';
+
+interface ISpecifications {
+  battery: string;
+  camera: string;
+  display: string;
+  memory: string;
+  os: string;
+  processor: string;
+  storage: string;
+}
+
+const icons = {
+  battery: battery,
+  camera: camera,
+  display: display,
+  memory: memory,
+  os: os,
+  processor: processor,
+  storage: storage,
+};
 
 const Specification = () => {
+  const { specifications } = useLoaderData() as {
+    specifications: ISpecifications;
+  };
+
   return (
     <section className={classes.specification}>
       <ul>
-        <li>
-          <img src={os} alt="Operating system icon" />
-          Operating System IOS 12
-        </li>
-        <li>
-          <img src={camera} alt="Camera icon" />
-          Camera 12+12+16MP
-        </li>
-        <li>
-          <img src={processor} alt="Processor icon" />
-          Processor 16
-        </li>
-        <li>
-          <img src={battery} alt="Battery icon" />
-          Battery 2500mAh
-        </li>
-        <li>
-          <img src={memory} alt="Memory icon" />
-          Memory 4gb
-        </li>
-        <li>
-          <img src={display} alt="Display icon" />
-          Display 5 inches
-        </li>
-        <li>
-          <img src={storage} alt="Storage icon" />
-          Storage 128gb
-        </li>
+        {Object.keys(specifications).map((key) => (
+          <li key={key}>
+            <img
+              src={icons[key as keyof ISpecifications]}
+              alt={`${key} icon`}
+            />
+            {specifications[key as keyof ISpecifications]}
+          </li>
+        ))}
       </ul>
     </section>
   );

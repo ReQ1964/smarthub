@@ -1,23 +1,40 @@
 .reviews {
-  display: grid;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   padding: 3rem 3rem 2rem;
   .review {
-    .rating {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .left {
       display: flex;
-      align-items: flex-end;
-      margin-bottom: 1rem;
-      gap: 0.6rem;
-      .date {
-        margin-bottom: 0.25rem;
-      }
-      .stars {
-        display: flex;
-        margin-bottom: 5px;
+      flex-direction: column;
+      gap: 0.2rem;
+      .rating {
+        margin-left: -3px;
         img {
-          height: 1.2rem;
+          height: 1.4rem;
         }
       }
     }
   }
+  // .review {
+  //   .rating {
+  //     display: flex;
+  //     align-items: flex-end;
+  //     margin-bottom: 1rem;
+  //     gap: 0.6rem;
+  //     .date {
+  //       margin-bottom: 0.25rem;
+  //     }
+  //     .rating {
+  //       display: flex;
+  //       margin-bottom: 5px;
+  //       img {
+  //         height: 1.4rem;
+  //       }
+  //     }
+  //   }
+  // }
 }

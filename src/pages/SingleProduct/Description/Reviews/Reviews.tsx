@@ -1,53 +1,36 @@
 import React from 'react';
 import classes from './Reviews.module.scss';
-import filledStar from '@/assets/icon/rating/star-filled.svg';
-import star from '@/assets/icon/rating/star.svg';
+import StarsRating from '@/components/UI/StarsRating';
+import { useLoaderData } from 'react-router';
+
+export interface IReviews {
+  [key: string]: {
+    date: string;
+    nickname: string;
+    rating: number;
+    review: string;
+  };
+}
 
 const Reviews = () => {
+  const { reviews } = useLoaderData() as {
+    reviews: IReviews;
+  };
+
   return (
     <section className={classes.reviews}>
-      <div className={classes.review}>
-        <div className={classes.rating}>
-          <div>
-            <p>John</p>
-            <div className={classes.stars}>
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={star} alt="" />
+      {Object.keys(reviews).map((key) => (
+        <div key={key} className={classes.review}>
+          <div className={classes.left}>
+            <h4>{reviews[key].nickname}</h4>
+            <div className={classes.rating}>
+              {StarsRating(reviews[key].rating)}
             </div>
           </div>
-          <p className={classes.date}>14/07/2022</p>
+          <p>{reviews[key].review}</p>
+          <h4 className={classes.date}>{reviews[key].date}</h4>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum
-          et accusantium iusto, totam suscipit assumenda consequuntur, molestiae
-          maxime laborum ratione nemo? Ex facilis qui porro error quas corporis
-          in.
-        </p>
-      </div>
-      <div className={classes.review}>
-        <div className={classes.rating}>
-          <div>
-            <p>John</p>
-            <div className={classes.stars}>
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={filledStar} alt="" />
-              <img src={star} alt="" />
-            </div>
-          </div>
-          <p className={classes.date}>14/07/2022</p>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam harum
-          et accusantium iusto, totam suscipit assumenda consequuntur, molestiae
-          maxime laborum ratione nemo? Ex facilis qui porro error quas corporis
-          in.
-        </p>
-      </div>
+      ))}
     </section>
   );
 };
