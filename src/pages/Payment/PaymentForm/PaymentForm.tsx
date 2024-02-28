@@ -27,9 +27,7 @@ const PaymentForm = ({
 }: IPaymentProps) => {
   const dispatch = useAppDispatch();
   const orderInfo = useAppSelector((state) => state.order);
-  const { totalPrice, products: cartProducts } = useAppSelector(
-    (state) => state.cart,
-  );
+  const { totalPrice, cartProducts } = useAppSelector((state) => state.cart);
 
   const expirationRegExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
   const ccvRegExp = /^[0-9]+$/;

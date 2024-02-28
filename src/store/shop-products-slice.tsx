@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IDetailedProduct } from '@/interfaces';
 
 interface ProductsState {
-  products: IDetailedProduct[];
+  shopProducts: IDetailedProduct[];
   processedProducts: IDetailedProduct[];
   currentProductType: 'watch' | 'phone' | 'all';
   currentSortType: 'a-z' | 'z-a' | 'high-price' | 'low-price';
 }
 
 const initialState: ProductsState = {
-  products: [],
+  shopProducts: [],
   processedProducts: [],
   currentProductType: 'all',
   currentSortType: 'a-z',
@@ -37,11 +37,11 @@ export const sortProducts = (
 };
 
 export const shopProductsSlice = createSlice({
-  name: 'products',
+  name: 'shopProducts',
   initialState,
   reducers: {
     setProducts(state, action: PayloadAction<IDetailedProduct[]>) {
-      state.products = action.payload;
+      state.shopProducts = action.payload;
     },
     setSortedProducts(
       state,
@@ -56,18 +56,18 @@ export const shopProductsSlice = createSlice({
     ) {
       state.currentProductType = action.payload;
 
-      state.processedProducts = state.products.filter(
+      state.processedProducts = state.shopProducts.filter(
         (product) => product.type === action.payload,
       );
 
       if (action.payload === 'all') {
-        state.processedProducts = state.products;
+        state.processedProducts = state.shopProducts;
       }
 
       sortProducts(state.processedProducts, state.currentSortType);
     },
     clearProducts(state) {
-      state.products = [];
+      state.shopProducts = [];
       state.processedProducts = [];
     },
   },

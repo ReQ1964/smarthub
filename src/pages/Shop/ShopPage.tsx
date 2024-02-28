@@ -13,7 +13,9 @@ import { clearProducts } from '@/store/shop-products-slice';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.products.processedProducts);
+  const shopProducts = useAppSelector(
+    (state) => state.shopProducts.processedProducts,
+  );
   const starterProducts = useLoaderData() as IDetailedProduct[];
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const ShopPage = () => {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
+  const currentProducts = shopProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct,
   );
@@ -43,7 +45,7 @@ const ShopPage = () => {
       <ShopProducts products={currentProducts} />
       <Pagination
         productsPerPage={productsPerPage}
-        totalProducts={products.length}
+        totalProducts={shopProducts.length}
         paginate={paginate}
         currentPage={currentPage}
       />

@@ -9,9 +9,9 @@ import classes from './Navbar.module.scss';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
-  const products = useAppSelector((state) => state.cart.products);
+  const cartProducts = useAppSelector((state) => state.cart.cartProducts);
 
-  const cartQuantity = products.reduce(
+  const cartQuantity = cartProducts.reduce(
     (total, product) => total + product.quantity,
     0,
   );

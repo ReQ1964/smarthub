@@ -5,7 +5,7 @@ import arrowDown from '@/assets/icon/arrow_down.svg';
 import { useAppSelector } from '@/store/hooks';
 
 const OrderDetails = () => {
-  const products = useAppSelector((state) => state.cart.products);
+  const cartProducts = useAppSelector((state) => state.cart.cartProducts);
   const totalPrice = useAppSelector((state) => state.cart.totalPrice);
   const { shippingMethod } = useAppSelector((state) => state.order);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -30,7 +30,7 @@ const OrderDetails = () => {
       </div>
       <ul className={classes.orderDetails}>
         {isActive &&
-          products.map((product) => {
+          cartProducts.map((product) => {
             return (
               <OrderItem
                 key={product.id}

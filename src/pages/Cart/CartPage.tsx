@@ -11,10 +11,10 @@ const CartPage = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalMessage, setModalMessage] = useState<string>('');
   const totalPrice = useAppSelector((state) => state.cart.totalPrice);
-  const products = useAppSelector((state) => state.cart.products);
+  const cartProducts = useAppSelector((state) => state.cart.cartProducts);
 
   const checkoutHandler = () => {
-    if (products.length === 0) {
+    if (cartProducts.length === 0) {
       setModalMessage("Your cart can't be empty!");
       setIsOpen(true);
       return;

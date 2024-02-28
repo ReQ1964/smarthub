@@ -5,7 +5,7 @@ import orderReducer from './order-slice';
 
 export const store = configureStore({
   reducer: {
-    products: shoProductsReducer,
+    shopProducts: shoProductsReducer,
     cart: cartReducer,
     order: orderReducer,
   },

@@ -7,7 +7,7 @@ import { setFilteredProducts } from '@/store/shop-products-slice';
 const Categories = () => {
   const dispatch = useAppDispatch();
   const productType = useAppSelector(
-    (state) => state.products.currentProductType,
+    (state) => state.shopProducts.currentProductType,
   );
 
   return (

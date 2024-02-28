@@ -18,7 +18,7 @@ const Pagination = ({
   currentPage,
 }: PaginationProps) => {
   const currentProductType = useAppSelector(
-    (state) => state.products.currentProductType,
+    (state) => state.shopProducts.currentProductType,
   );
   const pageNumbers = [] as number[];
 

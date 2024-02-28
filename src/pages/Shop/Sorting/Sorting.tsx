@@ -15,7 +15,7 @@ const Sorting = () => {
   const [selectedSort, setSelectedSort] = useState('a-z');
 
   const filteredProductsLength = useAppSelector(
-    (state) => state.products.processedProducts.length,
+    (state) => state.shopProducts.processedProducts.length,
   );
 
   const submitSortingHandler = (

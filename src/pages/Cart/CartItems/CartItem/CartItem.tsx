@@ -4,26 +4,22 @@ import trash from '@/assets/icon/delete.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { removeFromCart, changeQuantity } from '@/store/cart-slice';
 
-interface ICartItem {
+interface ICartItemProps {
   id: string | number;
-  img: string | string[];
+  img: string;
   name: string;
   price: number;
 }
 
-const CartItem = ({ id, img, name, price }: ICartItem) => {
+const CartItem = ({ id, img, name, price }: ICartItemProps) => {
   const dispatch = useAppDispatch();
-  const product = useAppSelector((state) =>
-    state.cart.products.find((product) => product.id === id),
+  const cartProduct = useAppSelector((state) =>
+    state.cart.cartProducts.find((product) => product.id === id),
   );
 
   return (
     <div className={classes.item}>
-      <img
-        src={Array.isArray(img) ? img[0] : img}
-        alt="Product image"
-        className={classes.prodImg}
-      />
+      <img src={img} alt="Product image" className={classes.prodImg} />
       <div className={classes.left}>
         <h3>{name}</h3>
         <img
@@ -44,7 +40,7 @@ const CartItem = ({ id, img, name, price }: ICartItem) => {
             >
               -
             </button>
-            <p>{product?.quantity}</p>
+            <p>{cartProduct?.quantity}</p>
             <button
               onClick={() =>
                 dispatch(changeQuantity({ id: id, type: 'increase' }))

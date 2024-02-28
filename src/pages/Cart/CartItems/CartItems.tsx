@@ -4,11 +4,11 @@ import classes from './CartItems.module.scss';
 import { useAppSelector } from '@/store/hooks';
 
 const CartItems = () => {
-  const products = useAppSelector((state) => state.cart.products);
+  const cartProducts = useAppSelector((state) => state.cart.cartProducts);
 
   return (
     <section className={classes.items}>
-      {products.map((product) => {
+      {cartProducts.map((product) => {
         return (
           <CartItem
             key={product.id}

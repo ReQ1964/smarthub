@@ -6,17 +6,17 @@ interface ICartProduct {
   color: string;
   company: string;
   price: number;
-  img: string | string[];
+  img: string;
   type: string;
   quantity: number;
 }
 interface CartState {
-  products: ICartProduct[];
+  cartProducts: ICartProduct[];
   totalPrice: number;
 }
 
 const initialState: CartState = {
-  products: [],
+  cartProducts: [],
   totalPrice: 0,
 };
 
@@ -33,28 +33,30 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart(state, action: PayloadAction<ICartProduct>) {
       const newProduct = action.payload;
-      const existingProduct = state.products.find(
+      const existingProduct = state.cartProducts.find(
         (product) => product.id === newProduct.id,
       );
 
       if (existingProduct) {
         existingProduct.quantity++;
       } else {
-        state.products.push({ ...newProduct, quantity: 1 });
+        state.cartProducts.push({ ...newProduct, quantity: 1 });
       }
 
-      state.totalPrice = calculateTotalPrice(state.products);
+      state.totalPrice = calculateTotalPrice(state.cartProducts);
     },
     removeFromCart(state, action) {
       const id = action.payload;
-      state.products = state.products.filter((product) => product.id !== id);
+      state.cartProducts = state.cartProducts.filter(
+        (product) => product.id !== id,
+      );
 
-      state.totalPrice = calculateTotalPrice(state.products);
+      state.totalPrice = calculateTotalPrice(state.cartProducts);
     },
     changeQuantity(state, action) {
       const { id, type } = action.payload;
 
-      const existingProduct = state.products.find(
+      const existingProduct = state.cartProducts.find(
         (product) => product.id === id,
       );
 
@@ -66,10 +68,10 @@ export const cartSlice = createSlice({
         return;
       }
 
-      state.totalPrice = calculateTotalPrice(state.products);
+      state.totalPrice = calculateTotalPrice(state.cartProducts);
     },
     clearCart(state) {
-      state.products = [];
+      state.cartProducts = [];
       state.totalPrice = 0;
     },
   },
