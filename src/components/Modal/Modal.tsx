@@ -1,8 +1,16 @@
+import React from 'react';
 import classes from './Modal.module.scss';
 import { createPortal } from 'react-dom';
 import Button from '../UI/Button';
 
-const Modal = ({ children, isOpen, onClose, defaultButton }) => {
+interface IModalProps {
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  defaultButton: boolean;
+}
+
+const Modal = ({ children, isOpen, onClose, defaultButton }: IModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
@@ -13,7 +21,7 @@ const Modal = ({ children, isOpen, onClose, defaultButton }) => {
         {defaultButton && <Button onClick={onClose}>Close</Button>}
       </div>
     </>,
-    document.getElementById('portal'),
+    document.getElementById('portal')!,
   );
 };
 

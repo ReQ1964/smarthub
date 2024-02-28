@@ -1,19 +1,28 @@
+import React from 'react';
 import classes from '../AccountPage.module.scss';
 import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import Button from '../../../components/UI/Button';
-import visibleIcon from '../../../assets/icon/navbar/visible.svg';
-import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
-import Spinner from '../../../components/UI/Spinner';
+import Button from '@/components/UI/Button';
+import visibleIcon from '@/assets/icon/navbar/visible.svg';
+import invisibleIcon from '@/assets/icon/navbar/invisible.svg';
+import Spinner from '@/components/UI/Spinner';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth } from '@/firebase';
+import { AccountFormsProps } from '../AccountPage';
 
-const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [passwordShown, setPasswordShown] = useState(false);
+interface ISignUpFormData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+const SignUpForm = ({ setMethod, emailRegExp }: AccountFormsProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     email: yup
@@ -26,7 +35,7 @@ const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
       .min(6, 'Password has to be at least 6 characters long.'),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref('password'), null], "Passwords don't match")
+      .oneOf([yup.ref('password')], "Passwords don't match")
       .required('Please confirm your password.'),
   });
 
@@ -38,9 +47,12 @@ const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
     resolver: yupResolver(schema),
   });
 
-  const onRegister = ({ email, password, confirmPassword }) => {
+  const onRegister = ({
+    email,
+    password,
+    confirmPassword,
+  }: ISignUpFormData) => {
     if (password === confirmPassword) {
-      setError(false);
       setIsLoading(true);
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -48,14 +60,16 @@ const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
           console.log(user);
         })
         .catch((error) => {
+          setError(true);
           if (error.code === 'auth/email-already-in-use') {
-            setError('Email already in use!');
+            setErrorMessage('Email already in use!');
           } else {
-            setError(error.message);
+            setErrorMessage(error.message);
           }
         })
         .finally(() => {
           setIsLoading(false);
+          setError(false);
         });
     }
   };
@@ -64,7 +78,6 @@ const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
     <section className={classes.loggingForm}>
       <div className={classes.register}>
         <h1>Create an account</h1>
-        {error && <p className={classes.error}>{error}</p>}
         <form
           onSubmit={handleSubmit(onRegister)}
           className={classes.registerForm}
@@ -107,6 +120,7 @@ const SignUpForm = ({ setMethod, emailRegExp, openModal }) => {
               'Create Account'
             )}
           </Button>
+          {error && <p className={classes.error}>{errorMessage}</p>}
         </form>
         <p className={classes.helper}>
           Already Have An Account?{' '}

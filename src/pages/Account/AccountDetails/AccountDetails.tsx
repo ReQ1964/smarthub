@@ -1,6 +1,8 @@
-import Button from '../../../components/UI/Button';
+import React from 'react';
+import Button from '@/components/UI/Button';
 import { signOut } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth } from '@/firebase';
+import classes from './AccountDetails.module.scss';
 
 const AccountDetails = () => {
   const handleLogout = () => {
@@ -14,8 +16,9 @@ const AccountDetails = () => {
   };
 
   return (
-    <section>
+    <section className={classes.account}>
       <Button onClick={handleLogout}>Sign out</Button>
+      <h3>Account Page will be implemented in the phase 2</h3>
     </section>
   );
 };

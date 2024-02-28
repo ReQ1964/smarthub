@@ -12,12 +12,15 @@ interface IContactFormData {
   message: string;
 }
 
+const emailRegExp =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const ContactForm = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
       .required('Please enter your email.')
-      .email('Please enter a valid email address.'),
+      .matches(emailRegExp, 'Please enter a valid email address.'),
     name: yup
       .string()
       .required('Please enter your name.')
@@ -55,7 +58,7 @@ const ContactForm = () => {
   return (
     <section className={classes.form}>
       <h1>Drop us a line!</h1>
-      <form onSubmit={handleSubmit(submitHandler)}>
+      <form onSubmit={handleSubmit(submitHandler)} action="/help/contact">
         <input {...register('name')} placeholder="Name*" />
         <p className={classes.error}>{errors.name?.message}</p>
         <input {...register('email')} placeholder="Email*" />

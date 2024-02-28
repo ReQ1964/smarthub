@@ -44,19 +44,6 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactPage />,
-        action: async ({ request }) => {
-          const data = await request.formData();
-
-          const eventData = {
-            name: data.get('name'),
-            email: data.get('email'),
-            topic: data.get('topic'),
-            message: data.get('message'),
-          };
-          console.log(eventData);
-
-          return null;
-        },
       },
       {
         path: '/account',

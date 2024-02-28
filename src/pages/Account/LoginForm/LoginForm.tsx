@@ -1,22 +1,34 @@
+import React from 'react';
 import classes from '../AccountPage.module.scss';
 import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import Button from '../../../components/UI/Button';
-import visibleIcon from '../../../assets/icon/navbar/visible.svg';
-import invisibleIcon from '../../../assets/icon/navbar/invisible.svg';
+import Button from '@/components/UI/Button';
+import visibleIcon from '@/assets/icon/navbar/visible.svg';
+import invisibleIcon from '@/assets/icon/navbar/invisible.svg';
 import {
   signInWithEmailAndPassword,
   fetchSignInMethodsForEmail,
 } from 'firebase/auth';
-import { auth } from '../../../firebase';
-import Spinner from '../../../components/UI/Spinner';
+import { auth } from '@/firebase';
+import Spinner from '@/components/UI/Spinner';
+import { AccountFormsProps } from '../AccountPage';
 
-const LoginForm = ({ setMethod, emailRegExp, openModal }) => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+interface LoginFormProps extends AccountFormsProps {
+  openModal: () => void;
+}
+
+interface ILoginData {
+  email: string;
+  password: string;
+}
+
+const LoginForm = ({ setMethod, emailRegExp, openModal }: LoginFormProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     email: yup
@@ -34,26 +46,27 @@ const LoginForm = ({ setMethod, emailRegExp, openModal }) => {
     resolver: yupResolver(schema),
   });
 
-  const onLogin = ({ email, password }) => {
-    setError(false);
+  const onLogin = ({ email, password }: ILoginData) => {
     setIsLoading(true);
     fetchSignInMethodsForEmail(auth, email)
       .then((result) => {
         if (result.filter((item) => item != 'password').length >= 1) {
-          setError("You're already using a different login method!");
+          setErrorMessage("You're already using a different login method!");
           return;
         }
         signInWithEmailAndPassword(auth, email, password).catch((error) => {
           console.log(error.code, error.message);
-          if (error.message === 'auth/user-not-found') {
-            setError('Invalid email and/or password!');
+          setError(true);
+          if (error.code === 'auth/user-not-found') {
+            setErrorMessage('Invalid email and/or password!');
           } else {
-            setError(error.message);
+            setErrorMessage(error.message);
           }
         });
       })
       .finally(() => {
         setIsLoading(false);
+        setError(false);
       });
   };
 
@@ -61,7 +74,6 @@ const LoginForm = ({ setMethod, emailRegExp, openModal }) => {
     <section className={classes.loggingForm}>
       <div className={classes.login}>
         <h1>Login to your account</h1>
-        {error && <p className={classes.error}>{error}</p>}
         <form onSubmit={handleSubmit(onLogin)} className={classes.loginForm}>
           <div className={classes.email}>
             <label htmlFor="email">Email</label>
@@ -95,9 +107,10 @@ const LoginForm = ({ setMethod, emailRegExp, openModal }) => {
               'Login Now'
             )}
           </Button>
+          {error && <p className={classes.error}>{errorMessage}</p>}
         </form>
         <p className={classes.helper}>
-          Don't Have An Account?{' '}
+          Don&apos;t Have An Account?{' '}
           <span
             onClick={() => {
               setMethod('login');
