@@ -1,11 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IDetailedProduct } from '@/interfaces';
 
-type ISortType = 'a-z' | 'z-a' | 'high-price' | 'low-price';
+interface ProductsState {
+  products: IDetailedProduct[];
+  processedProducts: IDetailedProduct[];
+  currentProductType: 'watch' | 'phone' | 'all';
+  currentSortType: 'a-z' | 'z-a' | 'high-price' | 'low-price';
+}
+
+const initialState: ProductsState = {
+  products: [],
+  processedProducts: [],
+  currentProductType: 'all',
+  currentSortType: 'a-z',
+};
 
 export const sortProducts = (
   products: IDetailedProduct[],
-  sortType: ISortType,
+  sortType: ProductsState['currentSortType'],
 ) => {
   const sortedProducts = products;
   switch (sortType) {
@@ -22,21 +34,6 @@ export const sortProducts = (
       sortedProducts.sort((a, b) => a.price - b.price);
       break;
   }
-  return sortedProducts;
-};
-
-interface ProductsState {
-  products: IDetailedProduct[];
-  filteredProducts: IDetailedProduct[];
-  sortType: 'a-z' | 'z-a' | 'high-price' | 'low-price';
-  currentProductType: 'watch' | 'phone' | 'all';
-}
-
-const initialState: ProductsState = {
-  products: [],
-  filteredProducts: [],
-  sortType: 'a-z',
-  currentProductType: 'all',
 };
 
 export const shopProductsSlice = createSlice({
@@ -46,34 +43,46 @@ export const shopProductsSlice = createSlice({
     setProducts(state, action: PayloadAction<IDetailedProduct[]>) {
       state.products = action.payload;
     },
+    setSortedProducts(
+      state,
+      action: PayloadAction<ProductsState['currentSortType']>,
+    ) {
+      state.currentSortType = action.payload;
+      sortProducts(state.processedProducts, action.payload);
+    },
     setFilteredProducts(
       state,
-      action: PayloadAction<{
-        productType: ProductsState['currentProductType'];
-        sortType: ProductsState['sortType'];
-      }>,
+      action: PayloadAction<ProductsState['currentProductType']>,
     ) {
-      state.currentProductType = action.payload.productType;
-      state.sortType = action.payload.sortType;
+      state.currentProductType = action.payload;
 
-      state.filteredProducts = state.products.filter(
-        (product) => product.type === action.payload.productType,
+      state.processedProducts = state.products.filter(
+        (product) => product.type === action.payload,
       );
 
-      if (action.payload.productType === 'all') {
-        state.filteredProducts = state.products;
+      if (action.payload === 'all') {
+        state.processedProducts = state.products;
       }
 
-      sortProducts(state.filteredProducts, state.sortType);
+      sortProducts(state.processedProducts, state.currentSortType);
     },
     clearProducts(state) {
       state.products = [];
-      state.filteredProducts = [];
+      state.processedProducts = [];
+    },
+    clearFilters() {
+      setFilteredProducts('all');
+      setSortedProducts('a-z');
     },
   },
 });
 
-export const { setProducts, setFilteredProducts, clearProducts } =
-  shopProductsSlice.actions;
+export const {
+  setProducts,
+  setFilteredProducts,
+  setSortedProducts,
+  clearProducts,
+  clearFilters,
+} = shopProductsSlice.actions;
 
 export default shopProductsSlice.reducer;

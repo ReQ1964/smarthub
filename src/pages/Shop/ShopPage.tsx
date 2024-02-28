@@ -13,13 +13,12 @@ import { clearProducts } from '@/store/shop-products-slice';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.products.filteredProducts);
+  const products = useAppSelector((state) => state.products.processedProducts);
   const starterProducts = useLoaderData() as IDetailedProduct[];
 
   useEffect(() => {
     dispatch(setProducts(starterProducts));
-    dispatch(setFilteredProducts({ sortType: 'a-z', productType: 'all' }));
-
+    dispatch(setFilteredProducts('all'));
     return () => {
       dispatch(clearProducts());
     };

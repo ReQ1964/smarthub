@@ -9,7 +9,6 @@ const Categories = () => {
   const productType = useAppSelector(
     (state) => state.products.currentProductType,
   );
-  const sortType = useAppSelector((state) => state.products.sortType);
 
   return (
     <section className={classes.categories}>
@@ -23,11 +22,7 @@ const Categories = () => {
             ? `${classes.category} ${classes.active}`
             : classes.category
         }
-        onClick={() =>
-          dispatch(
-            setFilteredProducts({ sortType: sortType, productType: 'all' }),
-          )
-        }
+        onClick={() => dispatch(setFilteredProducts('all'))}
       >
         <h2>All Devices</h2>
       </Link>
@@ -41,11 +36,7 @@ const Categories = () => {
             ? `${classes.category} ${classes.active}`
             : classes.category
         }
-        onClick={() =>
-          dispatch(
-            setFilteredProducts({ sortType: sortType, productType: 'phone' }),
-          )
-        }
+        onClick={() => dispatch(setFilteredProducts('phone'))}
       >
         <h2>Phones</h2>
       </Link>
@@ -59,11 +50,7 @@ const Categories = () => {
             ? `${classes.category} ${classes.active}`
             : classes.category
         }
-        onClick={() =>
-          dispatch(
-            setFilteredProducts({ sortType: sortType, productType: 'watch' }),
-          )
-        }
+        onClick={() => dispatch(setFilteredProducts('watch'))}
       >
         <h2>Watches</h2>
       </Link>
