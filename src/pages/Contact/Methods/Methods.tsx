@@ -1,5 +1,6 @@
+import React from 'react';
 import classes from './Methods.module.scss';
-import SocialIcons from '../../../components/UI/SocialIcons';
+import SocialIcons from '@/components/UI/SocialIcons';
 
 const Methods = () => {
   return (

@@ -1,11 +1,12 @@
+import React from 'react';
 import Methods from './Methods/Methods';
-import Form from './Form/Form';
+import ContactForm from './ContactForm/ContactForm';
 
 const ContactPage = () => {
   return (
     <main>
       <Methods />
-      <Form />
+      <ContactForm />
     </main>
   );
 };
