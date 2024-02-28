@@ -1,0 +1,26 @@
+.method {
+  h2 {
+    padding: 0 2rem;
+  }
+}
+.form {
+  margin: 2rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--text-tertiary);
+  text-align: center;
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    &:nth-of-type(1) {
+      border-bottom: 1px solid var(--text-tertiary);
+    }
+    p {
+      font-weight: bold;
+    }
+  }
+  .btn {
+    width: 90%;
+    margin-bottom: 1rem;
+  }
+}

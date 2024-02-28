@@ -1,0 +1,31 @@
+.product {
+  flex-direction: column;
+  list-style: none;
+  text-align: center;
+  .description {
+    display: grid;
+    gap: 1rem;
+  }
+  .price {
+    color: green;
+    font-weight: bold;
+  }
+  img {
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .company {
+    color: var(--text-tertiary);
+  }
+  .colors {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+  .color {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 0.1px solid rgba(0, 0, 0, 0.3);
+  }
+}

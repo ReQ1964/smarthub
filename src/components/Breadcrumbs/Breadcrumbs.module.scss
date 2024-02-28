@@ -1,31 +1,31 @@
 .breadcrumbs {
-	.links {
-		padding: 2rem 1rem;
-		img {
-			width: 13px;
-		}
-		ul {
-			display: flex;
-			gap: 0.5rem;
-			margin: 0 auto;
-			li {
-				position: relative;
-				text-align: center;
-				list-style: none;
-				.cart_link {
-					color: var(--text-quaternary);
-					font-weight: bold;
-				}
-				a {
-					text-decoration: none;
-					color: var(--text-tertiary);
+  .links {
+    padding: 2rem 1rem;
+    img {
+      width: 13px;
+    }
+    ul {
+      display: flex;
+      gap: 0.5rem;
+      margin: 0 auto;
+      li {
+        position: relative;
+        text-align: center;
+        list-style: none;
+        .cart_link {
+          color: var(--text-quaternary);
+          font-weight: bold;
+        }
+        a {
+          text-decoration: none;
+          color: var(--text-tertiary);
 
-					&.active {
-						color: black;
-						font-weight: bold;
-					}
-				}
-			}
-		}
-	}
+          &.active {
+            color: black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }

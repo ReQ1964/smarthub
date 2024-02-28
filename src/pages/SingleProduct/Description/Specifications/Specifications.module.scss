@@ -1,0 +1,17 @@
+.specification {
+  padding: 3rem 2rem 2rem;
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+    list-style: none;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 70%;
+    }
+  }
+}

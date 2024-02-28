@@ -1,68 +1,68 @@
 nav {
-	.heading {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 1.5rem;
-		h1 {
-			a {
-				text-decoration: none;
-				color: black;
-			}
-		}
-		.controls {
-			display: flex;
-			div {
-				position: relative;
-				.cartIcon {
-					padding-top: 0.3rem;
-				}
-				p {
-					position: absolute;
-					background-color: var(--btn-bg);
-					border-radius: 50%;
-					min-width: 18px;
-					height: 18px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					top: -4px;
-					right: -6px;
-					color: white;
-				}
-			}
-			img {
-				width: 2rem;
-				margin-left: 6px;
-				&:nth-child(1) {
-					width: 29px;
-				}
-				&:nth-child(3) {
-					padding-top: 0.2rem;
-					width: 34px;
-				}
-			}
-		}
-	}
-	.links {
-		padding: 3rem 2rem;
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    h1 {
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .controls {
+      display: flex;
+      div {
+        position: relative;
+        .cartIcon {
+          padding-top: 0.3rem;
+        }
+        p {
+          position: absolute;
+          background-color: var(--btn-bg);
+          border-radius: 50%;
+          min-width: 18px;
+          height: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          top: -4px;
+          right: -6px;
+          color: white;
+        }
+      }
+      img {
+        width: 2rem;
+        margin-left: 6px;
+        &:nth-child(1) {
+          width: 29px;
+        }
+        &:nth-child(3) {
+          padding-top: 0.2rem;
+          width: 34px;
+        }
+      }
+    }
+  }
+  .links {
+    padding: 3rem 2rem;
 
-		ul {
-			display: grid;
-			gap: 2rem;
-		}
-		li {
-			text-align: center;
-			font-size: 1.4rem;
-			list-style: none;
-			a {
-				text-decoration: none;
-				color: var(--text-tertiary);
-				&.active {
-					color: black;
-					font-weight: bold;
-				}
-			}
-		}
-	}
+    ul {
+      display: grid;
+      gap: 2rem;
+    }
+    li {
+      text-align: center;
+      font-size: 1.4rem;
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: var(--text-tertiary);
+        &.active {
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
