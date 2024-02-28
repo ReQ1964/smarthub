@@ -70,17 +70,14 @@ const PaymentForm = ({
     setIsLoading(true);
     dispatch(addOrderPaymentInfo(data));
     const priceWithShipping = totalPrice + orderInfo.shippingMethod.price;
-    await axios.post(
-      'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
-      {
-        details: {
-          ...orderInfo,
-          priceWithShipping,
-        },
-        cartProducts,
-        id: (Math.random() * 100).toFixed(),
+    await axios.post(`${import.meta.env.VITE_API_URL}/orders.json`, {
+      details: {
+        ...orderInfo,
+        priceWithShipping,
       },
-    );
+      cartProducts,
+      id: (Math.random() * 100).toFixed(),
+    });
     dispatch(clearCart());
     dispatch(clearDetails());
     setIsPaymentConfirmed(true);

@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAssgnXzszmxFZq6UTyKgmnkB1WiyUcm-4',
-  authDomain: 'phone-shop-43033.firebaseapp.com',
-  projectId: 'phone-shop-43033',
-  storageBucket: 'phone-shop-43033.appspot.com',
-  messagingSenderId: '692124632269',
-  appId: '1:692124632269:web:1234567890abcdef',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

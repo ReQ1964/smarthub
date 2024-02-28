@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Specification.module.scss';
+import classes from './Specifications.module.scss';
 import processor from '@/assets/icon/specifications/processor.png';
 import battery from '@/assets/icon/specifications/battery.png';
 import display from '@/assets/icon/specifications/display-size.png';
@@ -9,7 +9,7 @@ import storage from '@/assets/icon/specifications/storage.png';
 import os from '@/assets/icon/specifications/operating-system.png';
 import { useLoaderData } from 'react-router';
 
-interface ISpecifications {
+export interface ISpecifications {
   battery: string;
   camera: string;
   display: string;

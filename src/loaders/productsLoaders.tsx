@@ -1,4 +1,8 @@
 import axios from 'axios';
+import { LoaderFunctionArgs } from 'react-router';
+import { IDetailedProduct } from '@/interfaces';
+import { IReviews } from '@/pages/SingleProduct/Description/Reviews/Reviews';
+import { ISpecifications } from '@/pages/SingleProduct/Description/Specifications/Specifications';
 
 interface SingleProductParams {
   params: {
@@ -7,26 +11,30 @@ interface SingleProductParams {
 }
 
 export const AllProductsLoader = async () => {
-  const res = await axios.get(
-    'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/products.json',
-  );
+  const res = await axios.get(`${import.meta.env.VITE_API_URL}/products.json`);
   if (res.data) {
     const transformedData = Object.values(res.data);
     return transformedData;
   } else return null;
 };
 
-export const SingleProductLoader = async ({ params }: SingleProductParams) => {
+export const SingleProductLoader: (
+  args: LoaderFunctionArgs<SingleProductParams>,
+) => Promise<{
+  product: IDetailedProduct[];
+  reviews: IReviews[];
+  specifications: ISpecifications;
+} | null> = async ({ params }) => {
   const [productResponse, reviewsResponse, specificationsResponse] =
     await Promise.all([
       axios.get(
-        `https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/products/${params.productId}.json`,
+        `${import.meta.env.VITE_API_URL}/products/${params.productId}.json`,
       ),
       axios.get(
-        `https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/reviews/${params.productId}.json`,
+        `${import.meta.env.VITE_API_URL}/reviews/${params.productId}.json`,
       ),
       axios.get(
-        `https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/specifications/${params.productId}.json`,
+        `${import.meta.env.VITE_API_URL}/specifications/${params.productId}.json`,
       ),
     ]);
   if (productResponse && reviewsResponse && specificationsResponse) {

@@ -17,6 +17,9 @@
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {},
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "typescript": {}
     }
