@@ -1,5 +1,6 @@
+import React from 'react';
 import classes from './Partnership.module.scss';
-import Button from '../../../components/UI/Button';
+import Button from '@/components/UI/Button';
 import { useNavigate } from 'react-router-dom';
 
 const Partnership = () => {
@@ -8,7 +9,7 @@ const Partnership = () => {
   return (
     <section className={classes.partnership}>
       <h3>Work with us</h3>
-      <h1>Let's grow together</h1>
+      <h1>Let&apos;s grow together</h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias,
         perspiciatis eveniet excepturi reprehenderit similique dolorem! Non

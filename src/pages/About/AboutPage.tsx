@@ -1,3 +1,4 @@
+import React from 'react';
 import Team from './Team/Team';
 import Sponsors from './Sponsors/Sponsors';
 import Partnership from './Partnership/Partnership';
