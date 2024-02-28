@@ -29,7 +29,7 @@ const icons = {
   storage: storage,
 };
 
-const Specification = () => {
+const Specifications = () => {
   const { specifications } = useLoaderData() as {
     specifications: ISpecifications;
   };
@@ -51,4 +51,4 @@ const Specification = () => {
   );
 };
 
-export default Specification;
+export default Specifications;

@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './Method.module.scss';
-import Button from '@/components/UI/Button';
+import classes from './ShippingForm.module.scss';
+import Button from '@/components/UI/Button/Button';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { addOrderShippingMethod } from '@/store/order-slice';

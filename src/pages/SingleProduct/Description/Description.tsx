@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Description.module.scss';
-import Specification from './Specification/Specification';
+import Specifications from './Specifications/Specifications';
 import Reviews from './Reviews/Reviews';
 import { useState } from 'react';
 
@@ -31,7 +31,7 @@ const Description = () => {
           Reviews
         </button>
       </div>
-      {category == 'specs' && <Specification />}
+      {category == 'specs' && <Specifications />}
       {category == 'reviews' && <Reviews />}
     </section>
   );

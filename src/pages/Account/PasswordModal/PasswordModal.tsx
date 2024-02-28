@@ -1,10 +1,10 @@
 import React from 'react';
-import Modal from '@/components/Modal/Modal';
-import Button from '@/components/UI/Button';
+import Modal from '@/components/UI/Modal/Modal';
+import Button from '@/components/UI/Button/Button';
 import cross from '@/assets/icon/navbar/x.svg';
 import classes from './PasswordModal.module.scss';
 import done from '@/assets/icon/done.svg';
-import Spinner from '@/components/UI/Spinner';
+import Spinner from '@/components/UI/Spinner/Spinner';
 import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';

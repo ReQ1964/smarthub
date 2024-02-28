@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './Product';
+import Product from '../Product/Product';
 import classes from './ProductsList.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { IShowcaseProduct } from '@/interfaces';

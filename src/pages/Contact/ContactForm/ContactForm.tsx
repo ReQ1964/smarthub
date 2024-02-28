@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import classes from './ContactForm.module.scss';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 
 interface IContactFormData {
   email: string;

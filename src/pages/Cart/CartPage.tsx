@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import classes from './CartPage.module.scss';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import CartItems from './CartItems/CartItems';
 import { useAppSelector } from '@/store/hooks';
 import { useNavigate } from 'react-router-dom';
-import Modal from '@/components/Modal/Modal';
+import Modal from '@/components/UI/Modal/Modal';
 
 const CartPage = () => {
   const navigate = useNavigate();

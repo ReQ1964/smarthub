@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './ShopProducts.module.scss';
-import ProductsList from '../../../components/Products/ProductsList';
+import ProductsList from '../../../components/Products/ProductsList/ProductsList';
 import { IShowcaseProduct } from '@/interfaces';
 
 interface ShopProductsProps {

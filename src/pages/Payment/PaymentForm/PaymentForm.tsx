@@ -1,12 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import classes from './PaymentForm.module.scss';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import Button from '../../../components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addOrderPaymentInfo, clearDetails } from '../../../store/order-slice';
-import { clearCart } from '../../../store/cart-slice';
+import { addOrderPaymentInfo, clearDetails } from '@/store/order-slice';
+import { clearCart } from '@/store/cart-slice';
 
 interface IPaymentProps {
   setIsPaymentConfirmed: (arg0: boolean) => void;
@@ -71,21 +72,15 @@ const PaymentForm = ({
     setIsLoading(true);
     dispatch(addOrderPaymentInfo(data));
     const priceWithShipping = totalPrice + orderInfo.shippingMethod.price;
-    await fetch(
+    await axios.post(
       'https://phone-shop-43033-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
       {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+        details: {
+          ...orderInfo,
+          priceWithShipping,
         },
-        body: JSON.stringify({
-          details: {
-            ...orderInfo,
-            priceWithShipping,
-          },
-          cartProducts,
-          id: (Math.random() * 100).toFixed(),
-        }),
+        cartProducts,
+        id: (Math.random() * 100).toFixed(),
       },
     );
     dispatch(clearCart());

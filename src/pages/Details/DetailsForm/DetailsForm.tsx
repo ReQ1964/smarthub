@@ -7,7 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { addOrderDetails } from '@/store/order-slice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 
 export interface IDetailsPayload {
   email: string;

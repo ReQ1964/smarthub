@@ -1,7 +1,7 @@
 footer {
   display: grid;
   gap: 2rem;
-  padding: 4rem;
+  padding: 3rem;
   h2 {
     text-transform: capitalize;
   }
@@ -10,6 +10,9 @@ footer {
   .features {
     display: grid;
     gap: 1.5rem;
+    div {
+      margin: 0;
+    }
     ul {
       display: grid;
       gap: 1rem;

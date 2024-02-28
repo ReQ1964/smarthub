@@ -3,7 +3,7 @@ import classes from './Team.module.scss';
 import member1 from '@/assets/img/about-team/member1.webp';
 import member2 from '@/assets/img/about-team/member2.webp';
 import member3 from '@/assets/img/about-team/member3.webp';
-import SocialIcons from '@/components/UI/SocialIcons';
+import SocialIcons from '@/components/UI/SocialIcons/SocialIcons';
 
 const Team = () => {
   return (

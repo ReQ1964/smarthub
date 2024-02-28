@@ -4,7 +4,7 @@ import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import visibleIcon from '@/assets/icon/navbar/visible.svg';
 import invisibleIcon from '@/assets/icon/navbar/invisible.svg';
 import {
@@ -12,7 +12,7 @@ import {
   fetchSignInMethodsForEmail,
 } from 'firebase/auth';
 import { auth } from '@/firebase';
-import Spinner from '@/components/UI/Spinner';
+import Spinner from '@/components/UI/Spinner/Spinner';
 import { AccountFormsProps } from '../AccountPage';
 
 interface LoginFormProps extends AccountFormsProps {

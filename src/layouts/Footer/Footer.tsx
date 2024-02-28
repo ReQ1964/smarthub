@@ -1,5 +1,7 @@
+import React from 'react';
 import classes from './Footer.module.scss';
-import SocialIcons from '../../components/UI/SocialIcons';
+import SocialIcons from '@/components/UI/SocialIcons/SocialIcons';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -12,30 +14,22 @@ const Footer = () => {
         <h2>company info</h2>
         <ul>
           <li>
-            <a href="#">About Us</a>
+            <Link to={'/about'}>About Us</Link>
           </li>
           <li>
-            <a href="#">Carrier</a>
+            <Link to={'/about'}>Carrier</Link>
           </li>
           <li>
-            <a href="#">We are hiring</a>
+            <Link to={'/about'}>We are hiring</Link>
           </li>
-          <li>
-            <a href="#">Blog</a>
-          </li>
+          <li></li>
         </ul>
       </div>
       <div className={classes.features}>
         <h2>features</h2>
         <ul>
           <li>
-            <a href="#">Business Marketing</a>
-          </li>
-          <li>
             <a href="#">User Analytic</a>
-          </li>
-          <li>
-            <a href="#">Live Chat</a>
           </li>
           <li>
             <a href="#">Unlimited Support</a>

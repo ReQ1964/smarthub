@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Reviews.module.scss';
-import StarsRating from '@/components/UI/StarsRating';
+import StarsRating from '@/components/UI/StarsRating/StarsRating';
 import { useLoaderData } from 'react-router';
 
 export interface IReviews {

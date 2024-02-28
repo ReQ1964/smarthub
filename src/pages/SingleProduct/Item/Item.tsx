@@ -4,8 +4,8 @@ import { useAppDispatch } from '@/store/hooks';
 import { addToCart } from '@/store/cart-slice';
 import { IDetailedProduct } from '@/interfaces';
 import classes from './Item.module.scss';
-import StarsRating from '@/components/UI/StarsRating';
-import Button from '@/components/UI/Button';
+import StarsRating from '@/components/UI/StarsRating/StarsRating';
+import Button from '@/components/UI/Button/Button';
 
 export const Item = ({
   product,

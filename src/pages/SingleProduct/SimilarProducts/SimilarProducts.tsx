@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import classes from './SimilarProducts.module.scss';
-import ProductsList from '@/components/Products/ProductsList';
+import ProductsList from '@/components/Products/ProductsList/ProductsList';
 import { IDetailedProduct } from '@/interfaces';
 import { AllProductsLoader } from '@/loaders/productsLoaders';
-import Error from '@/components/Error/Error';
+import Error from '@/components/UI/Error/Error';
 
 interface SimilarProducsProps {
   productType: IDetailedProduct['type'];

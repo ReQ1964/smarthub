@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './PaymentConfirmed.module.scss';
 import done from '@/assets/icon/done.svg';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentConfirmed = () => {

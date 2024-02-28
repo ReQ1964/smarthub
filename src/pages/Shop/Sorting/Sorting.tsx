@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Sorting.module.scss';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {

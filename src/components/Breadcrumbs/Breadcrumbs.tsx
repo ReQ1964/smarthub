@@ -2,18 +2,19 @@ import React from 'react';
 import classes from './Breadcrumbs.module.scss';
 import { NavLink, Link } from 'react-router-dom';
 import arrow from '../../assets/icon/carousel.svg';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 import { useState } from 'react';
-import Modal from '../Modal/Modal';
-import Button from '../UI/Button';
+import Modal from '../UI/Modal/Modal';
 
 const Breadcrumbs = () => {
-  const orderDetails = useSelector((state) => state.order.details);
+  const orderDetails = useAppSelector((state) => state.order);
   const [isOpen, setIsOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
-  const isOrderEmptyHandler = (e) => {
-    const isOrderEmpty = orderDetails?.length === 0;
+  const isOrderEmptyHandler = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    const isOrderEmpty = Object.keys(orderDetails.details).length === 0;
     const isShippingMethodEmpty = !orderDetails?.shippingMethod;
 
     if (isOrderEmpty || isShippingMethodEmpty) {

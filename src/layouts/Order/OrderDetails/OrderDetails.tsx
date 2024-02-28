@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import classes from './OrderItems.module.scss';
-import OrderItem from './OrderItem/OrderItem';
-import arrowDown from '../../assets/icon/arrow_down.svg';
+import React, { useState } from 'react';
+import classes from './OrderDetails.module.scss';
+import OrderItem from '../OrderItem/OrderItem';
+import arrowDown from '@/assets/icon/arrow_down.svg';
+import { useAppSelector } from '@/store/hooks';
 
-const OrderItems = () => {
-  const products = useSelector((state) => state.cart.products);
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const { shippingMethod } = useSelector((state) => state.order.details);
-  const [isActive, setIsActive] = useState(false);
+const OrderDetails = () => {
+  const products = useAppSelector((state) => state.cart.products);
+  const totalPrice = useAppSelector((state) => state.cart.totalPrice);
+  const { shippingMethod } = useAppSelector((state) => state.order);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <div>
@@ -28,14 +28,14 @@ const OrderItems = () => {
           </p>
         </div>
       </div>
-      <ul className={classes.orderItems}>
+      <ul className={classes.orderDetails}>
         {isActive &&
           products.map((product) => {
             return (
               <OrderItem
                 key={product.id}
                 name={product.name}
-                img={product.img}
+                img={product.img ? product.img[0] : product.img}
                 quantity={product.quantity}
               />
             );
@@ -45,4 +45,4 @@ const OrderItems = () => {
   );
 };
 
-export default OrderItems;
+export default OrderDetails;

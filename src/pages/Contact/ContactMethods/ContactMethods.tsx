@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Methods.module.scss';
-import SocialIcons from '@/components/UI/SocialIcons';
+import SocialIcons from '@/components/UI/SocialIcons/SocialIcons';
 
-const Methods = () => {
+const ContactMethods = () => {
   return (
     <section className={classes.methods}>
       <h3>Contact us</h3>
@@ -14,4 +14,4 @@ const Methods = () => {
   );
 };
 
-export default Methods;
+export default ContactMethods;

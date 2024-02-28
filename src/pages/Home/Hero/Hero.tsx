@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './Hero.module.scss';
-import Button from '@/components/UI/Button';
+import Button from '@/components/UI/Button/Button';
 import Carousel from '@/assets/icon/carousel.svg';
 
 interface CarouselItem {

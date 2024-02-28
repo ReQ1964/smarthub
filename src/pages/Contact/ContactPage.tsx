@@ -1,11 +1,11 @@
 import React from 'react';
-import Methods from './Methods/Methods';
+import ContactMethods from './ContactMethods/ContactMethods';
 import ContactForm from './ContactForm/ContactForm';
 
 const ContactPage = () => {
   return (
     <main>
-      <Methods />
+      <ContactMethods />
       <ContactForm />
     </main>
   );

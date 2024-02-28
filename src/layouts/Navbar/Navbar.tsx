@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
-import AccountIcon from '../../assets/icon/navbar/account.svg';
-import CartIcon from '../../assets/icon/navbar/cart.svg';
-import HamburgerIcon from '../../assets/icon/navbar/hamburger.svg';
-import CloseIcon from '../../assets/icon/navbar/x.svg';
+import { useAppSelector } from '@/store/hooks';
+import AccountIcon from '@/assets/icon/navbar/account.svg';
+import CartIcon from '@/assets/icon/navbar/cart.svg';
+import HamburgerIcon from '@/assets/icon/navbar/hamburger.svg';
+import CloseIcon from '@/assets/icon/navbar/x.svg';
 import classes from './Navbar.module.scss';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
-  const products = useSelector((state) => state.cart.products);
+  const products = useAppSelector((state) => state.cart.products);
 
   const cartQuantity = products.reduce(
     (total, product) => total + product.quantity,
@@ -35,15 +34,27 @@ const Navbar = () => {
               src={CartIcon}
               className={classes.cartIcon}
               onClick={() => navigate('/cart')}
-              alt=""
+              alt="An icon to go to the basket"
             />
             {cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
           </div>
-          <img src={AccountIcon} onClick={() => navigate('/account')} alt="" />
+          <img
+            src={AccountIcon}
+            onClick={() => navigate('/account')}
+            alt="An icon to go to the account/auth page"
+          />
           {isActive ? (
-            <img src={CloseIcon} onClick={hamburgerHandler} alt="" />
+            <img
+              src={CloseIcon}
+              onClick={hamburgerHandler}
+              alt="An icon to close the hamburger"
+            />
           ) : (
-            <img src={HamburgerIcon} onClick={hamburgerHandler} alt="" />
+            <img
+              src={HamburgerIcon}
+              onClick={hamburgerHandler}
+              alt="An icon to open the hamburger"
+            />
           )}
         </div>
       </div>

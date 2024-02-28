@@ -4,7 +4,7 @@ import Summary from './Summary/Summary';
 import PaymentForm from './PaymentForm/PaymentForm';
 import { useAppSelector } from '@/store/hooks';
 import PaymentConfirmed from './PaymentConfirmed/PaymentConfirmed';
-import Spinner from '@/components/UI/Spinner';
+import Spinner from '@/components/UI/Spinner/Spinner';
 
 const PaymentPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

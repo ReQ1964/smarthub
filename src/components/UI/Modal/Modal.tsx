@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Modal.module.scss';
 import { createPortal } from 'react-dom';
-import Button from '../UI/Button';
+import Button from '../Button/Button';
 
 interface IModalProps {
   children: React.ReactNode;
