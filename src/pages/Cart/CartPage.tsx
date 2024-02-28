@@ -1,17 +1,17 @@
+import React, { useState } from 'react';
 import classes from './CartPage.module.scss';
-import Button from '../../components/UI/Button';
+import Button from '@/components/UI/Button';
 import CartItems from './CartItems/CartItems';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Modal from '../../components/Modal/Modal';
+import Modal from '@/components/Modal/Modal';
 
 const CartPage = () => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const products = useSelector((state) => state.cart.products);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
+  const totalPrice = useAppSelector((state) => state.cart.totalPrice);
+  const products = useAppSelector((state) => state.cart.products);
 
   const checkoutHandler = () => {
     if (products.length === 0) {

@@ -1,9 +1,10 @@
+import React from 'react';
 import CartItem from './CartItem/CartItem';
 import classes from './CartItems.module.scss';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 
 const CartItems = () => {
-  const products = useSelector((state) => state.cart.products);
+  const products = useAppSelector((state) => state.cart.products);
 
   return (
     <section className={classes.items}>
@@ -15,7 +16,6 @@ const CartItems = () => {
             img={product.img}
             name={product.name}
             price={product.price}
-            company={product.company}
           />
         );
       })}
