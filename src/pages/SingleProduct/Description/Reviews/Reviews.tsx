@@ -1,6 +1,7 @@
+import React from 'react';
 import classes from './Reviews.module.scss';
-import filledStar from '../../../../assets/icon/rating/star-filled.svg';
-import star from '../../../../assets/icon/rating/star.svg';
+import filledStar from '@/assets/icon/rating/star-filled.svg';
+import star from '@/assets/icon/rating/star.svg';
 
 const Reviews = () => {
   return (

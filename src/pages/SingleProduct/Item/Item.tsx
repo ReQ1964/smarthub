@@ -1,26 +1,41 @@
-import classes from './Item.module.scss';
-import filledStar from '../../../assets/icon/rating//star-filled.svg';
-import star from '../../../assets/icon/rating/star.svg';
-import Button from '../../../components/UI/Button';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../store/cart-slice';
+import React from 'react';
 import { useState } from 'react';
+import { useAppDispatch } from '@/store/hooks';
+import { addToCart } from '@/store/cart-slice';
+import { IDetailedProduct } from '@/interfaces';
+import classes from './Item.module.scss';
+import filledStar from '@/assets/icon/rating//star-filled.svg';
+import star from '@/assets/icon/rating/star.svg';
+import Button from '@/components/UI/Button';
 
-export const Item = ({ product }) => {
-  const dispatch = useDispatch();
-  const [pickedColor, setPickedColor] = useState(product.colors[0]);
+export const Item = ({ product }: { product: IDetailedProduct }) => {
+  const { id, name, colors, company, price, img, type, rating } = product;
+  const dispatch = useAppDispatch();
+  const [pickedColor, setPickedColor] = useState<string>(colors[0]);
 
-  const capitalize = (s) => {
+  const capitalize = (s: string) => {
     return s[0].toUpperCase() + s.slice(1);
   };
 
-  const createStars = (number) => {
-    let elements = [];
+  const createStars = (number: number) => {
+    const elements = [] as JSX.Element[];
     for (let i = 0; i < number; i++)
-      elements.push(<img key={`filledStar-${i}`} src={filledStar} alt="" />);
+      elements.push(
+        <img
+          key={`filledStar-${i}`}
+          src={filledStar}
+          alt="An icon of a filled review star"
+        />,
+      );
     if (number < 5) {
       for (let i = 0; i < 5 - number; i++)
-        elements.push(<img key={`star-${i}`} src={star} alt="" />);
+        elements.push(
+          <img
+            key={`star-${i}`}
+            src={star}
+            alt="An icon of an empty review star"
+          />,
+        );
     }
     return elements;
   };
@@ -28,32 +43,32 @@ export const Item = ({ product }) => {
   const addToCartHandler = () => {
     dispatch(
       addToCart({
-        id: `${product.id}_${pickedColor}`,
-        img: product.img[pickedColor],
-        name: `${product.name} ${capitalize(pickedColor)}`,
-        price: product.price,
-        company: product.company,
+        id: `${id}_${pickedColor}`,
+        img: img[pickedColor],
+        name: `${name} ${capitalize(pickedColor)}`,
+        price,
+        company,
         color: pickedColor,
         quantity: 1,
+        type,
       }),
     );
   };
 
   return (
     <section className={classes.item}>
-      <img src={product.img[pickedColor]} alt="" />
-
+      <img src={img.pickedColor} alt="" />
       <div className={classes.description}>
         <div className={classes.info}>
-          <h3>{product.name}</h3>
+          <h3>{name}</h3>
           <div className={classes.rating}>
-            <div className={classes.stars}>{createStars(product.rating)}</div>
+            <div className={classes.stars}>{createStars(rating)}</div>
             <p>10 reviews</p>
           </div>
         </div>
 
         <div className={classes.status}>
-          <h3 className={classes.price}>${product.price}</h3>
+          <h3 className={classes.price}>${price}</h3>
           <p className={classes.availability}>
             <span>Availability:</span> In Stock
           </p>
@@ -67,11 +82,11 @@ export const Item = ({ product }) => {
         </p>
 
         <div className={classes.colors}>
-          {product.colors.map((color, index) => {
+          {colors.map((color) => {
             return (
               <div
                 className={
-                  pickedColor.color == color
+                  pickedColor == color
                     ? `${classes.color} ${classes.active}`
                     : classes.color
                 }

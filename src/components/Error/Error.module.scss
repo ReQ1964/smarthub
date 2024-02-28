@@ -1,0 +1,12 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .errorImage {
+    width: clamp(200px, 80%, 600px);
+    border-radius: 1.25rem;
+  }
+}
