@@ -1,35 +1,46 @@
+@import '@/styles/variables.scss';
+
 .categories {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
-  padding: 3rem 2rem;
-  background-color: var(--bg-secondary);
+  padding: 6rem 2rem;
   .category {
     position: relative;
     display: grid;
+    overflow: hidden;
     gap: 1.5rem;
     padding: 2rem;
-    min-height: 250px;
-    overflow: hidden;
+    height: 250px;
+    width: 300px;
     h2,
     p {
       max-width: 70%;
-    }
-    a {
-      text-decoration: none;
-      font-weight: bold;
-    }
-    p:nth-of-type(1) {
-      font-weight: bold;
+      &:nth-of-type(1) {
+        font-weight: bold;
+      }
     }
     a,
     p {
       font-size: 0.9rem;
     }
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+        transition: 0.2s;
+        transform: translateY(-1px);
+      }
+    }
+
     img {
       position: absolute;
     }
   }
-  .category:nth-of-type(1) {
+  .smartwatchCategory {
     background: linear-gradient(
         rgba(245, 242, 242, 0.8),
         rgba(255, 255, 255, 0.8)
@@ -39,15 +50,15 @@
       color: rgb(231, 124, 64);
     }
     a {
-      color: var(--text-primary);
+      color: $text-color-primary;
     }
     img {
       top: -7.5%;
-      right: -103px;
+      right: -115px;
     }
   }
-  .category:nth-of-type(2) {
-    color: var(--text-secondary);
+  .phoneCategory {
+    color: $text-color-secondary;
     background: linear-gradient(rgba(2, 130, 202, 0.8), rgba(2, 130, 202, 0.8)),
       url(@/assets/img/home-categories/phones-bg.webp);
     a {
@@ -55,7 +66,34 @@
     }
     img {
       top: -5%;
-      right: -50px;
+      right: -60px;
+    }
+  }
+}
+@media (min-width: $media-sm) {
+  .categories {
+    flex-direction: row;
+    gap: 5rem;
+    .category {
+      width: 450px;
+    }
+  }
+}
+@media (min-width: $media-lg) {
+  .categories {
+    .category {
+      overflow: visible;
+    }
+    .smartwatchCategory {
+      img {
+        top: -10%;
+        right: 0%;
+      }
+    }
+    .phoneCategory {
+      img {
+        right: 0%;
+      }
     }
   }
 }

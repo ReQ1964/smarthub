@@ -1,8 +1,9 @@
+@import '@/styles/variables.scss';
 .bestseller {
   padding: 4rem;
   text-align: center;
   h3 {
-    color: var(--text-tertiary);
+    color: $text-color-tertiary;
     font-weight: 300;
     margin-bottom: 1rem;
   }
@@ -10,15 +11,10 @@
     text-transform: uppercase;
     margin-bottom: 1.5rem;
   }
-  ul {
-    display: grid;
-    gap: 5rem;
-    margin-bottom: 3rem;
-  }
   .btn {
     background-color: white;
-    color: var(--btn-bg);
-    border: 1px solid var(--btn-bg);
+    color: $text-color-quaternary;
+    border: 1px solid $btn-color-bg;
     text-transform: uppercase;
     font-size: 0.9rem;
   }

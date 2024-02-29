@@ -9,7 +9,7 @@ const Categories = () => {
 
   return (
     <section className={classes.categories}>
-      <div className={`${classes.category}`}>
+      <div className={`${classes.category} ${classes.smartwatchCategory}`}>
         <p className={classes.alert}>Ends Today</p>
         <h2>Elements Of Style</h2>
         <p>Top Ten Products of the Week</p>
@@ -22,7 +22,7 @@ const Categories = () => {
         </a>
         <img src={smartwatch} alt="An image of a smartwatch" />
       </div>
-      <div className={`${classes.category}`}>
+      <div className={`${classes.category} ${classes.phoneCategory}`}>
         <p>Your Space</p>
         <h2>Modern Life</h2>
         <p>Top Ten Products of the Week</p>

@@ -1,9 +1,10 @@
+@import '@/styles/variables.scss';
 .summary {
   margin: 2rem;
   border-radius: 0.8rem;
-  border: 1px solid var(--text-tertiary);
+  border: 1px solid $border-color-primary;
   .third {
-    border-top: 1px solid var(--text-tertiary);
+    border-top: 1px solid $border-color-primary;
   }
   div {
     display: flex;
@@ -15,7 +16,7 @@
       width: 70%;
     }
     &:nth-of-type(1) {
-      border-bottom: 1px solid var(--text-tertiary);
+      border-bottom: 1px solid $border-color-primary;
     }
   }
 }

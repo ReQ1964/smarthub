@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 footer {
   display: grid;
   gap: 2rem;
@@ -20,7 +21,7 @@ footer {
         list-style: none;
         a {
           text-decoration: none;
-          color: var(--text-tertiary);
+          color: $text-color-tertiary;
         }
       }
     }

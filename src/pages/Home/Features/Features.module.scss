@@ -1,5 +1,7 @@
+@import '@/styles/variables.scss';
 .features {
-  display: grid;
+  @include flexCenter;
+  flex-direction: column;
   gap: 4rem;
   padding: 4rem;
   text-align: center;
@@ -8,10 +10,27 @@
     margin-bottom: 1rem;
   }
   p {
-    color: var(--text-tertiary);
+    color: $text-color-tertiary;
   }
-  .feature {
-    display: grid;
-    gap: 1.5rem;
+  .featuresList {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    .feature {
+      @include flexCenter;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}
+@media (min-width: $media-md) {
+  .features {
+    .featuresList {
+      flex-direction: row;
+      gap: 4rem;
+    }
+    .feature {
+      width: 33.3%;
+    }
   }
 }

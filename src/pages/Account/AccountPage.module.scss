@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 .loggingForm {
   padding: 2rem 0 1.5rem 0;
   .login,
@@ -7,13 +8,13 @@
     gap: 2rem;
     h1 {
       text-align: center;
-      font-size: var(--h1-size);
+      font-size: $h1-size;
     }
     .helper {
       text-align: center;
-      color: var(--text-tertiary);
+      color: $text-color-tertiary;
       span {
-        color: var(--text-quaternary);
+        color: $text-color-quaternary;
         font-weight: bold;
         cursor: pointer;
       }
@@ -48,7 +49,7 @@
       margin: -1.1rem 0 0.5rem 0;
       width: 80%;
       text-align: right;
-      color: var(--text-tertiary);
+      color: $text-color-tertiary;
       cursor: pointer;
     }
   }
@@ -90,7 +91,7 @@
     background-color: white;
     color: black;
     width: 80%;
-    border: 2px solid var(--text-tertiary);
+    border: 2px solid $border-color-primary;
     border-radius: 0.5rem;
     font-size: 1rem;
     padding: 0.4rem;
@@ -101,7 +102,7 @@
   }
   p {
     position: relative;
-    color: var(--text-tertiary);
+    color: $text-color-tertiary;
     text-align: center;
     margin-bottom: 1.5rem;
 
@@ -111,7 +112,7 @@
       display: block;
       width: 120px;
       height: 1px;
-      background: var(--text-tertiary);
+      background: $border-color-primary;
       position: absolute;
       top: 50%;
     }

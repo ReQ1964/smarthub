@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 nav {
   .heading {
     display: flex;
@@ -19,7 +20,7 @@ nav {
         }
         p {
           position: absolute;
-          background-color: var(--btn-bg);
+          background-color: $btn-color-bg;
           border-radius: 50%;
           min-width: 18px;
           height: 18px;
@@ -57,7 +58,7 @@ nav {
       list-style: none;
       a {
         text-decoration: none;
-        color: var(--text-tertiary);
+        color: $text-color-tertiary;
         &.active {
           color: black;
           font-weight: bold;

@@ -1,17 +1,18 @@
+@import '@/styles/variables.scss';
 .review {
   display: grid;
   gap: 1.5rem;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-    url(@/assets/img/home-review/review-bg.png);
+    url(@/assets/img/home-review/review-bg.jpg);
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   padding: 6rem 2rem;
-  color: var(--text-secondary);
+  color: $text-color-secondary;
   text-align: center;
-  max-width: 400px;
   margin: 0 auto;
   h1 {
-    font-size: var(--h1-size);
+    font-size: $h1-size;
     text-transform: uppercase;
     margin-bottom: 2rem;
   }

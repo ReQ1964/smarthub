@@ -1,12 +1,13 @@
+@import '@/styles/variables.scss';
 .sponsors {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 4rem;
-  background-color: var(--bg-secondary);
+  background-color: $bg-color-secondary;
   text-align: center;
   h1 {
-    font-size: var(--h1-size);
+    font-size: $h1-size;
   }
   p {
     opacity: 0.9;

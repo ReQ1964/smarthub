@@ -62,8 +62,20 @@ const Hero = () => {
       </div>
       <Button onClick={() => navigate('/shop')}>Shop Now</Button>
 
-      <img src={Carousel} alt="" onClick={prevSlide} />
-      <img src={Carousel} alt="" onClick={nextSlide} />
+      <div className={classes.carouselContainerLeft} onClick={prevSlide}>
+        <img
+          src={Carousel}
+          alt="An icon to display the previous carousel slide"
+          className={classes.carouselLeft}
+        />
+      </div>
+      <div className={classes.carouselContainerRight} onClick={nextSlide}>
+        <img
+          src={Carousel}
+          alt="An icon to display the next carousel slide"
+          className={classes.carouselRight}
+        />
+      </div>
     </section>
   );
 };

@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 .methods {
   display: flex;
   flex-direction: column;
@@ -5,7 +6,7 @@
   padding: 4rem;
   text-align: center;
   h1 {
-    font-size: var(--h1-size);
+    font-size: $h1-size;
   }
   p {
     opacity: 0.9;
