@@ -30,6 +30,7 @@ An online store selling smartwatches and smartphones. My first project, where th
 ## Project Status
 
 **Phase 1:**
+
 - Finish the website design ✔
 - Finish the website logic utilizing the libraries ✔
 - Implement Husky ✔
@@ -37,7 +38,7 @@ An online store selling smartwatches and smartphones. My first project, where th
 - Implement responsiveness ✔
 
 **Phase 2 [Plans]:**
+
 - Reduce code and styling redundancy
 - Improve forms logic, and migrate to zod
 - Implement testing using Vitest
-

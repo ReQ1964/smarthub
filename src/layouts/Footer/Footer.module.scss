@@ -4,7 +4,7 @@ footer {
   align-items: flex-start;
   flex-direction: column;
   gap: 2rem;
-  padding: 5rem 3rem 3rem;
+  padding: 5rem 3rem 2rem;
   h2 {
     text-transform: capitalize;
   }
@@ -56,8 +56,8 @@ footer {
   footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    gap: 2rem;
-    padding: 4rem 0 3rem;
+    justify-content: center;
+    gap: 13rem;
+    padding: 4rem 0 2rem;
   }
 }

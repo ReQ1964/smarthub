@@ -88,7 +88,7 @@ const LoginForm = ({ setMethod, emailRegExp, openModal }: LoginFormProps) => {
             <img
               onClick={() => setPasswordShown((prevState) => !prevState)}
               src={passwordShown ? visibleIcon : invisibleIcon}
-              alt=""
+              alt="An icon to show the password visibility"
             />
             <input
               type={passwordShown ? 'text' : 'password'}
