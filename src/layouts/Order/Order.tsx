@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '@/layouts/Order/Breadcrumbs/Breadcrumbs';
 import OrderDetails from './OrderDetails/OrderDetails';
 import classes from './Order.module.scss';
 import { Outlet } from 'react-router-dom';
@@ -10,10 +10,10 @@ const Order = () => {
   useScrollToTop();
   return (
     <>
-      <h1 className={classes.heading}>
-        <Link to={'/'}>SmartHub</Link>
-      </h1>
       <OrderDetails />
+      <h2 className={classes.heading}>
+        <Link to={'/'}>SmartHub</Link>
+      </h2>
       <Breadcrumbs />
       <Outlet />
     </>

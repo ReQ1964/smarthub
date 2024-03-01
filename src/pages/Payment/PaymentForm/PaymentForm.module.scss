@@ -1,11 +1,16 @@
 .heading {
   padding: 0 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 .paymentForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
   .cardData {
     display: flex;
     gap: 1rem;

@@ -11,7 +11,7 @@ const OrderDetails = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
-    <div>
+    <div className={classes.orderDetails}>
       <div className={classes.info}>
         <h2 onClick={() => setIsActive((prevState) => !prevState)}>
           Order details{' '}
@@ -28,18 +28,19 @@ const OrderDetails = () => {
           </p>
         </div>
       </div>
-      <ul className={classes.orderDetails}>
-        {isActive &&
-          cartProducts.map((product) => {
-            return (
-              <OrderItem
-                key={product.id}
-                name={product.name}
-                img={product.img ? product.img[0] : product.img}
-                quantity={product.quantity}
-              />
-            );
-          })}
+      <ul
+        className={`${classes.detailedOrder} ${isActive ? classes.active : ''}`}
+      >
+        {cartProducts.map((product) => {
+          return (
+            <OrderItem
+              key={product.id}
+              name={product.name}
+              img={product.img}
+              quantity={product.quantity}
+            />
+          );
+        })}
       </ul>
     </div>
   );

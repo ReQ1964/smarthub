@@ -4,16 +4,16 @@ import { useState } from 'react';
 import {
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
 } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { auth } from '@/firebase';
 import { useEffect } from 'react';
 import classes from './AccountPage.module.scss';
 import LoginForm from './LoginForm/LoginForm';
 import SignUpForm from './SignUpForm/SignUpForm';
 import AccountDetails from './AccountDetails/AccountDetails';
 import PasswordModal from './PasswordModal/PasswordModal';
-import googleIcon from '../../assets/icon/google.svg';
+import googleIcon from '@/assets/icon/google.svg';
 
 type IMethod = 'login' | 'register';
 
@@ -40,7 +40,7 @@ const AccountPage = () => {
   };
 
   const googleSignInHandler = () => {
-    signInWithRedirect(auth, provider);
+    signInWithPopup(auth, provider);
   };
 
   useEffect(() => {

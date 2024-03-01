@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { addOrderShippingMethod } from '@/store/order-slice';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import useRedirectFromOrdering from '@/hooks/useRedirectFromOrdering';
 
 export interface IShippingPayload {
   name: string;
@@ -14,6 +15,7 @@ export interface IShippingPayload {
 const Method = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  useRedirectFromOrdering();
   const { shippingMethod } = useAppSelector((state) => state.order);
 
   const { register, handleSubmit } = useForm({
@@ -40,24 +42,29 @@ const Method = () => {
       <h2>Shipping method</h2>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input
-            type="radio"
-            {...register('shipping')}
-            id="standard"
-            value="standard"
-          />
-          <label htmlFor="standard">Standard shipping</label>
-          <p>Free</p>
+          <label htmlFor="standard">
+            <input
+              type="radio"
+              {...register('shipping')}
+              id="standard"
+              value="standard"
+              defaultChecked
+            />
+            Standard shipping
+            <p>Free</p>
+          </label>
         </div>
         <div>
-          <input
-            type="radio"
-            {...register('shipping')}
-            id="priority"
-            value="priority"
-          />
-          <label htmlFor="priority">Priority shipping</label>
-          <p>$10</p>
+          <label htmlFor="priority">
+            <input
+              type="radio"
+              {...register('shipping')}
+              id="priority"
+              value="priority"
+            />
+            Priority shipping
+            <p>$10</p>
+          </label>
         </div>
         <Button className={classes.btn}>Go to payment</Button>
       </form>

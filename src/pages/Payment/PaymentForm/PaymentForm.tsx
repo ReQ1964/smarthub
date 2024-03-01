@@ -8,6 +8,7 @@ import Button from '@/components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addOrderPaymentInfo, clearDetails } from '@/store/order-slice';
 import { clearCart } from '@/store/cart-slice';
+import useRedirectFromOrdering from '@/hooks/useRedirectFromOrdering';
 
 interface IPaymentProps {
   setIsPaymentConfirmed: (arg0: boolean) => void;
@@ -25,6 +26,7 @@ const PaymentForm = ({
   setIsPaymentConfirmed,
   setIsLoading,
 }: IPaymentProps) => {
+  useRedirectFromOrdering();
   const dispatch = useAppDispatch();
   const orderInfo = useAppSelector((state) => state.order);
   const { totalPrice, cartProducts } = useAppSelector((state) => state.cart);

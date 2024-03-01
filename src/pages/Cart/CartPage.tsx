@@ -23,7 +23,7 @@ const CartPage = () => {
   };
 
   return (
-    <main className={classes.cart}>
+    <>
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -31,17 +31,21 @@ const CartPage = () => {
       >
         <h3>{modalMessage}</h3>
       </Modal>
-      <h1>Your Cart Items</h1>
-      <div className={classes.info}>
-        <p>Product</p>
-        <p>Price</p>
-      </div>
-      <CartItems />
-      <h3>Total price: ${totalPrice}</h3>
-      <Button className={classes.checkout} onClick={checkoutHandler}>
-        Checkout
-      </Button>
-    </main>
+      <main className={classes.cartPage}>
+        <section className={classes.cart}>
+          <h1>Your Cart Items</h1>
+          <div className={classes.info}>
+            <p>Product</p>
+            <p>Price</p>
+          </div>
+          <CartItems />
+          <h3>Total price: ${totalPrice}</h3>
+          <Button className={classes.checkout} onClick={checkoutHandler}>
+            Checkout
+          </Button>
+        </section>
+      </main>
+    </>
   );
 };
 

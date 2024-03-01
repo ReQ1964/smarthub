@@ -1,14 +1,19 @@
 @import '@/styles/variables.scss';
 .summary {
-  margin: 2rem;
-  border-radius: 0.8rem;
-  border: 1px solid $border-color-primary;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 2rem auto 1rem;
+  padding: 1.5rem;
   .third {
     border-top: 1px solid $border-color-primary;
   }
   div {
     display: flex;
-    padding: 1.5rem;
+    padding: 1rem;
+    border: 1px solid $border-color-primary;
+    border-radius: 0.5rem;
     h4 {
       width: 30%;
     }
