@@ -1,6 +1,6 @@
 # Smarthub
 
-<a href="https://smarthub-three.vercel.app/">LIVE DEMO</a>
+<a href="https://smarthub-app.netlify.app/">LIVE DEMO</a>
 
 An online store selling smartwatches and smartphones. My first project, where the main goal was to design the customer order process, implement sorting, and filter the products. React-hook-forms library together with yup was used to create and validate the forms. REST API (Firebase) was used to retrieve the products, send the order details, and sign up/log in the user. Additionally, Husky has been added to improve developer experience.
 
