@@ -1,8 +1,10 @@
 @import '@/styles/variables.scss';
 .categories {
-  display: grid;
+  @include flexCenter;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
-  padding: 3rem 2.5rem;
+  padding: $padding-page-containers;
   background-color: $bg-color-secondary;
   .category {
     display: flex;
@@ -11,6 +13,9 @@
     align-items: center;
     gap: 3rem;
     min-height: 280px;
+    min-width: 280px;
+    max-width: 300px;
+
     color: $text-color-secondary;
     opacity: 0.7;
     &.active {
@@ -28,14 +33,21 @@
   }
   .category:nth-of-type(2) {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url(@/assets/img/shop-categories/smartwatch.webp);
+      url(@/assets/img/shop-categories/smartphone.webp);
     background-position: center;
     background-size: cover;
   }
   .category:nth-of-type(3) {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url(@/assets/img/shop-categories/smartphone.webp);
+      url(@/assets/img/shop-categories/smartwatch.webp);
     background-position: center;
     background-size: cover;
+  }
+}
+
+@media (min-width: $media-sm) {
+  .categories {
+    flex-direction: row;
+    gap: 3rem;
   }
 }

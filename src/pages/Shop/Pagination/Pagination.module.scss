@@ -1,15 +1,21 @@
 @import '@/styles/variables.scss';
 .pagination {
+  height: 60px;
   ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
     width: 60%;
+    height: 100%;
     li {
       list-style: none;
+      &:hover {
+        transition: 0.2s;
+        transform: scale(1.01);
+      }
     }
     .button {
-      width: auto;
       padding: 1.2rem 1rem;
       background-color: white;
       color: $text-color-quaternary;
@@ -18,6 +24,7 @@
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       font-size: 0.9rem;
       font-weight: bold;
+      cursor: pointer;
       &.active {
         background-color: $btn-color-bg;
         color: $text-color-secondary;

@@ -32,8 +32,8 @@ const Sorting = () => {
   };
 
   return (
-    <section className={classes.sorting} id="sorting">
-      <h4>Showing {filteredProductsLength} results</h4>
+    <section className={classes.sorting}>
+      <h4 id="results">Showing {filteredProductsLength} results</h4>
       <div className={classes.controls}>
         <select
           name="sortingMethods"
@@ -46,7 +46,9 @@ const Sorting = () => {
           <option value="high-price">Price High To Low</option>
           <option value="low-price">Price Low to High</option>
         </select>
-        <Button onClick={resetSortingHandler}>Reset</Button>
+        <Button onClick={resetSortingHandler} className={classes.resetButton}>
+          Reset
+        </Button>
       </div>
     </section>
   );
