@@ -1,21 +1,26 @@
 @import '@/styles/variables.scss';
 .partnership {
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  text-align: center;
+  padding: $padding-page-containers;
+
   background-color: $bg-color-tertiary;
   color: $text-color-secondary;
-  h1 {
-    font-size: $h1-size;
-  }
-  p {
-    opacity: 0.9;
-    line-height: 1.5;
-  }
-  button.btn {
-    background-color: transparent;
-    border: 1px solid $text-color-secondary;
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    h1 {
+      font-size: $h1-size;
+    }
+    p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+    button.btn {
+      background-color: transparent;
+      border: 1px solid $text-color-secondary;
+    }
   }
 }

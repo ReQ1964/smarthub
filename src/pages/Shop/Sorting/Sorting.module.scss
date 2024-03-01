@@ -19,10 +19,11 @@
     }
     select {
       opacity: 0.8;
-      padding: 1.4em;
+      padding: 1.5em;
       background-color: $bg-color-secondary;
       border-radius: 0.23rem;
       width: 60%;
+      min-width: 100px;
       height: 100%;
       max-width: 200px;
       appearance: none;
@@ -42,7 +43,7 @@
     gap: 10rem;
     .controls {
       justify-content: space-between;
-      width: 30%;
+      width: 40%;
       max-width: 350px;
       select {
         width: 60%;

@@ -9,24 +9,26 @@ const Team = () => {
   return (
     <section className={classes.team}>
       <h1>Meet Our Team</h1>
-      <div className={classes.member}>
-        <img src={member1} alt="A member of our team" />
-        <h3>Anna Winston</h3>
-        <p>Marketing</p>
-        <SocialIcons className={classes.icons} />
-      </div>
-      <div className={classes.member}>
-        <img src={member2} alt="A member of our team" />
-        <h3>Juliet Wolfer</h3>
-        <p>Back-end dev</p>
-        <SocialIcons className={classes.icons} />
-      </div>
-      <div className={classes.member}>
-        <img src={member3} alt="A member of our team" />
-        <h3>Mark Gutenberg</h3>
-        <p>Front-end dev</p>
-        <SocialIcons className={classes.icons} />
-      </div>
+      <ul className={classes.membersList}>
+        <li className={classes.member}>
+          <img src={member1} alt="A member of our team" />
+          <h3>Anna Winston</h3>
+          <p>Marketing</p>
+          <SocialIcons className={classes.icons} />
+        </li>
+        <li className={classes.member}>
+          <img src={member2} alt="A member of our team" />
+          <h3>Juliet Wolfer</h3>
+          <p>Back-end dev</p>
+          <SocialIcons className={classes.icons} />
+        </li>
+        <li className={classes.member}>
+          <img src={member3} alt="A member of our team" />
+          <h3>Mark Gutenberg</h3>
+          <p>Front-end dev</p>
+          <SocialIcons className={classes.icons} />
+        </li>
+      </ul>
     </section>
   );
 };

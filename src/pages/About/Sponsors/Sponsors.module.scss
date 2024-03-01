@@ -2,24 +2,37 @@
 .sponsors {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 4rem;
+  gap: 3rem;
+  padding: $padding-page-containers;
   background-color: $bg-color-secondary;
   text-align: center;
-  h1 {
-    font-size: $h1-size;
+  .heading {
+    h1 {
+      font-size: $h1-size;
+      margin-bottom: 1rem;
+    }
+    p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
   }
-  p {
-    opacity: 0.9;
-    line-height: 1.5;
-  }
+
   .icons {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 3.5rem;
+    list-style: none;
     img {
-      width: 40%;
-      margin: 0 auto;
+      max-width: 100px;
+    }
+  }
+}
+
+@media (min-width: $media-md) {
+  .sponsors {
+    .icons {
+      flex-direction: row;
     }
   }
 }

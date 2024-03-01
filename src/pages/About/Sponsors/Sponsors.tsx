@@ -8,14 +8,27 @@ import stripe from '@/assets/icon/sponsors/stripe.svg';
 const Sponsors = () => {
   return (
     <section className={classes.sponsors}>
-      <h1>Big Companies Are Here</h1>
-      <p>Guarantee of reliable service and long-term support</p>
-      <div className={classes.icons}>
-        <img src={stripe} alt="Stripe company icon" />
-        <img src={aws} alt="AWS company icon" />
-        <img src={hooli} alt="Hooli company icon" />
-        <img src={reddit} alt="Reddit company icon" />
+      <div className={classes.heading}>
+        <h1>Big Companies Are Here</h1>
+        <p>Guarantee of reliable service and long-term support</p>
       </div>
+      <ul className={classes.icons}>
+        <li>
+          <img src={stripe} alt="Stripe company icon" />
+        </li>
+
+        <li>
+          <img src={aws} alt="AWS company icon" />
+        </li>
+
+        <li>
+          <img src={hooli} alt="Hooli company icon" />
+        </li>
+
+        <li>
+          <img src={reddit} alt="Reddit company icon" />
+        </li>
+      </ul>
     </section>
   );
 };
