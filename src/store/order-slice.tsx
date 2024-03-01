@@ -16,7 +16,7 @@ const initialState: IOrderState = {
     name: '',
     surname: '',
     address: '',
-    postal: '',
+    postal: null as unknown as number,
     city: '',
     note: '',
     country: '',
@@ -27,7 +27,7 @@ const initialState: IOrderState = {
     price: 0,
   },
   cardInfo: {
-    cardNumber: 0,
+    cardNumber: null as unknown as number,
     holderName: '',
     expiration: '',
     ccv: '',

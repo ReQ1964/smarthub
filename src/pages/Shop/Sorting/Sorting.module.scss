@@ -1,27 +1,53 @@
+@import '@/styles/variables.scss';
 .sorting {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 2rem 2rem 0;
+  padding: 3rem 6rem;
   h4 {
-    color: var(--text-tertiary);
+    color: $text-color-tertiary;
   }
   .controls {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     width: 100%;
+    .resetButton {
+      margin: 0;
+    }
     select {
       opacity: 0.8;
-      padding: 1rem;
-      background-color: var(--select);
+      padding: 1.5em;
+      background-color: $bg-color-secondary;
       border-radius: 0.23rem;
       width: 60%;
+      min-width: 100px;
+      height: 100%;
+      max-width: 200px;
       appearance: none;
       background-image: url(@/assets/icon/arrow_down.svg);
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 2em;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: $media-md) {
+  .sorting {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
+    .controls {
+      justify-content: space-between;
+      width: 40%;
+      max-width: 350px;
+      select {
+        width: 60%;
+      }
     }
   }
 }

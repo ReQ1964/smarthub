@@ -1,21 +1,38 @@
+@import '@/styles/variables.scss';
 .team {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 3rem;
+  padding: $padding-page-containers;
   text-align: center;
   h1 {
-    font-size: var(--h1-size);
+    font-size: $h1-size;
   }
-  .member {
-    display: flex;
+  .membersList {
+    @include flexCenter;
     flex-direction: column;
-    gap: 1rem;
-    p {
-      color: var(--text-tertiary);
+    flex-wrap: wrap;
+    gap: 4rem;
+    .member {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 300px;
+      p {
+        color: $text-color-tertiary;
+      }
+    }
+    .icons {
+      margin: 0 auto;
     }
   }
-  .icons {
-    margin: 0 auto;
+}
+
+@media (min-width: $media-md) {
+  .team {
+    .membersList {
+      flex-direction: row;
+      gap: 4rem;
+    }
   }
 }

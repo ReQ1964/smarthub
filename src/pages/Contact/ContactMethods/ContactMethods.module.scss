@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 .methods {
   display: flex;
   flex-direction: column;
@@ -5,7 +6,7 @@
   padding: 4rem;
   text-align: center;
   h1 {
-    font-size: var(--h1-size);
+    font-size: $h1-size;
   }
   p {
     opacity: 0.9;
@@ -14,7 +15,13 @@
   h4 {
     font-weight: bold;
   }
-  .socialIcons {
-    justify-content: center;
+}
+@media (min-width: $media-lg) {
+  .methods {
+    width: 50%;
+    text-align: left;
+    .socialIcons {
+      margin: 0;
+    }
   }
 }

@@ -37,10 +37,11 @@ const Pagination = ({
           return (
             <li key={number} id={number.toString()}>
               <Link
-                to="shop_products"
+                to="results"
                 spy={true}
                 smooth={true}
                 duration={250}
+                offset={-120}
                 className={`${classes.button} ${
                   currentPage == number ? classes.active : ''
                 }`}

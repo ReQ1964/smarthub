@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/store/hooks';
 import AccountIcon from '@/assets/icon/navbar/account.svg';
 import CartIcon from '@/assets/icon/navbar/cart.svg';
 import HamburgerIcon from '@/assets/icon/navbar/hamburger.svg';
 import CloseIcon from '@/assets/icon/navbar/x.svg';
 import classes from './Navbar.module.scss';
+import NavigationLinks from '@/components/UI/NavigationLinks/NavigationLinks';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -23,79 +24,46 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
+    <nav className={classes.navWrapper}>
       <div className={classes.heading}>
-        <h1>
-          <Link to={'/'}>SmartHub</Link>
-        </h1>
+        <div className={classes.headingLeftContainer}>
+          <h1>
+            <Link to={'/'}>SmartHub</Link>
+          </h1>
+          <NavigationLinks className={classes.desktopMenu} />
+        </div>
         <div className={classes.controls}>
-          <div>
-            <img
-              src={CartIcon}
-              className={classes.cartIcon}
-              onClick={() => navigate('/cart')}
-              alt="An icon to go to the basket"
-            />
-            {cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
-          </div>
+          <img
+            src={CartIcon}
+            onClick={() => navigate('/cart')}
+            alt="An icon to go to the basket"
+          />
+          {cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
           <img
             src={AccountIcon}
             onClick={() => navigate('/account')}
             alt="An icon to go to the account/auth page"
           />
-          {isActive ? (
-            <img
-              src={CloseIcon}
-              onClick={hamburgerHandler}
-              alt="An icon to close the hamburger"
-            />
-          ) : (
-            <img
-              src={HamburgerIcon}
-              onClick={hamburgerHandler}
-              alt="An icon to open the hamburger"
-            />
-          )}
+          <div className={classes.hamburgerIconContainer}>
+            {isActive ? (
+              <img
+                src={CloseIcon}
+                onClick={hamburgerHandler}
+                alt="An icon to close the hamburger"
+              />
+            ) : (
+              <img
+                src={HamburgerIcon}
+                onClick={hamburgerHandler}
+                alt="An icon to open the hamburger"
+              />
+            )}
+          </div>
         </div>
       </div>
-      {isActive && (
-        <div className={classes.links}>
-          <ul>
-            <li>
-              <NavLink
-                to={'/'}
-                className={({ isActive }) => (isActive ? classes.active : '')}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={'/shop'}
-                className={({ isActive }) => (isActive ? classes.active : '')}
-              >
-                Shop
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={'/about'}
-                className={({ isActive }) => (isActive ? classes.active : '')}
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to={'/contact'}
-                className={({ isActive }) => (isActive ? classes.active : '')}
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-      )}
+      <NavigationLinks
+        className={`${classes.mobileMenu} ${isActive ? classes.active : ''}`}
+      />
     </nav>
   );
 };

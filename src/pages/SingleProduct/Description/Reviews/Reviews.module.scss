@@ -1,8 +1,11 @@
+@import '@/styles/variables.scss';
 .reviews {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
   padding: 3rem 3rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
   .review {
     display: flex;
     flex-direction: column;
@@ -19,22 +22,4 @@
       }
     }
   }
-  // .review {
-  //   .rating {
-  //     display: flex;
-  //     align-items: flex-end;
-  //     margin-bottom: 1rem;
-  //     gap: 0.6rem;
-  //     .date {
-  //       margin-bottom: 0.25rem;
-  //     }
-  //     .rating {
-  //       display: flex;
-  //       margin-bottom: 5px;
-  //       img {
-  //         height: 1.4rem;
-  //       }
-  //     }
-  //   }
-  // }
 }

@@ -1,16 +1,19 @@
+@import '@/styles/variables.scss';
 .form {
-  background-color: var(--bg-secondary);
+  background-color: $bg-color-secondary;
   padding: 2rem;
+  max-width: 550px;
+  margin: 0 auto;
   h1 {
     margin-bottom: 2rem;
-    font-size: var(--h1-size);
+    font-size: $h1-size;
     &::after {
       content: '';
       display: block;
       margin-top: 0.4rem;
       width: 20%;
       height: 5px;
-      background: var(--btn-bg);
+      background: $btn-color-bg;
     }
   }
   form {
@@ -18,7 +21,7 @@
     flex-direction: column;
     gap: 1rem;
     .error {
-      color: var(--text-error);
+      color: $text-color-error;
       font-size: 0.8rem;
       width: 90%;
       margin: 0 auto;
@@ -26,13 +29,22 @@
     input,
     select,
     textarea {
-      padding: 0.5rem;
+      padding: 0.7rem;
       width: 90%;
       margin: 0 auto;
       resize: none;
     }
-    textarea {
-      height: 200px;
+    select {
+      cursor: pointer;
     }
+    textarea {
+      height: 150px;
+    }
+  }
+}
+
+@media (min-width: $media-lg) {
+  .form {
+    width: 50%;
   }
 }

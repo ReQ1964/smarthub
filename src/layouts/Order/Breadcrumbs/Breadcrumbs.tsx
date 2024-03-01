@@ -1,23 +1,24 @@
 import React from 'react';
 import classes from './Breadcrumbs.module.scss';
 import { NavLink, Link } from 'react-router-dom';
-import arrow from '../../assets/icon/carousel.svg';
+import arrow from '@/assets/icon/carousel.svg';
 import { useAppSelector } from '@/store/hooks';
 import { useState } from 'react';
-import Modal from '../UI/Modal/Modal';
+import Modal from '@/components/UI/Modal/Modal';
 
 const Breadcrumbs = () => {
   const orderDetails = useAppSelector((state) => state.order);
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
 
   const isOrderEmptyHandler = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
-    const isOrderEmpty = Object.keys(orderDetails.details).length === 0;
+    console.log(orderDetails);
+    const isOrderEmpty = orderDetails.details.name === '';
     const isShippingMethodEmpty = !orderDetails?.shippingMethod;
 
-    if (isOrderEmpty || isShippingMethodEmpty) {
+    if (isShippingMethodEmpty || isOrderEmpty) {
       e.preventDefault();
       setModalMessage(
         'Please, fill out everything and click the button at the bottom to proceed.',

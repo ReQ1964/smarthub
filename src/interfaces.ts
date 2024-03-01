@@ -12,4 +12,5 @@ export interface IShowcaseProduct {
 export interface IDetailedProduct extends IShowcaseProduct {
   type: string;
   rating: number;
+  description: string;
 }

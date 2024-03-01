@@ -1,5 +1,8 @@
+@import '@/styles/variables.scss';
 .specification {
-  padding: 3rem 2rem 2rem;
+  padding: $padding-page-containers;
+  max-width: 600px;
+  margin: 0 auto;
   ul {
     display: flex;
     flex-direction: column;

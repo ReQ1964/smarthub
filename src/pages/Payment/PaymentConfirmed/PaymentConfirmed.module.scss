@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 .accepted {
   padding: 2rem;
   display: flex;
@@ -5,12 +6,12 @@
   align-items: center;
   gap: 1rem;
   h4 {
-    color: var(--text-quaternary);
+    color: $text-color-quaternary;
     font-weight: bold;
   }
   img {
     width: 150px;
-    border: 5px solid var(--btn-bg);
+    border: 5px solid $btn-color-bg;
     filter: invert(66%) sepia(97%) saturate(3390%) hue-rotate(174deg)
       brightness(96%) contrast(96%);
     border-radius: 50%;

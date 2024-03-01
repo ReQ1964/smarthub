@@ -13,10 +13,11 @@ const Categories = () => {
   return (
     <section className={classes.categories}>
       <Link
-        to="sorting"
+        to="results"
         spy={true}
         smooth={true}
         duration={250}
+        offset={-120}
         className={
           productType === 'all'
             ? `${classes.category} ${classes.active}`
@@ -27,10 +28,11 @@ const Categories = () => {
         <h2>All Devices</h2>
       </Link>
       <Link
-        to="sorting"
+        to="results"
         spy={true}
         smooth={true}
         duration={250}
+        offset={-120}
         className={
           productType === 'phone'
             ? `${classes.category} ${classes.active}`
@@ -41,10 +43,11 @@ const Categories = () => {
         <h2>Phones</h2>
       </Link>
       <Link
-        to="sorting"
+        to="results"
         spy={true}
         smooth={true}
         duration={250}
+        offset={-120}
         className={
           productType === 'watch'
             ? `${classes.category} ${classes.active}`

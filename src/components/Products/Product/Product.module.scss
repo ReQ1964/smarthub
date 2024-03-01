@@ -1,3 +1,4 @@
+@import '@/styles/variables.scss';
 .product {
   flex-direction: column;
   list-style: none;
@@ -11,11 +12,12 @@
     font-weight: bold;
   }
   img {
-    max-width: 100%;
+    width: 80%;
+    max-width: 250px;
     margin-bottom: 0.5rem;
   }
   .company {
-    color: var(--text-tertiary);
+    color: $text-color-tertiary;
   }
   .colors {
     display: flex;
@@ -27,5 +29,10 @@
     width: 20px;
     height: 20px;
     border: 0.1px solid rgba(0, 0, 0, 0.3);
+  }
+  &:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    transform: translateY(-3px);
   }
 }

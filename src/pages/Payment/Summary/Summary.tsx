@@ -5,7 +5,7 @@ interface ISummaryProps {
   email: string;
   number: string;
   address: string;
-  postal: string;
+  postal: number;
   city: string;
   ship?: string;
 }
@@ -15,11 +15,11 @@ const Summary = ({ data }: { data: ISummaryProps }) => {
   return (
     <div className={classes.summary}>
       <div>
-        <h4>Contact</h4>
+        <h4>Contact:</h4>
         <p>{`${email}, ${number}`}</p>
       </div>
       <div>
-        <h4>Ship to</h4>
+        <h4>Ship to:</h4>
         <p>{`${address}, ${postal}, ${city}`}</p>
       </div>
       {ship && (

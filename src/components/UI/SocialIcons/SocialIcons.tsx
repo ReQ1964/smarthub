@@ -5,7 +5,7 @@ import instagram from '@/assets/icon/socials/instagram.svg';
 import twitter from '@/assets/icon/socials/twitter.svg';
 import { Link } from 'react-router-dom';
 
-const SocialIcons = (className: { className?: string }) => {
+const SocialIcons = ({ className }: { className?: string }) => {
   return (
     <div className={`${classes.icons} ${className}`}>
       <Link to={'https://www.facebook.com/'}>

@@ -8,6 +8,7 @@ import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { addOrderDetails } from '@/store/order-slice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import Button from '@/components/UI/Button/Button';
+import useRedirectFromOrdering from '@/hooks/useRedirectFromOrdering';
 
 export interface IDetailsPayload {
   email: string;
@@ -15,7 +16,7 @@ export interface IDetailsPayload {
   name: string;
   surname: string;
   address: string;
-  postal: string;
+  postal: number;
   city: string;
   note?: string;
   country: string;
@@ -25,9 +26,12 @@ export interface IDetailsPayload {
 const DetailsForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  useRedirectFromOrdering();
 
   const orderDetails = useAppSelector((state) => state.order.details);
 
+  const emailRegExp =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const phoneRegExp =
     /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
@@ -35,7 +39,7 @@ const DetailsForm = () => {
     email: yup
       .string()
       .required('Please enter your email.')
-      .email('Please enter a valid email address.'),
+      .matches(emailRegExp, 'Please enter a valid email address.'),
     number: yup
       .string()
       .required('Please enter your phone number.')
@@ -49,7 +53,10 @@ const DetailsForm = () => {
       .required('Please enter your surname.')
       .min(2, 'Please enter a name with at least 2 characters.'),
     address: yup.string().required('Please enter your address.'),
-    postal: yup.string().required('Please enter your postal code.'),
+    postal: yup
+      .number()
+      .typeError("Postal code can't contain letters or special characters.")
+      .required('Please enter your postal code.'),
     city: yup.string().required('Please enter your city.'),
     note: yup.string(),
     country: yup.string().required('Please choose your country'),
