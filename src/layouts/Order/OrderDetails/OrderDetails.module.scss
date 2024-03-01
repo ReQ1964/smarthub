@@ -16,13 +16,16 @@
     width: 100%;
     background-color: $bg-color-primary;
     z-index: 100;
-
+    h2 {
+      cursor: pointer;
+    }
     .total {
       text-align: center;
     }
     img {
       position: absolute;
       width: 30px;
+      cursor: pointer;
       &.active {
         transform: rotate(180deg);
       }

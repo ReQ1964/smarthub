@@ -95,7 +95,7 @@ const SignUpForm = ({ setMethod, emailRegExp }: AccountFormsProps) => {
             <img
               onClick={() => setPasswordShown((prevState) => !prevState)}
               src={passwordShown ? visibleIcon : invisibleIcon}
-              alt=""
+              alt="An icon to show the password visibility"
             />
             <input
               type={passwordShown ? 'text' : 'password'}
