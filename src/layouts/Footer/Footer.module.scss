@@ -1,16 +1,28 @@
 @import '@/styles/variables.scss';
 footer {
-  display: grid;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
   gap: 2rem;
-  padding: 3rem;
+  padding: 4rem;
   h2 {
     text-transform: capitalize;
   }
+  p {
+    color: $text-color-tertiary;
+  }
+  .rightContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   .socials,
   .info,
   .features {
-    display: grid;
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     div {
       margin: 0;
     }
@@ -22,8 +34,33 @@ footer {
         a {
           text-decoration: none;
           color: $text-color-tertiary;
+          &:hover {
+            color: $text-color-primary;
+            transition: 0.2s;
+            transform: translateY(-1px);
+          }
         }
       }
     }
+  }
+}
+@media (min-width: $media-md) {
+  footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    .rightContainer {
+      flex-direction: row;
+      gap: 5rem;
+    }
+  }
+}
+@media (min-width: $media-lg) {
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10rem;
+    padding: 4rem 0;
   }
 }
