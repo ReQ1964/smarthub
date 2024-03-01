@@ -46,9 +46,6 @@ footer {
 }
 @media (min-width: $media-md) {
   footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
     .rightContainer {
       flex-direction: row;
       gap: 5rem;
@@ -60,7 +57,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 10rem;
+    gap: 2rem;
     padding: 6rem 0 3rem;
   }
 }

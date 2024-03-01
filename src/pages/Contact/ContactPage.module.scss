@@ -1,0 +1,14 @@
+@import '@/styles/variables.scss';
+
+.contactPage {
+  @include flexCenter;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media (min-width: $media-lg) {
+  .contactPage {
+    flex-direction: row;
+    padding: 5rem 5rem 2rem;
+  }
+}

@@ -8,7 +8,7 @@ const ContactMethods = () => {
       <h3>Contact us</h3>
       <h1>Get in touch today!</h1>
       <p>Need some support or want to ask some questions?</p>
-      <h4>Phone: +451 251 322</h4>
+      <h4>Phone: +48 451 251 322</h4>
       <SocialIcons className={classes.socialIcons} />
     </section>
   );

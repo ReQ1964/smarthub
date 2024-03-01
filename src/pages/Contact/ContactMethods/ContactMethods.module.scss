@@ -15,7 +15,13 @@
   h4 {
     font-weight: bold;
   }
-  .socialIcons {
-    justify-content: center;
+}
+@media (min-width: $media-lg) {
+  .methods {
+    width: 50%;
+    text-align: left;
+    .socialIcons {
+      margin: 0;
+    }
   }
 }
