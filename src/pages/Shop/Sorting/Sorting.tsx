@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Sorting.module.scss';
 import Button from '@/components/UI/Button/Button';
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppDispatch } from '@/store/hooks';
 import {
   setFilteredProducts,
   setSortedProducts,
@@ -10,13 +10,9 @@ import {
 
 type ISortType = 'a-z' | 'z-a' | 'high-price' | 'low-price';
 
-const Sorting = () => {
+const Sorting = ({ resultsNumber }: { resultsNumber: number }) => {
   const dispatch = useAppDispatch();
   const [selectedSort, setSelectedSort] = useState('a-z');
-
-  const filteredProductsLength = useAppSelector(
-    (state) => state.shopProducts.processedProducts.length,
-  );
 
   const submitSortingHandler = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -33,7 +29,7 @@ const Sorting = () => {
 
   return (
     <section className={classes.sorting}>
-      <h4 id="results">Showing {filteredProductsLength} results</h4>
+      <h4 id="results">Showing {resultsNumber} results</h4>
       <div className={classes.controls}>
         <select
           name="sortingMethods"

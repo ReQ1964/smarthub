@@ -14,7 +14,8 @@ export const Item = ({
   product: IDetailedProduct;
   reviewsNumber: number;
 }) => {
-  const { id, name, colors, company, price, img, type, rating } = product;
+  const { id, name, colors, company, price, img, type, rating, description } =
+    product;
   const dispatch = useAppDispatch();
   const [pickedColor, setPickedColor] = useState<string>(colors[0]);
   const capitalize = (s: string) => {
@@ -38,13 +39,15 @@ export const Item = ({
 
   return (
     <section className={classes.item}>
-      <img src={img[pickedColor]} alt="" />
+      <img src={img[pickedColor]} alt="An image of the color of your choice" />
       <div className={classes.description}>
         <div className={classes.info}>
           <h3>{name}</h3>
           <div className={classes.rating}>
             <div className={classes.stars}>{StarsRating(rating)}</div>
-            <p>{reviewsNumber} reviews</p>
+            <p>
+              {reviewsNumber} {reviewsNumber === 1 ? 'review' : 'reviews'}
+            </p>
           </div>
         </div>
 
@@ -55,12 +58,7 @@ export const Item = ({
           </p>
         </div>
 
-        <p className={classes.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate ad
-          accusantium, voluptatum tenetur corrupti sint magnam obcaecati
-          incidunt culpa soluta facilis aliquid voluptatem minus nostrum quod?
-          Voluptas cupiditate quisquam adipisci?
-        </p>
+        <p className={classes.text}>{description}</p>
 
         <div className={classes.colors}>
           {colors.map((color) => {
@@ -81,9 +79,9 @@ export const Item = ({
           })}
         </div>
 
-        <div className={classes.controls}>
-          <Button onClick={addToCartHandler}>Add to cart</Button>
-        </div>
+        <Button onClick={addToCartHandler} className={classes.addButton}>
+          Add to cart
+        </Button>
       </div>
     </section>
   );

@@ -20,6 +20,12 @@ const ShopPage = () => {
   );
   const starterProducts = useLoaderData() as IDetailedProduct[];
 
+  const itemsShown = (): number => {
+    if ((size.width as number) < 1024) return 6;
+    else if ((size.width as number) > 1024) return 8;
+    else return 8;
+  };
+
   useEffect(() => {
     dispatch(setProducts(starterProducts));
     dispatch(setFilteredProducts('all'));
@@ -29,9 +35,8 @@ const ShopPage = () => {
   }, []);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productsPerPage] = useState<number>(
-    (size.width as number) > 300 ? 2 : 4,
-  );
+
+  const productsPerPage = itemsShown();
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -39,13 +44,12 @@ const ShopPage = () => {
     indexOfFirstProduct,
     indexOfLastProduct,
   );
-
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <main>
       <Categories />
-      <Sorting />
+      <Sorting resultsNumber={currentProducts.length} />
       <ProductsList products={currentProducts} />
       <Pagination
         productsPerPage={productsPerPage}

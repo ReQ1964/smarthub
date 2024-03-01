@@ -1,17 +1,16 @@
 @import '@/styles/variables.scss';
 .item {
-  padding: 4rem;
+  padding: 6rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
   img {
     width: 100%;
-  }
-  .images {
-    margin-top: 2rem;
-    img {
-      width: 40%;
-    }
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
   }
   .description {
     display: flex;
@@ -58,19 +57,36 @@
   .colors {
     display: flex;
     gap: 0.7rem;
-  }
-  .color {
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    border: 0.1px solid rgba(0, 0, 0, 0.3);
-    &.active {
-      transform: scale(1.1);
-      box-shadow: 2px 2px 5px #130627;
+    .color {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      border: 0.1px solid rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+
+      &.active {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 5px #130627;
+      }
     }
   }
-  .controls {
-    padding-top: 1.5rem;
-    margin: 0 auto;
+}
+
+@media (min-width: $media-md) {
+  .item {
+    max-width: 1000px;
+    flex-direction: row;
+    img {
+      max-width: 400px;
+      max-height: 400px;
+    }
+    .description {
+      width: 50%;
+    }
+    .addButton {
+      &:active {
+        transform: scale(1.05);
+      }
+    }
   }
 }
