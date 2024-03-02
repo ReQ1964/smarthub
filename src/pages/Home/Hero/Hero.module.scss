@@ -1,22 +1,20 @@
 @import '@/styles/variables.scss';
 .hero {
   position: relative;
-  height: 80vh;
-  display: flex;
+  @include flexCenter;
   flex-direction: column;
+  height: 80vh;
   gap: 2rem;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url('@/assets/img/home-hero/hero-girl.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 4rem;
+  padding: 3rem;
 
   .carousel {
     min-height: 150px;
-    max-width: 80%;
+    max-width: 90%;
     overflow-wrap: break-word;
     .slide {
       display: flex;
@@ -44,20 +42,6 @@
     filter: invert(1);
     transform: 0.15s;
   }
-  .carouselContainerLeft {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    width: 30%;
-    height: 100%;
-    cursor: pointer;
-    &:hover {
-      transition: 0.2s;
-      transform: scale(1.06);
-    }
-  }
 
   .carouselContainerLeft,
   .carouselContainerRight {
@@ -67,6 +51,10 @@
     align-items: center;
     height: 100%;
     cursor: pointer;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.06);
+    }
   }
 
   .carouselLeft {
@@ -75,12 +63,12 @@
 
   .carouselContainerRight {
     right: 0;
-    width: 30%;
+    width: 25%;
   }
 
   .carouselContainerLeft {
     left: 0;
-    width: 30%;
+    width: 25%;
   }
 }
 

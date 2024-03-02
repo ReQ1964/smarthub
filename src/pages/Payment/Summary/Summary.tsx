@@ -5,7 +5,7 @@ interface ISummaryProps {
   email: string;
   number: string;
   address: string;
-  postal: number;
+  postal: string;
   city: string;
   ship?: string;
 }
