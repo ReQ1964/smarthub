@@ -16,6 +16,7 @@ An online store selling smartwatches and smartphones. My first project, where th
 - TypeScript
 - React Router
 - Redux
+- Firebase
 - React Hook Form
 - yup
 - Husky
