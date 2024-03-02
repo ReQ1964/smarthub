@@ -16,7 +16,7 @@ export interface IDetailsPayload {
   name: string;
   surname: string;
   address: string;
-  postal: number;
+  postal: string;
   city: string;
   note?: string;
   country: string;
@@ -53,10 +53,7 @@ const DetailsForm = () => {
       .required('Please enter your surname.')
       .min(2, 'Please enter a name with at least 2 characters.'),
     address: yup.string().required('Please enter your address.'),
-    postal: yup
-      .number()
-      .typeError("Postal code can't contain letters or special characters.")
-      .required('Please enter your postal code.'),
+    postal: yup.string().required('Please enter your postal code.'),
     city: yup.string().required('Please enter your city.'),
     note: yup.string(),
     country: yup.string().required('Please choose your country'),

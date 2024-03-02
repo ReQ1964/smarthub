@@ -33,16 +33,19 @@ const Navbar = () => {
           <NavigationLinks className={classes.desktopMenu} />
         </div>
         <div className={classes.controls}>
-          <img
-            src={CartIcon}
-            onClick={() => navigate('/cart')}
-            alt="An icon to go to the basket"
-          />
-          {cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
+          <div className={classes.cartIconContainer}>
+            <img
+              src={CartIcon}
+              onClick={() => navigate('/cart')}
+              alt="An icon to go to the basket"
+            />
+            {cartQuantity != 0 ? <p>{cartQuantity}</p> : ''}
+          </div>
           <img
             src={AccountIcon}
             onClick={() => navigate('/account')}
             alt="An icon to go to the account/auth page"
+            className={classes.accountIcon}
           />
           <div className={classes.hamburgerIconContainer}>
             {isActive ? (

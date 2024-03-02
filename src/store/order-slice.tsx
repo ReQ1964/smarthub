@@ -16,7 +16,7 @@ const initialState: IOrderState = {
     name: '',
     surname: '',
     address: '',
-    postal: null as unknown as number,
+    postal: '',
     city: '',
     note: '',
     country: '',

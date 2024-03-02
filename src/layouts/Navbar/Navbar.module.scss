@@ -37,28 +37,39 @@
     }
 
     .controls {
-      display: flex;
-      position: relative;
-      p {
-        position: absolute;
-        z-index: 1000;
-        background-color: $bg-color-tertiary;
-        border-radius: 50%;
-        height: 22px;
-        width: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: -12px;
-        right: 28px;
-        color: white;
-      }
-      img {
-        width: 2rem;
-        margin-left: 6px;
-        &:nth-child(1) {
-          width: 29px;
+      @include flexCenter;
+      gap: 0.3rem;
+
+      .cartIconContainer {
+        @include flexCenter;
+        position: relative;
+        width: 30px;
+        height: 44px;
+        p {
+          position: absolute;
+          z-index: 1000;
+          background-color: $bg-color-tertiary;
+          border-radius: 50%;
+          height: 22px;
+          width: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          top: -5px;
+          right: -12px;
+          color: white;
         }
+        img {
+          width: 30px;
+        }
+        &:hover {
+          transition: 0.2s;
+          transform: translateY(-1px);
+          cursor: pointer;
+        }
+      }
+      .accountIcon {
+        width: 33px;
         &:hover {
           transition: 0.2s;
           transform: translateY(-1px);
@@ -67,43 +78,48 @@
       }
       .hamburgerIconContainer {
         img {
-          padding-top: 0.4rem;
+          padding-top: 0.5rem;
           width: 34px;
+          &:hover {
+            transition: 0.2s;
+            transform: translateY(-1px);
+            cursor: pointer;
+          }
         }
       }
     }
   }
+}
 
-  .mobileMenu {
-    @include flexCenter;
-    background-color: $bg-color-primary;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    transform: translateY(-100%);
-    width: 100%;
-    gap: 1.5rem;
-    padding: 2rem;
-    z-index: 90;
-    transition: 0.5s;
-    &.active {
-      transform: translateY(95%);
+.mobileMenu {
+  @include flexCenter;
+  background-color: $bg-color-primary;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-100%);
+  width: 100%;
+  gap: 1.5rem;
+  padding: 2rem;
+  z-index: 90;
+  transition: 0.5s;
+  &.active {
+    transform: translateY(95%);
+  }
+}
+
+@media (min-width: $media-lg) {
+  .heading {
+    .headingLeftContainer {
+      .desktopMenu {
+        @include flexCenter;
+      }
     }
   }
-
-  @media (min-width: $media-lg) {
-    .heading {
-      .headingLeftContainer {
-        .desktopMenu {
-          @include flexCenter;
-        }
-      }
-    }
-    .controls {
-      justify-self: end;
-      .hamburgerIconContainer {
-        display: none;
-      }
+  .controls {
+    justify-self: end;
+    .hamburgerIconContainer {
+      display: none;
     }
   }
 }
