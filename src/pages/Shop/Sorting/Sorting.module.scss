@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 3rem 6rem;
+  padding: 3rem;
   h4 {
     color: $text-color-tertiary;
   }
@@ -19,12 +19,10 @@
     }
     select {
       opacity: 0.8;
-      padding: 1.5em;
+      padding: 1.3em;
       background-color: $bg-color-secondary;
       border-radius: 0.23rem;
-      width: 60%;
       min-width: 100px;
-      height: 100%;
       max-width: 200px;
       appearance: none;
       background-image: url(@/assets/icon/arrow_down.svg);
