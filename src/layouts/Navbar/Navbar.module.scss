@@ -109,17 +109,19 @@
 }
 
 @media (min-width: $media-lg) {
-  .heading {
-    .headingLeftContainer {
-      .desktopMenu {
-        @include flexCenter;
+  .navWrapper {
+    .heading {
+      .headingLeftContainer {
+        .desktopMenu {
+          @include flexCenter;
+        }
       }
     }
-  }
-  .controls {
-    justify-self: end;
-    .hamburgerIconContainer {
-      display: none;
+    .controls {
+      justify-self: end;
+      .hamburgerIconContainer {
+        display: none;
+      }
     }
   }
 }
