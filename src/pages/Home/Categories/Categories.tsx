@@ -9,7 +9,7 @@ const Categories = () => {
     <section className={classes.categories}>
       <div className={`${classes.category} ${classes.smartwatchCategory}`}>
         <p className={classes.alert}>Ends Today</p>
-        <h2>Elements Of Style</h2>
+        <h2>Stylish Look</h2>
         <p>Top Ten Products of the Week</p>
         <Link to={'/shop'}>Explore Items</Link>
         <img src={smartwatch} alt="An image of a smartwatch" />
