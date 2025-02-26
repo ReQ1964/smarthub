@@ -41,10 +41,8 @@
     }
   }
   .smartwatchCategory {
-    background: linear-gradient(
-        rgba(245, 242, 242, 0.8),
-        rgba(255, 255, 255, 0.8)
-      ),
+    background:
+      linear-gradient(rgba(245, 242, 242, 0.8), rgba(255, 255, 255, 0.8)),
       url(@/assets/img/home-categories/pc-bg.webp);
     .alert {
       color: rgb(231, 124, 64);
@@ -59,7 +57,8 @@
   }
   .phoneCategory {
     color: $text-color-secondary;
-    background: linear-gradient(rgba(2, 130, 202, 0.8), rgba(2, 130, 202, 0.8)),
+    background:
+      linear-gradient(rgba(2, 130, 202, 0.8), rgba(2, 130, 202, 0.8)),
       url(@/assets/img/home-categories/phones-bg.webp);
     a {
       color: white;
