@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@/components/UI/Modal/Modal';
 import Button from '@/components/UI/Button/Button';
 import cross from '@/assets/icon/navbar/x.svg';
 import classes from './PasswordModal.module.scss';
 import done from '@/assets/icon/done.svg';
 import Spinner from '@/components/UI/Spinner/Spinner';
-import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '@/firebase';
 import { useForm } from 'react-hook-form';
 
 interface IPasswordProps {
@@ -41,17 +38,7 @@ const PasswordModal = ({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ({ email }: { email: string }) => {
-    setIsLoading(true);
-    sendPasswordResetEmail(auth, email)
-      .catch((error) => {
-        console.log(error.code, error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setResetSent(true);
-      });
-  };
+  const onSubmit = ({ email }: { email: string }) => {};
 
   return (
     <>

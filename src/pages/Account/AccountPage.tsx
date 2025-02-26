@@ -1,13 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import {
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth';
-import { auth } from '@/firebase';
-import { useEffect } from 'react';
 import classes from './AccountPage.module.scss';
 import LoginForm from './LoginForm/LoginForm';
 import SignUpForm from './SignUpForm/SignUpForm';
@@ -27,8 +19,6 @@ const AccountPage = () => {
   const [method, setMethod] = useState<IMethod>('login');
   const [user, setUser] = useState<boolean>(false);
 
-  const provider = new GoogleAuthProvider();
-
   const emailRegExp =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -38,20 +28,6 @@ const AccountPage = () => {
     const method = type === 'login' ? 'register' : 'login';
     setMethod(method);
   };
-
-  const googleSignInHandler = () => {
-    signInWithPopup(auth, provider);
-  };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(true);
-      } else {
-        setUser(false);
-      }
-    });
-  }, []);
 
   const modalCloseHandler = () => {
     setModalIsOpen(false);
@@ -84,7 +60,7 @@ const AccountPage = () => {
           )}
           <div className={classes.googleContainer}>
             <p>or</p>
-            <button className={classes.btnGoogle} onClick={googleSignInHandler}>
+            <button className={classes.btnGoogle}>
               <img src={googleIcon} alt="" />
               Continue with Google
             </button>

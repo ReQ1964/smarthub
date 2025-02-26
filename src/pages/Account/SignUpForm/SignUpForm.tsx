@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from '../AccountPage.module.scss';
-import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -8,8 +7,6 @@ import Button from '@/components/UI/Button/Button';
 import visibleIcon from '@/assets/icon/navbar/visible.svg';
 import invisibleIcon from '@/assets/icon/navbar/invisible.svg';
 import Spinner from '@/components/UI/Spinner/Spinner';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/firebase';
 import { AccountFormsProps } from '../AccountPage';
 
 interface ISignUpFormData {
@@ -53,24 +50,6 @@ const SignUpForm = ({ setMethod, emailRegExp }: AccountFormsProps) => {
     confirmPassword,
   }: ISignUpFormData) => {
     if (password === confirmPassword) {
-      setIsLoading(true);
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          setError(true);
-          if (error.code === 'auth/email-already-in-use') {
-            setErrorMessage('Email already in use!');
-          } else {
-            setErrorMessage(error.message);
-          }
-        })
-        .finally(() => {
-          setIsLoading(false);
-          setError(false);
-        });
     }
   };
 

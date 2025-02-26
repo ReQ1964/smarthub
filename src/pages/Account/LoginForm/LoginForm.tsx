@@ -1,17 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from '../AccountPage.module.scss';
-import { useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Button from '@/components/UI/Button/Button';
 import visibleIcon from '@/assets/icon/navbar/visible.svg';
 import invisibleIcon from '@/assets/icon/navbar/invisible.svg';
-import {
-  signInWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
-} from 'firebase/auth';
-import { auth } from '@/firebase';
 import Spinner from '@/components/UI/Spinner/Spinner';
 import { AccountFormsProps } from '../AccountPage';
 
@@ -46,29 +40,7 @@ const LoginForm = ({ setMethod, emailRegExp, openModal }: LoginFormProps) => {
     resolver: yupResolver(schema),
   });
 
-  const onLogin = ({ email, password }: ILoginData) => {
-    setIsLoading(true);
-    fetchSignInMethodsForEmail(auth, email)
-      .then((result) => {
-        if (result.filter((item) => item != 'password').length >= 1) {
-          setErrorMessage("You're already using a different login method!");
-          return;
-        }
-        signInWithEmailAndPassword(auth, email, password).catch((error) => {
-          console.log(error.code, error.message);
-          setError(true);
-          if (error.code === 'auth/user-not-found') {
-            setErrorMessage('Invalid email and/or password!');
-          } else {
-            setErrorMessage(error.message);
-          }
-        });
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setError(false);
-      });
-  };
+  const onLogin = ({ email, password }: ILoginData) => {};
 
   return (
     <section className={classes.loggingForm}>
