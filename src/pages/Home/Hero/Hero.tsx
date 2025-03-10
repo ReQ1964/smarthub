@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Box, Button, Container } from '@mantine/core';
+import { Box, Button, Container, Title } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Carousel from '@/assets/icon/carousel.svg';
@@ -69,7 +69,7 @@ const Hero = () => {
   return (
     <Container
       size="100%"
-      className="relative flex flex-col justify-center items-center h-[60vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('@/assets/img/home-hero/hero-girl.jpg')] bg-no-repeat bg-center bg-cover p-12"
+      className="relative flex flex-col justify-center items-center h-[65vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('@/assets/img/home-hero/hero-girl.jpg')] bg-no-repeat bg-center bg-cover p-12"
       aria-label="Promotional carousel"
     >
       <Box aria-roledescription="carousel">
@@ -90,7 +90,9 @@ const Hero = () => {
             >
               {index === currentSlide && (
                 <>
-                  <h1 className="uppercase text-4xl">{item.header}</h1>
+                  <Title order={1} className="uppercase">
+                    {item.header}
+                  </Title>
                   <p className="leading-2">{item.description}</p>
                 </>
               )}
