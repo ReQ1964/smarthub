@@ -10,7 +10,8 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:@tanstack/query/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

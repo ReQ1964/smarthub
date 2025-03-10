@@ -1,11 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import { useAppDispatch } from '@/store/hooks';
-import { addToCart } from '@/store/cart-slice';
-import { IDetailedProduct } from '@/interfaces';
-import classes from './Item.module.scss';
-import StarsRating from '@/components/UI/StarsRating/StarsRating';
+import React, { useState } from 'react';
 import Button from '@/components/UI/Button/Button';
+import StarsRating from '@/components/UI/StarsRating/StarsRating';
+import { IDetailedProduct } from '@/interfaces';
+import useCartStore from '@/store/cartStore';
+import classes from './Item.module.scss';
 
 export const Item = ({
   product,
@@ -16,25 +14,23 @@ export const Item = ({
 }) => {
   const { id, name, colors, company, price, img, type, rating, description } =
     product;
-  const dispatch = useAppDispatch();
+  const addToCart = useCartStore((state) => state.addToCart);
   const [pickedColor, setPickedColor] = useState<string>(colors[0]);
   const capitalize = (s: string) => {
     return s[0].toUpperCase() + s.slice(1);
   };
 
   const addToCartHandler = () => {
-    dispatch(
-      addToCart({
-        id: `${id}_${pickedColor}`,
-        img: img[pickedColor],
-        name: `${name} ${capitalize(pickedColor)}`,
-        price,
-        company,
-        color: pickedColor,
-        quantity: 1,
-        type,
-      }),
-    );
+    addToCart({
+      id: `${id}_${pickedColor}`,
+      img: img[pickedColor],
+      name: `${name} ${capitalize(pickedColor)}`,
+      price,
+      company,
+      color: pickedColor,
+      quantity: 1,
+      type,
+    });
   };
 
   return (
