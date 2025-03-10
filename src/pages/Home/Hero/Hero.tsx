@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Box, Button, Container, Title } from '@mantine/core';
+import { Box, Button, Container, Flex, Title } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Carousel from '@/assets/icon/carousel.svg';
@@ -67,12 +67,18 @@ const Hero = () => {
   }, [nextSlide, prevSlide]);
 
   return (
-    <Container
-      size="100%"
+    <motion.section
       className="relative flex flex-col justify-center items-center h-[65vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('@/assets/img/home-hero/hero-girl.jpg')] bg-no-repeat bg-center bg-cover p-12"
       aria-label="Promotional carousel"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.5,
+        ease: 'easeOut',
+        delay: 0.2,
+      }}
     >
-      <Box aria-roledescription="carousel">
+      <Box aria-roledescription="carousel" className="w-2/3 mx-auto">
         {CAROUSEL_DATA.map((item: ICarouselItem, index: number) => {
           return (
             <motion.div
@@ -101,12 +107,19 @@ const Hero = () => {
         })}
       </Box>
 
-      <Button variant="filled" size="lg" onClick={() => navigate('/shop')}>
+      <Button
+        variant="filled"
+        size="lg"
+        className="duration-100"
+        onClick={() => navigate('/shop')}
+      >
         Shop now
       </Button>
-      <Box
-        className="absolute left-0 flex justify-center items-center h-full w-1/4 cursor-pointer hover:scale-105 transition-transform duration-200"
+      <motion.div
+        className="absolute left-0 flex justify-center items-center h-full w-1/4 cursor-pointer"
         onClick={prevSlide}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.1 }}
         aria-label="Previous slide"
       >
         <img
@@ -114,9 +127,11 @@ const Hero = () => {
           alt="An icon to display the previous carousel slide"
           className="transform scale-x-[-1] filter invert"
         />
-      </Box>
-      <Box
-        className="absolute right-0 flex justify-center items-center h-full w-1/4 cursor-pointer hover:scale-105 transition-transform duration-200"
+      </motion.div>
+      <motion.div
+        className="absolute right-0 flex justify-center items-center h-full w-1/4 cursor-pointer"
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.1 }}
         onClick={nextSlide}
         aria-label="Next slide"
       >
@@ -125,8 +140,8 @@ const Hero = () => {
           alt="An icon to display the next carousel slide"
           className="filter invert"
         />
-      </Box>
-    </Container>
+      </motion.div>
+    </motion.section>
   );
 };
 
