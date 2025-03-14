@@ -68,7 +68,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="relative flex flex-col justify-center items-center h-[65vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url('@/assets/img/home-hero/hero-girl.jpg')] bg-no-repeat bg-center bg-cover p-12"
+      className="relative flex flex-col justify-center items-center h-[60vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('@/assets/img/home-hero/hero-girl.webp')] bg-no-repeat bg-center bg-cover p-12 mt-5 mb-2 md:mb-3"
       aria-label="Promotional carousel"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ const Hero = () => {
         variant="filled"
         size="lg"
         className="duration-100"
-        onClick={() => navigate('/shop')}
+        onClick={() => navigate('/products')}
       >
         Shop now
       </Button>

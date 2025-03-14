@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import phone from '@/assets/img/home-categories/phone.webp';
@@ -37,7 +38,7 @@ const CategoryCard = ({
     hover: {
       scale: 1.02,
       boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
-      transition: { duration: 0.1 },
+      transition: { duration: 0.2 },
     },
   };
 
@@ -123,7 +124,10 @@ const CategoryCard = ({
 
 const Categories = () => {
   return (
-    <section className="flex flex-col justify-center items-center gap-3 py-4 px-2 sm:flex-row">
+    <Box
+      component="section"
+      className="flex flex-col justify-center items-center gap-3 p-2 md:p-3 sm:flex-row"
+    >
       <CategoryCard
         title="Stylish Look"
         subtitle="Ends Today"
@@ -146,7 +150,7 @@ const Categories = () => {
         bgGradient="bg-[linear-gradient(to_right_bottom,rgba(2,130,202,0.8),rgba(2,130,202,0.8)),url('/src/assets/img/home-categories/phones-bg.webp')]"
         textColor="text-white"
       />
-    </section>
+    </Box>
   );
 };
 
