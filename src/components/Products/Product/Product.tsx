@@ -1,42 +1,67 @@
 import React from 'react';
-import classes from './Product.module.scss';
-import { IShowcaseProduct } from '@/interfaces';
+import { Card, Text, Group, Stack, Box } from '@mantine/core';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import type { IShowcaseProduct } from '@/interfaces';
 
-interface ProductProps extends IShowcaseProduct {
-  onClick: () => void;
+interface IProductProps {
+  product: IShowcaseProduct;
 }
 
 const Product = ({
-  id,
-  name,
-  colors,
-  company,
-  price,
-  img,
-  onClick,
-}: ProductProps) => {
+  product: { id, name, company, price, colors, img },
+}: IProductProps) => {
+  const navigate = useNavigate();
+
+  const handleProductClick = () => {
+    navigate(`/products/${id}`);
+  };
+
   return (
-    <li onClick={onClick} className={classes.product} key={id}>
-      <img src={Object.values(img)[0]} alt="" />
-      <div className={classes.description}>
-        <h4>{name}</h4>
-        <p className={classes.company}>{company}</p>
-        <p className={classes.price}>${price}</p>
-        <div className={classes.colors}>
-          {colors.map((color) => {
-            return (
-              <div
-                className={classes.color}
-                style={{
-                  backgroundColor: color,
-                }}
-                key={color}
-              ></div>
-            );
-          })}
-        </div>
-      </div>
-    </li>
+    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
+      <Card
+        padding="lg"
+        radius="md"
+        className="w-[300px] cursor-pointer shadow-lg"
+        onClick={handleProductClick}
+      >
+        <Card.Section>
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{
+              duration: 0.2,
+              yoyo: Infinity,
+              repeatDelay: 0.5,
+            }}
+          >
+            <img src={Object.values(img)[0]} alt={name} className="p-2 " />
+          </motion.div>
+        </Card.Section>
+
+        <Stack mt="md" gap="xs">
+          <Text size="lg" fw={500}>
+            {name}
+          </Text>
+
+          <Text c="green" fw={700} size="md">
+            ${price}
+          </Text>
+
+          <Text c="dimmed" size="sm">
+            {company}
+          </Text>
+
+          <Group mt="md" gap="xs">
+            {colors.map((color) => (
+              <Box
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+          </Group>
+        </Stack>
+      </Card>
+    </motion.div>
   );
 };
 
