@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '@/components/UI/Button/Button';
-import StarsRating from '@/components/UI/StarsRating/StarsRating';
 import { IDetailedProduct } from '@/interfaces';
 import useCartStore from '@/store/cartStore';
 import classes from './Item.module.scss';
@@ -40,7 +39,7 @@ export const Item = ({
         <div className={classes.info}>
           <h3>{name}</h3>
           <div className={classes.rating}>
-            <div className={classes.stars}>{StarsRating(rating)}</div>
+            {/*<div className={classes.stars}>{StarsRating(rating)}</div>*/}
             <p>
               {reviewsNumber} {reviewsNumber === 1 ? 'review' : 'reviews'}
             </p>

@@ -1,7 +1,6 @@
 import React from 'react';
-import classes from './Reviews.module.scss';
-import StarsRating from '@/components/UI/StarsRating/StarsRating';
 import { useLoaderData } from 'react-router';
+import classes from './Reviews.module.scss';
 
 export interface IReviews {
   [key: string]: {
@@ -24,7 +23,7 @@ const Reviews = () => {
           <div className={classes.left}>
             <h4>{reviews[key].nickname}</h4>
             <div className={classes.rating}>
-              {StarsRating(reviews[key].rating)}
+              {/*{StarsRating(reviews[key].rating)}*/}
             </div>
           </div>
           <p>{reviews[key].review}</p>

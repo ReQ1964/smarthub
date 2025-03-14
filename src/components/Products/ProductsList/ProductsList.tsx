@@ -14,7 +14,7 @@ const ProductsList = ({ products, isPending }: IProductListProps) => {
   const skeletonCount = products?.length || 3;
 
   return (
-    <Container>
+    <Container size="lg">
       <SimpleGrid
         cols={{ base: 1, sm: 2, md: 3 }}
         spacing="xl"

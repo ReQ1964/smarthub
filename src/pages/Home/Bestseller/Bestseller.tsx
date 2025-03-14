@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Button, Center, Container, Stack, Title } from '@mantine/core';
+import { Box, Button, Center, Stack, Text, Title } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -8,11 +8,9 @@ import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert';
 import { IDetailedProduct } from '@/interfaces';
 
 const BestsellerTitle = () => (
-  <Stack gap="xs" className="mb-4">
-    <Title order={4} className="text-gray-600 font-light text-center">
-      Featured Products
-    </Title>
-    <Title order={3} className="uppercase text-center font-bold">
+  <Stack gap="xs" className="mb-2 text-center">
+    <Text c="dimmed">Featured Products</Text>
+    <Title order={2} className="uppercase font-bold">
       Bestseller Products
     </Title>
   </Stack>
@@ -46,7 +44,7 @@ const Bestseller = () => {
   );
 
   return (
-    <Container size="xxl" className="p-2 md:p-3">
+    <Box component="section" className="p-2 md:p-3">
       <BestsellerTitle />
 
       {error ? (
@@ -71,7 +69,7 @@ const Bestseller = () => {
           </Center>
         </>
       )}
-    </Container>
+    </Box>
   );
 };
 

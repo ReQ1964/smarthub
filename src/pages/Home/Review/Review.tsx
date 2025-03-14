@@ -1,26 +1,35 @@
 import React from 'react';
-import classes from './Review.module.scss';
-import user from '@/assets/img/home-review/review-user.png';
-import star from '@/assets/icon/rating/star.svg';
-import filledStar from '@/assets/icon/rating/star-filled.svg';
+import { Box, Flex, Rating, Stack, Text, Title } from '@mantine/core';
+import user from '@/assets/img/home-review/user.webp';
 
 const Review = () => {
   return (
-    <section className={classes.review}>
-      <h1>customers reviews</h1>
-      <div className={classes.rating}>
-        <div>
-          <img src={user} alt="reviewer's profile picture" />
-        </div>
-        <img src={filledStar} alt="A picture of a review star" />
-        <img src={filledStar} alt="A picture of a review star" />
-        <img src={filledStar} alt="A picture of a review star" />
-        <img src={filledStar} alt="A picture of a review star" />
-        <img src={star} alt="A picture of an empty review star" />
-      </div>
-      <p>SmartHub helps you with picking out the best devices around!</p>
-      <p className={classes.name}>Will Smith</p>
-    </section>
+    <Flex
+      gap="lg"
+      justify="center"
+      align="center"
+      direction="column"
+      wrap="wrap"
+      component="section"
+      className="text-white py-6 px-2 my-2 md:my-3 text-center bg-[linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),url('@/assets/img/home-review/bg.webp')] bg-no-repeat bg-cover shadow-lg"
+    >
+      <Title order={2} className="uppercase text-sh">
+        Customer Reviews
+      </Title>
+      <Stack align="center">
+        <Box className="rounded-full overflow-hidden border-4 border-white">
+          <img src={user} alt="Reviewer's profile" />
+        </Box>
+        <Rating value={5} readOnly />
+      </Stack>
+      <Text fs="italic" className="w-full sm:w-2/3 md:w-1/2">
+        &#34;SmartHub has revolutionized the way I choose my tech gadgets! The
+        recommendations are always spot-on, and the user interface is incredibly
+        intuitive. Highly recommend it to anyone looking for top-notch
+        devices!&#34;
+      </Text>
+      <Text>Romuald Reynolds</Text>
+    </Flex>
   );
 };
 
