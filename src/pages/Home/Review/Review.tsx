@@ -9,9 +9,8 @@ const Review = () => {
       justify="center"
       align="center"
       direction="column"
-      wrap="wrap"
       component="section"
-      className="text-white text-center p-2 py-3 h-[55vh] my-3 bg-[linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),url('@/assets/img/home-review/bg.webp')] bg-no-repeat bg-cover bg-center shadow-lg"
+      className="text-white text-center p-2 py-3 h-[60vh] my-3 bg-[linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),url('@/assets/img/home-review/bg.webp')] bg-no-repeat bg-cover bg-center md:bg-top shadow-lg"
     >
       <Title order={2} tt="uppercase" mb="xl">
         Customer Reviews

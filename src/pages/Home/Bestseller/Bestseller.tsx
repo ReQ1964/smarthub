@@ -8,9 +8,9 @@ import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert';
 import { IDetailedProduct } from '@/interfaces';
 
 const BestsellerTitle = () => (
-  <Stack gap="xs" className="mb-2 text-center">
+  <Stack gap="xs" mb="xl" className="text-center">
     <Text c="dimmed">Featured Products</Text>
-    <Title order={2} className="uppercase font-bold">
+    <Title order={2} tt="uppercase">
       Bestseller Products
     </Title>
   </Stack>

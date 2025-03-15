@@ -34,7 +34,7 @@ const Product = ({
               repeatDelay: 0.5,
             }}
           >
-            <Image src={Object.values(img)[0]} alt={name} className="p-1.5" />
+            <Image src={Object.values(img)[0]} alt={name} className="p-0.5" />
           </motion.div>
         </Card.Section>
 

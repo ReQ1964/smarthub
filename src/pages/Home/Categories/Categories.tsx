@@ -95,10 +95,10 @@ const CategoryCard = ({
           <Text fw="bold" c={textColorLimited}>
             {subtitle}
           </Text>
-          <Title order={3} className="text-xl font-bold">
-            {title}
-          </Title>
-          <Text size="sm">{description}</Text>
+          <Title order={3}>{title}</Title>
+          <Text size="sm" className="w-4/5">
+            {description}
+          </Text>
 
           <motion.div className="flex items-center">
             <Text fw="bold">Explore Items</Text>
@@ -116,7 +116,7 @@ const CategoryCard = ({
 
         <motion.img
           src={imageSrc}
-          className={`absolute ${imageStyles} right-[-60px] min-[500px]:right-0 min-[768px]:right-[-60px] min-[950px]:right-0 z-0 h-[90%] object-contain`}
+          className={`absolute ${imageStyles} min-[520px]:right-0 min-[950px]:right-0 z-0 object-contain `}
           alt={imageAlt}
           variants={imageVariants}
           whileHover="hover"
@@ -142,7 +142,7 @@ const Categories = () => {
         description="Top Ten Products of the Week"
         imageSrc={smartwatch}
         imageAlt="A smartwatch"
-        imageStyles="top-[2.5%] min-[768px]:top-[2.5%]"
+        imageStyles="top-[-2.5%] min-[467px]:top-[-9%] h-[300px] right-[-85px]"
         bgGradient="bg-[linear-gradient(to_right_bottom,rgba(245,242,242,0.8),rgba(255,255,255,0.8)),url('/src/assets/img/home-categories/pc-bg.webp')]"
         textColor="text-gray-800"
         isLimited={true}
@@ -154,7 +154,7 @@ const Categories = () => {
         description="Top Ten Products of the Week"
         imageSrc={phone}
         imageAlt="A phone"
-        imageStyles="top-[5%] min-[768px]:top-[5%]"
+        imageStyles="top-[2%] min-[467px]:top-[-2%] h-[280px] right-[-60px]"
         bgGradient="bg-[linear-gradient(to_right_bottom,rgba(2,130,202,0.8),rgba(2,130,202,0.8)),url('/src/assets/img/home-categories/phones-bg.webp')]"
         textColor="text-white"
       />

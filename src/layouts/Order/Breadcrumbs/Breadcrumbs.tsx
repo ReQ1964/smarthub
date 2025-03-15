@@ -1,10 +1,9 @@
 import React from 'react';
-import classes from './Breadcrumbs.module.scss';
-import { NavLink, Link } from 'react-router-dom';
-import arrow from '@/assets/icon/carousel.svg';
-import { useAppSelector } from '@/store/hooks';
 import { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import Modal from '@/components/UI/Modal/Modal';
+import { useAppSelector } from '@/store/hooks';
+import classes from './Breadcrumbs.module.scss';
 
 const Breadcrumbs = () => {
   const orderDetails = useAppSelector((state) => state.order);
@@ -43,7 +42,6 @@ const Breadcrumbs = () => {
               Cart
             </Link>
           </li>
-          <img src={arrow} alt="" />
           <li>
             <NavLink
               to={'/order/details'}
@@ -52,7 +50,6 @@ const Breadcrumbs = () => {
               Details
             </NavLink>
           </li>
-          <img src={arrow} alt="" />
           <li>
             <NavLink
               to={'/order/shipping'}
@@ -62,7 +59,6 @@ const Breadcrumbs = () => {
               Shipping
             </NavLink>
           </li>
-          <img src={arrow} alt="" />
           <li>
             <NavLink
               to={'/order/payment'}
