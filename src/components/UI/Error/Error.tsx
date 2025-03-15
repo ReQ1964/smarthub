@@ -1,6 +1,6 @@
 import React from 'react';
+import errorImage from '@/assets/img/nav-responses/error.webp';
 import classes from './Error.module.scss';
-import errorImage from '@/assets/img/nav-responses/error-image.jpg';
 
 const Error = ({ children }: { children: string }) => {
   return (

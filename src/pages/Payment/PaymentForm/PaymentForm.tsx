@@ -1,14 +1,14 @@
 import React from 'react';
-import axios from 'axios';
-import classes from './PaymentForm.module.scss';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import Button from '@/components/UI/Button/Button';
+import useRedirectFromOrdering from '@/hooks/useRedirectFromOrdering';
+import useCartStore from '@/store/cartStore';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addOrderPaymentInfo, clearDetails } from '@/store/order-slice';
-import { clearCart } from '@/store/cart-slice';
-import useRedirectFromOrdering from '@/hooks/useRedirectFromOrdering';
+import classes from './PaymentForm.module.scss';
 
 interface IPaymentProps {
   setIsPaymentConfirmed: (arg0: boolean) => void;
@@ -30,6 +30,7 @@ const PaymentForm = ({
   const dispatch = useAppDispatch();
   const orderInfo = useAppSelector((state) => state.order);
   const { totalPrice, cartProducts } = useAppSelector((state) => state.cart);
+  const { clearCart } = useCartStore((state) => state);
 
   const expirationRegExp = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
   const ccvRegExp = /^[0-9]+$/;
@@ -80,7 +81,7 @@ const PaymentForm = ({
       cartProducts,
       id: (Math.random() * 100).toFixed(),
     });
-    dispatch(clearCart());
+    clearCart();
     dispatch(clearDetails());
     setIsPaymentConfirmed(true);
     setIsLoading(false);

@@ -1,31 +1,43 @@
 import React from 'react';
-import Product from '../Product/Product';
-import classes from './ProductsList.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { Container, SimpleGrid } from '@mantine/core';
+import { motion } from 'framer-motion';
+import ProductSkeleton from '@/components/Products/ProductSkeleton/ProductSkeleton';
 import { IShowcaseProduct } from '@/interfaces';
+import Product from '../Product/Product';
 
-interface ProductListProps {
+interface IProductListProps {
   products: IShowcaseProduct[];
+  isPending: boolean;
 }
 
-const ProductsList = ({ products }: ProductListProps) => {
-  const navigate = useNavigate();
+const ProductsList = ({ products, isPending }: IProductListProps) => {
+  const skeletonCount = products?.length || 4;
 
   return (
-    <ul className={classes.products}>
-      {products.map((product) => (
-        <Product
-          onClick={() => navigate(`/shop/${product.id}`)}
-          key={product.id}
-          id={product.id}
-          img={product.img}
-          name={product.name}
-          price={product.price}
-          company={product.company}
-          colors={product.colors}
-        />
-      ))}
-    </ul>
+    <Container size="xl">
+      <SimpleGrid
+        cols={{ base: 1, sm: 2, md: 3, lg: 4 }}
+        spacing="xl"
+        verticalSpacing="xl"
+        className="justify-items-center"
+      >
+        {isPending
+          ? Array.from({ length: skeletonCount }).map((_, index) => (
+              <ProductSkeleton key={`skeleton-${index}`} />
+            ))
+          : products.map((product) => (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                key={product.id}
+                className="flex justify-center"
+              >
+                <Product product={product} />
+              </motion.div>
+            ))}
+      </SimpleGrid>
+    </Container>
   );
 };
 

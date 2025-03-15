@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
+import Providers from '@/Providers';
 import router from './router/router';
 import './styles/index.scss';
+import './styles/global.css';
+import '@mantine/core/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
+  <Providers>
     <RouterProvider router={router} />
-  </Provider>,
+  </Providers>,
 );

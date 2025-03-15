@@ -1,8 +1,7 @@
 import React from 'react';
-import classes from './CartItem.module.scss';
 import trash from '@/assets/icon/delete.svg';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { removeFromCart, changeQuantity } from '@/store/cart-slice';
+import useCartStore from '@/store/cartStore';
+import classes from './CartItem.module.scss';
 
 interface ICartItemProps {
   id: string | number;
@@ -12,20 +11,19 @@ interface ICartItemProps {
 }
 
 const CartItem = ({ id, img, name, price }: ICartItemProps) => {
-  const dispatch = useAppDispatch();
-  const cartProduct = useAppSelector((state) =>
-    state.cart.cartProducts.find((product) => product.id === id),
-  );
+  const { findProduct, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useCartStore((state) => state);
+  const cartProduct = findProduct(id);
 
   return (
     <div className={classes.item}>
-      <img src={img} alt="Product image" className={classes.prodImg} />
+      <img src={img} alt="Product" className={classes.prodImg} />
       <div className={classes.left}>
         <h3>{name}</h3>
         <img
           src={trash}
           alt="An icon to delete an item from the cart"
-          onClick={() => dispatch(removeFromCart(id))}
+          onClick={() => removeFromCart(id)}
         />
       </div>
       <div className={classes.right}>
@@ -33,21 +31,9 @@ const CartItem = ({ id, img, name, price }: ICartItemProps) => {
         <div className={classes.quantity}>
           <p>Quantity</p>
           <div className={classes.button}>
-            <button
-              onClick={() =>
-                dispatch(changeQuantity({ id: id, type: 'decrease' }))
-              }
-            >
-              -
-            </button>
+            <button onClick={() => increaseQuantity(id)}>-</button>
             <p>{cartProduct?.quantity}</p>
-            <button
-              onClick={() =>
-                dispatch(changeQuantity({ id: id, type: 'increase' }))
-              }
-            >
-              +
-            </button>
+            <button onClick={() => decreaseQuantity(id)}>+</button>
           </div>
         </div>
       </div>
