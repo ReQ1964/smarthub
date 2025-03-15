@@ -32,7 +32,6 @@ const Bestseller = () => {
       );
       return Object.values(res.data);
     },
-    retry: 1,
   });
 
   const ERROR_ALERT_PROPS = useMemo(
@@ -44,7 +43,7 @@ const Bestseller = () => {
   );
 
   return (
-    <Box component="section" className="p-2 md:p-3">
+    <Box component="section" className="p-2 py-3 md:p-3.5">
       <BestsellerTitle />
 
       {error ? (
@@ -56,7 +55,7 @@ const Bestseller = () => {
         />
       ) : (
         <>
-          <ProductsList products={products.slice(0, 3)} isPending={isPending} />
+          <ProductsList products={products.slice(0, 4)} isPending={isPending} />
           <Center mt="xl">
             <Button
               variant="filled"

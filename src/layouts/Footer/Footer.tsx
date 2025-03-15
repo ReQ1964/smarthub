@@ -12,7 +12,7 @@ const navigationLinks = [
 const Footer = () => (
   <Box
     component="footer"
-    className="text-white py-1.5 px-2 mt-2 md:mt-3"
+    className="text-white py-1.5 px-2 mt-3 md:mt-3.5"
     bg="dark.7"
   >
     <Container size="xl">

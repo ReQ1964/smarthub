@@ -10,7 +10,7 @@ interface IErrorStateProps {
 
 const ErrorState = ({
   title = 'An error occurred',
-  message,
+  message = 'Please try again later',
   refetch,
 }: IErrorStateProps) => (
   <Alert
@@ -19,12 +19,16 @@ const ErrorState = ({
     color="red"
     autoContrast={true}
     radius="md"
-    className="shadow-lg p-4 max-w-[400px] mx-auto flex"
+    className="shadow-lg p-4 max-w-[400px] mx-auto flex flex-col"
   >
-    <Text className="flex-grow">
-      {message || 'Products failed to fetch. Please try again later.'}
-    </Text>
-    <Flex justify="flex-end" align="center" direction="row" mt="md">
+    <Text>{message}</Text>
+    <Flex
+      justify="flex-end"
+      align="center"
+      direction="row"
+      mt="md"
+      className="sm:justify-center"
+    >
       <Button
         onClick={refetch}
         color="red"

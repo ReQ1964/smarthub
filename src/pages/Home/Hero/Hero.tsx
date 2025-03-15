@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Box, Button, Container, Flex, Title } from '@mantine/core';
+import { Button, Stack, Text, Title } from '@mantine/core';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import Carousel from '@/assets/icon/carousel.svg';
 
 interface ICarouselItem {
   header: string;
@@ -12,15 +12,15 @@ interface ICarouselItem {
 const CAROUSEL_DATA: ICarouselItem[] = [
   {
     header: 'Black Friday',
-    description: 'Check out our sales!',
+    description: 'Score big deals now!',
   },
   {
-    header: 'Newest Devices',
-    description: 'Shipped straight from the producer!',
+    header: 'Fresh Arrivals',
+    description: 'Direct from the source!',
   },
   {
     header: '20% Off',
-    description: 'Last models up for grabs!',
+    description: 'Grab last models fast!',
   },
 ];
 
@@ -51,7 +51,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, AUTO_ROTATION_INTERVAL);
     return () => clearInterval(interval);
-  }, [nextSlide, currentSlide]);
+  }, [nextSlide]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -66,9 +66,11 @@ const Hero = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide]);
 
+  const currentItem = CAROUSEL_DATA[currentSlide];
+
   return (
     <motion.section
-      className="relative flex flex-col justify-center items-center h-[60vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('@/assets/img/home-hero/hero-girl.webp')] bg-no-repeat bg-center bg-cover p-12 mt-5 mb-2 md:mb-3"
+      className="relative flex flex-col justify-center items-center h-[60vh] gap-2 bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('@/assets/img/home-hero/hero-girl.webp')] bg-no-repeat bg-center bg-cover p-4 md:p-12 mt-5 mb-3 text-center text-white"
       aria-label="Promotional carousel"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -78,43 +80,35 @@ const Hero = () => {
         delay: 0.2,
       }}
     >
-      <Box aria-roledescription="carousel" className="w-2/3 mx-auto">
-        {CAROUSEL_DATA.map((item: ICarouselItem, index: number) => {
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{
-                opacity: index === currentSlide ? 1 : 0,
-                scale: index === currentSlide ? 1.05 : 1,
-              }}
-              transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="flex flex-col text-center text-white"
-              aria-hidden={index !== currentSlide}
-              role="group"
-              aria-roledescription="slide"
-            >
-              {index === currentSlide && (
-                <>
-                  <Title order={1} className="uppercase">
-                    {item.header}
-                  </Title>
-                  <p className="leading-2">{item.description}</p>
-                </>
-              )}
-            </motion.div>
-          );
-        })}
-      </Box>
-
-      <Button
-        variant="filled"
-        size="lg"
-        className="duration-100"
-        onClick={() => navigate('/products')}
+      <Stack
+        justify="space-between"
+        align="center"
+        h={200}
+        aria-roledescription="carousel"
       >
-        Shop now
-      </Button>
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1.05 }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
+          className="flex flex-col gap-0.5"
+        >
+          <Title order={1} tt="uppercase">
+            {currentItem.header}
+          </Title>
+          <Text>{currentItem.description}</Text>
+        </motion.div>
+
+        <Button
+          variant="filled"
+          size="lg"
+          className="duration-100"
+          onClick={() => navigate('/products')}
+        >
+          Shop now
+        </Button>
+      </Stack>
+
       <motion.div
         className="absolute left-0 flex justify-center items-center h-full w-1/4 cursor-pointer"
         onClick={prevSlide}
@@ -122,11 +116,7 @@ const Hero = () => {
         transition={{ duration: 0.1 }}
         aria-label="Previous slide"
       >
-        <img
-          src={Carousel}
-          alt="An icon to display the previous carousel slide"
-          className="transform scale-x-[-1] filter invert"
-        />
+        <IconChevronLeft size={60} />
       </motion.div>
       <motion.div
         className="absolute right-0 flex justify-center items-center h-full w-1/4 cursor-pointer"
@@ -135,11 +125,7 @@ const Hero = () => {
         onClick={nextSlide}
         aria-label="Next slide"
       >
-        <img
-          src={Carousel}
-          alt="An icon to display the next carousel slide"
-          className="filter invert"
-        />
+        <IconChevronRight size={60} />
       </motion.div>
     </motion.section>
   );

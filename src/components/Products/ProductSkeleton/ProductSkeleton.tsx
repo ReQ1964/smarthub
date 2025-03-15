@@ -3,7 +3,7 @@ import { Card, Group, Skeleton, Stack } from '@mantine/core';
 
 const ProductSkeleton = () => {
   return (
-    <Card shadow="sm" padding="lg" radius="md" className="w-[300px]">
+    <Card shadow="sm" padding="lg" radius="md" className="w-[250px]">
       <Card.Section>
         <Skeleton height={200} radius={0} />
       </Card.Section>

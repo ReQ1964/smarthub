@@ -1,5 +1,14 @@
 import React from 'react';
-import { Title, Text, List, Box, Stack, Flex, Container } from '@mantine/core';
+import {
+  Title,
+  Text,
+  List,
+  Box,
+  Stack,
+  Flex,
+  Container,
+  Image,
+} from '@mantine/core';
 import book from '@/assets/img/home-features/book.webp';
 import contract from '@/assets/img/home-features/contract.webp';
 import growth from '@/assets/img/home-features/growth.webp';
@@ -30,12 +39,16 @@ const featuresData = [
 ];
 
 const Features = () => (
-  <Box
+  <Flex
     component="section"
-    className="flex flex-col items-center gap-3 p-2 md:p-3 text-center"
+    gap="xl"
+    justify="center"
+    align="center"
+    direction="column"
+    className="p-3 md:p-3.5 text-center"
   >
-    <Stack gap="xs">
-      <Title order={2} className="text-2xl font-bold uppercase">
+    <Stack gap="xs" mb="md">
+      <Title order={2} tt="uppercase">
         Top-Notch Services
       </Title>
       <Text c="dimmed">
@@ -43,7 +56,7 @@ const Features = () => (
       </Text>
     </Stack>
     <Container size="lg">
-      <List className="flex flex-col gap-2 md:flex-row md:gap-8">
+      <List className="flex flex-col gap-4 sm:flex-row md:gap-6">
         {featuresData.map((feature, index) => (
           <List.Item key={index} className="md:w-1/3">
             <Flex
@@ -53,12 +66,8 @@ const Features = () => (
               direction="column"
               wrap="wrap"
             >
-              <Box className={`p-2 ${feature.bgColor} rounded-full`}>
-                <img
-                  src={feature.icon}
-                  alt={feature.alt}
-                  className="w-4 h-4 object-contain"
-                />
+              <Box p="xl" className={`${feature.bgColor} rounded-full`}>
+                <Image src={feature.icon} alt={feature.alt} w={60} h={60} />
               </Box>
               <Title order={3}>{feature.title}</Title>
               <Text c="dimmed">{feature.description}</Text>
@@ -67,7 +76,7 @@ const Features = () => (
         ))}
       </List>
     </Container>
-  </Box>
+  </Flex>
 );
 
 export default Features;

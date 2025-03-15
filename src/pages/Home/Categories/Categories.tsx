@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@mantine/core';
+import { Text, Title, Flex } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import phone from '@/assets/img/home-categories/phone.webp';
@@ -76,6 +76,8 @@ const CategoryCard = ({
     },
   };
 
+  const textColorLimited = isLimited ? '#E77C40' : 'inherit';
+
   return (
     <motion.div
       className={`relative overflow-hidden p-2 w-full sm:w-[450px] rounded-md shadow-sm ${bgGradient} bg-cover bg-center lg:overflow-visible  
@@ -90,14 +92,16 @@ const CategoryCard = ({
           className={`flex flex-col gap-2 max-w-[80%] z-10 relative ${textColor}`}
           variants={textVariants}
         >
-          <p className={`font-bold ${isLimited ? 'text-[#E77C40]' : ''}`}>
+          <Text fw="bold" c={textColorLimited}>
             {subtitle}
-          </p>
-          <h2 className="text-xl font-bold">{title}</h2>
-          <p className="text-sm">{description}</p>
+          </Text>
+          <Title order={3} className="text-xl font-bold">
+            {title}
+          </Title>
+          <Text size="sm">{description}</Text>
 
           <motion.div className="flex items-center">
-            <span className="font-bold">Explore Items</span>
+            <Text fw="bold">Explore Items</Text>
             <motion.span
               className="ml-0.5"
               variants={{
@@ -124,9 +128,13 @@ const CategoryCard = ({
 
 const Categories = () => {
   return (
-    <Box
+    <Flex
+      justify="center"
+      align="center"
+      direction={{ base: 'column', sm: 'row' }}
+      wrap="wrap"
       component="section"
-      className="flex flex-col justify-center items-center gap-3 p-2 md:p-3 sm:flex-row"
+      className="gap-4 p-2 py-3 md:p-3.5"
     >
       <CategoryCard
         title="Stylish Look"
@@ -150,7 +158,7 @@ const Categories = () => {
         bgGradient="bg-[linear-gradient(to_right_bottom,rgba(2,130,202,0.8),rgba(2,130,202,0.8)),url('/src/assets/img/home-categories/phones-bg.webp')]"
         textColor="text-white"
       />
-    </Box>
+    </Flex>
   );
 };
 

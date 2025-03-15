@@ -11,12 +11,12 @@ interface IProductListProps {
 }
 
 const ProductsList = ({ products, isPending }: IProductListProps) => {
-  const skeletonCount = products?.length || 3;
+  const skeletonCount = products?.length || 4;
 
   return (
-    <Container size="lg">
+    <Container size="xl">
       <SimpleGrid
-        cols={{ base: 1, sm: 2, md: 3 }}
+        cols={{ base: 1, sm: 2, md: 3, lg: 4 }}
         spacing="xl"
         verticalSpacing="xl"
         className="justify-items-center"

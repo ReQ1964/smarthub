@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Text, Group, Stack, Box } from '@mantine/core';
+import { Card, Text, Group, Stack, Box, Image } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import type { IShowcaseProduct } from '@/interfaces';
@@ -20,9 +20,9 @@ const Product = ({
   return (
     <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
       <Card
-        padding="lg"
+        padding="xl"
         radius="md"
-        className="w-[300px] cursor-pointer shadow-lg"
+        className="w-[250px] cursor-pointer shadow-xl "
         onClick={handleProductClick}
       >
         <Card.Section>
@@ -34,7 +34,7 @@ const Product = ({
               repeatDelay: 0.5,
             }}
           >
-            <img src={Object.values(img)[0]} alt={name} className="p-2 " />
+            <Image src={Object.values(img)[0]} alt={name} className="p-1.5" />
           </motion.div>
         </Card.Section>
 
@@ -54,7 +54,7 @@ const Product = ({
           <Group mt="md" gap="xs">
             {colors.map((color) => (
               <Box
-                className="w-1.5 h-1.5 rounded-full"
+                className="w-1.5 h-1.5 rounded-full shadow-2xl"
                 style={{ backgroundColor: color }}
               />
             ))}
