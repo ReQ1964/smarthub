@@ -57,20 +57,15 @@ const Navbar = () => {
             >
               <ShoppingCart className="h-2 w-2 text-gray-700" />
               {totalQuantity > 0 && (
-                <Transition
-                  mounted={totalQuantity > 0}
-                  transition="pop"
-                  duration={300}
+                <motion.span
+                  key={totalQuantity}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.1 }}
+                  className="absolute -top-[5px] -right-0.5 flex h-[21px] w-[21px] items-center justify-center rounded-full bg-primary text-xs font-medium text-white"
                 >
-                  {(styles) => (
-                    <span
-                      style={styles}
-                      className="absolute -top-0.5 -right-0.5 flex h-1 w-1 items-center justify-center rounded-full bg-primary text-xs font-medium text-white"
-                    >
-                      {totalQuantity}
-                    </span>
-                  )}
-                </Transition>
+                  {totalQuantity}
+                </motion.span>
               )}
             </Box>
           </motion.div>
