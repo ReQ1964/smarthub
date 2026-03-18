@@ -1,0 +1,66 @@
+@import '@/styles/variables';
+.item {
+  display: flex;
+  min-height: 130px;
+  margin: 0 auto;
+  width: 100%;
+  .prodImg {
+    width: 45%;
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    img {
+      filter: invert(25%) sepia(86%) saturate(7435%) hue-rotate(356deg)
+        brightness(98%) contrast(116%);
+      width: 30px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:active {
+        transform: scale(1.05);
+      }
+    }
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: right;
+    width: 40%;
+    .price {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .quantity {
+      text-align: center;
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        width: 100px;
+        border: 1px solid $btn-color-bg;
+        padding: 0.2em 0.5em;
+      }
+      button {
+        background-color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: 0.2s;
+        &:active {
+          transform: scale(1.05);
+        }
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

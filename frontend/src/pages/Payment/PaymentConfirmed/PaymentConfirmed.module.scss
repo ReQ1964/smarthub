@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+.accepted {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  h4 {
+    color: $text-color-quaternary;
+    font-weight: bold;
+  }
+  img {
+    width: 150px;
+    border: 5px solid $btn-color-bg;
+    filter: invert(66%) sepia(97%) saturate(3390%) hue-rotate(174deg)
+      brightness(96%) contrast(96%);
+    border-radius: 50%;
+    padding: 1rem;
+  }
+  .btn {
+    width: 70%;
+  }
+}

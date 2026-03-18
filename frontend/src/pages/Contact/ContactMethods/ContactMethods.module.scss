@@ -1,0 +1,27 @@
+@import '@/styles/variables';
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem;
+  text-align: center;
+  h1 {
+    font-size: $h1-size;
+  }
+  p {
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+  h4 {
+    font-weight: bold;
+  }
+}
+@media (min-width: $media-lg) {
+  .methods {
+    width: 50%;
+    text-align: left;
+    .socialIcons {
+      margin: 0;
+    }
+  }
+}

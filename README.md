@@ -7,8 +7,7 @@ the main goal was to design the customer order process, and implement sorting, a
 filtering of the products. React-hook-forms library together with yup was used to create
 and validate the forms. REST API (Firebase) was used to retrieve the products, send the
 order details, and sign up/log in the user. Additionally, Husky has been added to improve
-the developer experience.
-
+the developer experience.???//??
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)

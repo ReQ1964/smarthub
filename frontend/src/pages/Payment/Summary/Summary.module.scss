@@ -1,0 +1,27 @@
+@import '@/styles/variables';
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 2rem auto 1rem;
+  padding: 1.5rem;
+  .third {
+    border-top: 1px solid $border-color-primary;
+  }
+  div {
+    display: flex;
+    padding: 1rem;
+    border: 1px solid $border-color-primary;
+    border-radius: 0.5rem;
+    h4 {
+      width: 30%;
+    }
+    p {
+      width: 70%;
+    }
+    &:nth-of-type(1) {
+      border-bottom: 1px solid $border-color-primary;
+    }
+  }
+}
